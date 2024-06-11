@@ -13,22 +13,39 @@ window.addEventListener('DOMContentLoaded', event => {
     // Navbar shrink function
     var navbarShrink = function () {
         const navbarCollapsible = document.body.querySelector('#mainNav');
+        const navLinkStyle = document.body.querySelectorAll('.nav-link');
+        
         if (!navbarCollapsible) {
             return;
-        }
-        if (window.scrollY === 0) {
-            navbarCollapsible.classList.remove('navbar-shrink')
+            }
+        if (window.scrollY === 0)  {
+            navbarCollapsible.classList.remove('navbar-shrink');
+            navLinkStyle.forEach(element => {
+                element.style.color = 'black';            
+            });
         } else {
-            navbarCollapsible.classList.add('navbar-shrink')
+            navbarCollapsible.classList.add('navbar-shrink');
+            navLinkStyle.forEach(element => {
+                element.style.color = 'white';            
+            }); 
         }
-
+                
     };
 
     // Shrink the navbar 
     navbarShrink();
-
+    
     // Shrink the navbar when page is scrolled
     document.addEventListener('scroll', navbarShrink);
+    
+    // Change navbar link color when toggler is clicked
+    const togglerMenuBtn = document.querySelector('.navbar-toggler');
+    togglerMenuBtn.addEventListener('click', event => { 
+        const navLinkStyle = document.body.querySelectorAll('.nav-link');        
+        navLinkStyle.forEach(element => {
+            element.style.color = 'white';            
+        });
+    });
 
     //  Activate Bootstrap scrollspy on the main nav element
     const mainNav = document.body.querySelector('#mainNav');
@@ -52,14 +69,14 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
 
-    const myCarouselElement = document.querySelector('#adviceCarousel')
-
+    // Carousel
+    const myCarouselElement = document.querySelector('#adviceCarousel');
     const carousel = new bootstrap.Carousel(myCarouselElement, {
         interval: 3000,
         touch: false
     });
 
-
+    
     
     
         // URL del archivo .zip

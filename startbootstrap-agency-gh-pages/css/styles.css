@@ -123,6 +123,21 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
 h1, .h1 {
   font-size: calc(1.375rem + 1.5vw);
 }
+
+.scrollup {
+  background-color: #4f4f4f;
+  border-radius: 100%;
+  bottom: 20px;
+  color: #fff;
+  font-size: 24px;
+  height: 40px;
+  line-height: 40px;
+  position: fixed;
+  right: 20px;
+  text-align: center;
+  width: 40px;
+  z-index: 99;
+}
 @media (min-width: 1200px) {
   h1, .h1 {
     font-size: 2.5rem;
@@ -425,6 +440,18 @@ legend {
   }
 }
 
+.links-dropdown {
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.masthead-shadow {
+  text-shadow: #000 0 0 10px;
+}
+
+.carrousel-page {
+  padding-bottom: 4rem;
+}
+
 .weather-row {  
   justify-content: center;
   align-items: center;
@@ -469,6 +496,9 @@ legend {
     border-radius: 10rem;
   }
   
+.links-dropdown-list {
+  display: none;
+}
 
   .weather-info .weather-button {
     width: 40px;
@@ -563,8 +593,11 @@ progress {
   width: 50%;
 }
 
-.things-todo {
+.things-todo, .notice-list {
   list-style-type: none;
+}
+  
+.things-todo {
   margin-bottom: 4rem;
   padding-left: 0;
 }
@@ -5383,8 +5416,9 @@ textarea.form-control-lg {
   overflow-x: hidden;
   overflow-y: auto;
   outline: 0;
+  text-align: -webkit-center;
 }
-
+ 
 .modal-dialog {
   position: relative;
   width: auto;
@@ -11027,7 +11061,7 @@ p {
 #mainNav .navbar-nav .nav-item .nav-link {
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 0.95rem;
-  color: #fff;
+  color: #000;
   letter-spacing: 0.0625em;
 }
 #mainNav .navbar-nav .nav-item .nav-link.active, #mainNav .navbar-nav .nav-item .nav-link:hover {
@@ -11168,13 +11202,15 @@ header.masthead .masthead-heading {
 .advice-modal .modal-dialog, .notices-modal .modal-dialog {
   margin: 1rem;
   max-width: 100vw;
+  
 }
 .advice-modal .modal-content, .notices-modal .modal-content{
   padding-top: 6rem;
   padding-bottom: 6rem;
   text-align: center;
+  width: 50rem;
 }
-.advice-modal .modal-content h2, .notices-modal .modal-content .h2 {
+.advice-modal .modal-content h2, .notices-modal .modal-content h2 {
   font-size: 3rem;
   line-height: 3rem;
 }
