@@ -15,6 +15,7 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+        <!-- <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.3/dist/css/bootstrap.min.css"> -->
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -44,6 +45,7 @@
                                 <li><a class="dropdown-item text-uppercase ms-auto py-4 py-lg-0" href="https://mapa.tandil.gov.ar" target="_blank" >IDE Tandil</a></li>
                             </ul>
                         </li>
+                        <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" href="#loginModal">Login</a></li>
                     </ul>
                 </div>
             </div>
@@ -736,7 +738,67 @@
             </div>
         </div> 
 
+        <!-- Login modal -->
 
+        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                   <!-- Login 2 - Bootstrap Brain Component -->
+                    <div class="bg-light py-3 py-md-5">
+                        <div class="container">
+                            <div class="row justify-content-md-center">
+                                <div class="col-12 col-md-11 col-lg-8 col-xl-7 col-xxl-6">
+                                    <div class="bg-white p-4 p-md-5 rounded shadow-sm">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="mb-5">
+                                                    <h3>Ingresar</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <form id="loginForm" action="#!">
+                                        <div class="row gy-3 gy-md-4 overflow-hidden">
+                                            <div class="col-12">
+                                                <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+                                                <input type="email" class="form-control" name="email" id="username" placeholder="name@example.com" required>
+                                            </div>
+                                            <div class="col-12">
+                                                <label for="password" class="form-label">Contraseña <span class="text-danger">*</span></label>
+                                                <input type="password" class="form-control" name="password" id="password" value="" required>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" name="remember_me" id="remember_me">
+                                                    <label class="form-check-label text-secondary" for="remember_me">
+                                                        Mantenerme conectado
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="d-grid">
+                                                    <button class="btn btn-lg btn-secondary" type="submit">Entrar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </form>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <hr class="mt-5 mb-4 border-secondary-subtle">
+                                                <div class="d-flex gap-2 gap-md-4 flex-column flex-md-row justify-content-md-end">
+                                                    <a href="#!" class="link-secondary text-decoration-none">Crear una cuenta</a>
+                                                    <a href="#!" class="link-secondary text-decoration-none">¿Olvido su contraseña?</a>
+                                                </div>
+                                            </div>
+                                        </div>            
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                    
         <!-- Scripts -->
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
         <!-- Bootstrap core JS-->
@@ -744,6 +806,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
         <!-- Core theme JS-->
         <script type="module" src="js/scripts.js"></script> 
+        <script src="js/login.js"></script>
+        <script type="module" src="js/express_server.js"></script>
     </body>
 </html>
     
