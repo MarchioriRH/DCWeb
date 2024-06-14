@@ -127,7 +127,7 @@ h1, .h1 {
 .scrollup {
   background-color: #4f4f4f;
   border-radius: 100%;
-  bottom: 20px;
+  bottom: -40px;
   color: #fff;
   font-size: 24px;
   height: 40px;
@@ -137,7 +137,17 @@ h1, .h1 {
   text-align: center;
   width: 40px;
   z-index: 99;
+  transition: all 0.3s ease-in-out;
 }
+
+.scrollup:hover {
+  background-color: #333;
+}
+
+.show-back-to-top{
+  bottom: 20px;
+}
+
 @media (min-width: 1200px) {
   h1, .h1 {
     font-size: 2.5rem;
@@ -398,6 +408,10 @@ select:disabled {
 form {
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
+}
+
+#event-form, #logout-button {
+  display:none;
 }
 
 button,
@@ -11102,7 +11116,7 @@ p {
   #mainNav.navbar-shrink .navbar-brand svg,
   #mainNav.navbar-shrink .navbar-brand img {
     height: 3.5rem;
-    padding-left: 5rem;
+    padding-left: 15rem;
   }
   #mainNav .navbar-nav .nav-item {
     margin-right: 1rem;

@@ -31,7 +31,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                         <li class="nav-item"><a class="nav-link" href="#weather-info">El tiempo</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#notices">Noticias</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./notices">Noticias</a></li>
                         <li class="nav-item"><a class="nav-link" href="#advice">Consejos</a></li>
                         <li class="nav-item"><a class="nav-link" href="#what-does-the-dc">¿Que hace la DC?</a></li>
                         <li class="nav-item dropdown links-dropdown-list">
@@ -45,7 +45,9 @@
                                 <li><a class="dropdown-item text-uppercase ms-auto py-4 py-lg-0" href="https://mapa.tandil.gov.ar" target="_blank" >IDE Tandil</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" href="#loginModal">Login</a></li>
+                        <li class="nav-item" id="event-form"><a class="nav-link" id="event-form-button" target="_blank">Eventos</a></li>
+                        <li class="nav-item" id="login-button"><a class="nav-link" data-bs-toggle="modal" href="#loginModal">Login</a></li>
+                        <li class="nav-item" id="logout-button"><a class="nav-link" data-bs-toggle="modal" href="!#">Logout</a></li>
                     </ul>
                 </div>
             </div>
@@ -82,7 +84,7 @@
             </div>
             <div class="container">
                 <div class="row weather-row">
-                    <iframe width="1125" height="400" src="https://embed.windy.com/embed.html?type=map&location=coordinates&metricRain=mm&metricTemp=°C&metricWind=km/h&zoom=6&overlay=wind&product=ecmwf&level=surface&lat=-38.874&lon=-54.679&detailLat=-37.323&detailLon=-59.137&detail=true" frameborder="0"></iframe>
+                    <iframe width="1125" height="400" src="https://embed.windy.com/embed.html?type=map&location=coordinates&metricRain=mm&metricTemp=°C&metricWind=km/h&zoom=7&overlay=wind&product=ecmwf&level=surface&lat=-38.874&lon=-54.679&detailLat=-37.323&detailLon=-59.137&detail=true" frameborder="0"></iframe>
                 </div>
             </div>
         </section>
@@ -101,7 +103,7 @@
                                 <div class="notices-hover">
                                     <div class="notices-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="assets/img/notices/may24_fulton.png" alt="Charla prevencion Fulton" />
+                                <img class="img-fluid" src="assets/img/notices/notice_1_may24_fulton.png" alt="Charla prevencion Fulton" />
                             </a>
                             <div class="notices-caption">
                                 <div class="notices-caption-heading">Charlas en escuelas</div>
@@ -115,11 +117,10 @@
                                 <div class="notices-hover">
                                     <div class="notices-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="assets/img/notices/26abr24_SCI_Bahia.jpg" alt="Curso SCI Bahia Blanca" />
+                                <img class="img-fluid" src="assets/img/notices/notice_2_26abr24_SCI_Bahia.jpg" alt="Curso SCI Bahia Blanca" />
                             </a>
                             <div class="notices-caption">
                                 <div class="notices-caption-heading">Curso de SCI</div>
-                                <div class="notices-caption-subheading text-muted">Capacitacion de agentes.</div>
                                 <div class="notices-caption-subheading text-muted">Abril 2024</div>
                             </div>
                         </div>
@@ -130,7 +131,7 @@
                                 <div class="notices-hover">
                                     <div class="notices-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="assets/img/notices/abr24_presentacion_programa_fortalecimiento.jpeg" alt="Presentacion programa fortalecimiento DC" />
+                                <img class="img-fluid" src="assets/img/notices/notice_3_abr24_presentacion_programa_fortalecimiento.jpeg" alt="Presentacion programa fortalecimiento DC" />
                             </a>
                             <div class="notices-caption">
                                 <div class="notices-caption-heading">Programa de Fortalecimiento de las Defensas Civiles</div>
@@ -438,8 +439,9 @@
                
             </div>
         </footer>   
-        <a class="scrollup" href="#page-top"><i class="fas fa-angle-up"></i></a>              
-                      
+       
+        <!-- Scroll to top -->
+        <a class="scrollup" href="#page-top"><i class="fas fa-angle-up"></i></a>   
                       
                       
         <!-- advice Modals-->
@@ -601,6 +603,7 @@
         </div>
 
         <!-- Notices Modals-->
+         <!-- notice item 1 modal popup-->
         <div class="notices-modal modal fade" id="noticesModal1" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -641,6 +644,7 @@
                 </div>
             </div>
         </div> 
+        <!-- notice item 2 modal popup-->
         <div class="notices-modal modal fade" id="noticesModal2" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -696,6 +700,7 @@
                 </div>
             </div>
         </div> 
+        <!-- notice item 3 modal popup-->
         <div class="notices-modal modal fade" id="noticesModal3" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -739,7 +744,6 @@
         </div> 
 
         <!-- Login modal -->
-
         <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -749,44 +753,41 @@
                             <div class="row justify-content-md-center">
                                 <div class="col-12 col-md-11 col-lg-8 col-xl-7 col-xxl-6">
                                     <div class="bg-white p-4 p-md-5 rounded shadow-sm">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="mb-5">
-                                                    <h3>Ingresar</h3>
-                                                </div>
-                                            </div>
-                                        </div>
                                         <form id="loginForm" action="#!">
-                                        <div class="row gy-3 gy-md-4 overflow-hidden">
-                                            <div class="col-12">
-                                                <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
-                                                <input type="email" class="form-control" name="email" id="username" placeholder="name@example.com" required>
-                                            </div>
-                                            <div class="col-12">
-                                                <label for="password" class="form-label">Contraseña <span class="text-danger">*</span></label>
-                                                <input type="password" class="form-control" name="password" id="password" value="" required>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="" name="remember_me" id="remember_me">
-                                                    <label class="form-check-label text-secondary" for="remember_me">
-                                                        Mantenerme conectado
-                                                    </label>
+                                            <div class="row gy-3 gy-md-4 overflow-hidden">
+                                                <div class="col-12">
+                                                    <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+                                                    <input type="email" class="form-control" name="email" id="username" placeholder="name@example.com" required>
+                                                </div>
+                                                <div class="col-12">
+                                                    <label for="password" class="form-label">Contraseña <span class="text-danger">*</span></label>
+                                                    <input type="password" class="form-control" name="password" id="password" value="" required>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" name="remember_me" id="remember_me">
+                                                        <label class="form-check-label text-secondary" for="remember_me">
+                                                            Mantenerme conectado
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="d-grid">
+                                                        <button class="btn btn-lg btn-secondary" data-bs-dismiss="modal" type="submit">Entrar</button>
+                                                    </div>
+                                                    <div id="message" class="text-secondary"></div>
                                                 </div>
                                             </div>
-                                            <div class="col-12">
-                                                <div class="d-grid">
-                                                    <button class="btn btn-lg btn-secondary" type="submit">Entrar</button>
-                                                </div>
-                                            </div>
-                                        </div>
                                         </form>
                                         <div class="row">
                                             <div class="col-12">
                                                 <hr class="mt-5 mb-4 border-secondary-subtle">
                                                 <div class="d-flex gap-2 gap-md-4 flex-column flex-md-row justify-content-md-end">
-                                                    <a href="#!" class="link-secondary text-decoration-none">Crear una cuenta</a>
-                                                    <a href="#!" class="link-secondary text-decoration-none">¿Olvido su contraseña?</a>
+                                                    <p class="link-secondary text-decoration-none">
+                                                        Si olvido su contraseña, pongase en contacto con el administrador.<br>
+                                                        defensa.civil.tandil@gmail.com
+                                                    </p>
+                                                    <a data-bs-toggle="modal"  href="#registerModal" class="link-secondary text-decoration-none">Registrarse</a>
                                                 </div>
                                             </div>
                                         </div>            
@@ -798,16 +799,82 @@
                 </div>
             </div>
         </div>
+        <!-- Register modal -->
+        <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                   <!-- Login 2 - Bootstrap Brain Component -->
+                    <div class="bg-light py-3 py-md-5">
+                        <div class="container">
+                            <div class="row justify-content-md-center">
+                                <div class="col-12 col-md-11 col-lg-8 col-xl-7 col-xxl-6">
+                                    <div class="bg-white p-4 p-md-5 rounded shadow-sm">
+                                        <form id="registerForm" action="#!">
+                                            <div class="row gy-3 gy-md-4 overflow-hidden">
+                                                <div class="col-12">
+                                                    <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+                                                    <input type="email" class="form-control" name="email" id="registerUsername" placeholder="name@example.com" required>
+                                                </div>
+                                                <div class="col-12">
+                                                    <label for="password" class="form-label">Contraseña <span class="text-danger">*</span></label>
+                                                    <input type="password" class="form-control" name="password" id="registerPassword" value="" required>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="d-grid">
+                                                        <button class="btn btn-lg btn-secondary" data-bs-dismiss="modal" type="submit">Registrarse</button>
+                                                    </div>
+                                                    <!-- <div id="registerMessage text-secondary"></div> -->
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                   <!-- Login 2 - Bootstrap Brain Component -->
+                    <div class="bg-light py-3 py-md-5">
+                        <div class="container">
+                            <div class="row justify-content-md-center">
+                                <div class="col-12 col-md-11 col-lg-8 col-xl-7 col-xxl-6">
+                                    <div class="bg-white p-4 p-md-5 rounded shadow-sm">
+                                        <div id="message" class="text-secondary"></div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="d-grid">
+                                            <button data-bs-dismiss="modal" class="btn btn-lg btn-secondary" type="submit">
+                                                <!-- <a href="./assets/sections/forms/event_form.html" class="btn btn-lg btn-secondary" target="_blank" >Aceptar</a> -->
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                    
                     
         <!-- Scripts -->
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-        <!-- Core theme JS-->
+        <!-- Datables -->
+        <!-- <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script> -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <!-- Local scripts -->
         <script type="module" src="js/scripts.js"></script> 
-        <script src="js/login.js"></script>
+        <script type="module" src="js/login.js"></script>
         <script type="module" src="js/express_server.js"></script>
+        <script type="module" src="js/router.js"></script>
     </body>
 </html>
     

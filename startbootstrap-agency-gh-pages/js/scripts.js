@@ -7,36 +7,43 @@
 // Scripts
 // 
 
+const SERVER_PORT = 5500;
+const LOCAL_PORT = 5500;
+
 window.addEventListener('DOMContentLoaded', event => {
     
     // Navbar shrink function
-    var navbarShrink = function () {
+    document.addEventListener('scroll', () => {
         const navbarCollapsible = document.body.querySelector('#mainNav');
         const navLinkStyle = document.body.querySelectorAll('.nav-link');
-        
+        const scrollUp = document.body.querySelector('.scrollup');
+
         if (!navbarCollapsible) {
             return;
-            }
+        }
+
         if (window.scrollY === 0)  {
             navbarCollapsible.classList.remove('navbar-shrink');
+            scrollUp.classList.remove('show-back-to-top');
             navLinkStyle.forEach(element => {
                 element.style.color = 'black';            
             });
         } else {
             navbarCollapsible.classList.add('navbar-shrink');
+            scrollUp.classList.add('show-back-to-top');
             navLinkStyle.forEach(element => {
                 element.style.color = 'white';            
             }); 
-        }
-                
-    };
+        }                
+    });   
+    
+    // If user is logged in, show event form and logout button
+    if (localStorage.getItem('token')) {
+        document.getElementById('event-form').style.display = 'block';
+        document.getElementById('logout-button').style.display = 'block';
+        document.getElementById('login-button').style.display = 'none';
+    }
 
-    // Shrink the navbar 
-    navbarShrink();
-    
-    // Shrink the navbar when page is scrolled
-    document.addEventListener('scroll', navbarShrink);
-    
     // Change navbar link color when toggler is clicked
     const togglerMenuBtn = document.querySelector('.navbar-toggler');
     togglerMenuBtn.addEventListener('click', event => { 
@@ -74,5 +81,35 @@ window.addEventListener('DOMContentLoaded', event => {
         interval: 3000,
         touch: false
     });
+
+    
+    const eventFormBtn = document.getElementById('event-form-button');
+    eventFormBtn.addEventListener('click', () => {
+        console.log('event form button clicked');
+        if (accessProtectedRoute()) {
+            window.open(`http://localhost:${LOCAL_PORT}/startbootstrap-agency-gh-pages/assets/sections/forms/event_form.html`, '_blank');
+        } else {
+            $('#loginModal').modal('show');
+        }
+    });
+
+    async function accessProtectedRoute() {
+        const token = localStorage.getItem('token');
+    
+        const response = await fetch(`http://localhost:${SERVER_PORT}/protected`, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+    
+        const data = await response.json();
+    
+        if (response.ok) {
+            console.log('Protected route data:', data);
+            return true;    
+        }
+        console.log('Failed to access protected route:', data);
+        return false;
+    }
 
 });

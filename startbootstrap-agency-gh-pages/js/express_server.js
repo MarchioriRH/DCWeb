@@ -1,10 +1,15 @@
-import express from '../node_modules/express';
-import bcrypt from '../node_modules/bcryptjs';
-import jwt from '../node_modules/jsonwebtoken';
-import bodyParser from '../node_modules/body-parser';
+import express from 'express';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import bodyParser from 'body-parser';
+import cors from 'cors';
 
 const app = express();
-const PORT = 3000;
+const PORT = 5500;
+
+
+app.use(cors());
+app.use(express.json());
 
 app.use(bodyParser.json());
 
@@ -17,23 +22,28 @@ const JWT_SECRET = 'your_jwt_secret_key';
 // Ruta de registro
 app.post('/register', async (req, res) => {
     const { username, password } = req.body;
-
+    console.log(req);
     // Hash de la contraseña
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    users.push({ username, password: hashedPassword });
+    if (users.some(u => u.username === username)) {
+        return res.status(400).send('User already exists');
+    } else {
+        users.push({ username, password: hashedPassword });
 
-    res.status(201).send('User registered');
+        console.log(users);
+        res.status(201).send('User registered');
+    }
 });
 
 // Ruta de inicio de sesión
 app.post('/login', async (req, res) => {
     const { username, password } = req.body;
-
+    console.log('users: ', users);
     const user = users.find(u => u.username === username);
 
     if (!user) {
-        return res.status(400).send('User not found');
+        res.status(400).send('User not found');
     }
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
