@@ -1,11 +1,9 @@
 const PORT = 5500;
 document.getElementById('loginForm').addEventListener('submit', async (e) => {
     e.preventDefault();
-
-
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
-    console.log(username, ' ',password);
+    //console.log(username, ' ',password);
     const response = await fetch(`http://localhost:${PORT}/login` , {
         method: 'POST',
         headers: {
@@ -13,7 +11,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
         },
         body: JSON.stringify({ username, password })
     });
-    console.log(response);
+    //console.log(response);
     const data = await response.json();   
 
     if (response.ok) {
@@ -35,7 +33,7 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
 
     const username = document.getElementById('registerUsername').value;
     const password = document.getElementById('registerPassword').value;
-    console.log(username, ' ',password);
+    //console.log(username, ' ',password);
 
     const response = await fetch(`http://localhost:${PORT}/register`, {
         method: 'POST',
@@ -47,7 +45,7 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
 
     const data = await response.json();
 
-    console.log(data);
+    //console.log(data);
 
     if (response.ok) {
         document.getElementById('message').innerText = 'User registered';
@@ -56,18 +54,16 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
     }
 });
 
+// Logout
 const logout = () => {
+    console.log('Logout');
     localStorage.removeItem('token');
     document.getElementById('event-form').style.display = 'none';
     document.getElementById('logout-button').style.display = 'none';
     document.getElementById('login-button').style.display = 'block';
+    console.log('users: ', users);
 }
-
 document.getElementById('logout-button').addEventListener('click', logout);
 
 
-// Ejemplo de cómo acceder a una ruta protegida
 
-
-// Llama a la función para probar la ruta protegida
-//accessProtectedRoute();

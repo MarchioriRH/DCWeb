@@ -84,32 +84,46 @@ window.addEventListener('DOMContentLoaded', event => {
 
     
     const eventFormBtn = document.getElementById('event-form-button');
-    eventFormBtn.addEventListener('click', () => {
-        console.log('event form button clicked');
-        if (accessProtectedRoute()) {
-            window.open(`http://localhost:${LOCAL_PORT}/startbootstrap-agency-gh-pages/assets/sections/forms/event_form.html`, '_blank');
-        } else {
-            $('#loginModal').modal('show');
+    eventFormBtn.addEventListener('click', async () => {
+        try {
+            const response = await fetch(`http://localhost:${SERVER_PORT}/protected`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'text/html',
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                }
+            });
+            console.log(response);
+            if (response.ok) {
+                window.open('http://127.0.0.1:5500/startbootstrap-agency-gh-pages/assets/sections/forms/event_form.html', '_blank');
+            } else {
+                console.log('Failed to access protected route:');
+            }
+        } catch (error) {
+            console.log('Failed to access protected route:', error);
         }
     });
 
-    async function accessProtectedRoute() {
-        const token = localStorage.getItem('token');
     
-        const response = await fetch(`http://localhost:${SERVER_PORT}/protected`, {
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
-        });
+    // async function accessProtectedRoute() {
+    //     const token = localStorage.getItem('token');
     
-        const data = await response.json();
+    //     const response = await fetch(`http://localhost:${SERVER_PORT}/protected`, {
+    //         headers: {
+    //             'Authorization': `Bearer ${token}`
+    //         }
+    //     });
     
-        if (response.ok) {
-            console.log('Protected route data:', data);
-            return true;    
-        }
-        console.log('Failed to access protected route:', data);
-        return false;
-    }
+    //     const data = await response.json();
+    
+    //     if (response.ok) {
+    //         console.log('Protected route data:', data);
+    //         return true;    
+    //     }
+    //     console.log('Failed to access protected route:', data);
+    //     return false;
+    // }
+
+    
 
 });

@@ -19,10 +19,11 @@ const users = [];
 // Clave secreta para firmar los JWT
 const JWT_SECRET = 'your_jwt_secret_key';
 
+
 // Ruta de registro
 app.post('/register', async (req, res) => {
     const { username, password } = req.body;
-    console.log(req);
+    //console.log(req);
     // Hash de la contraseña
     const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -39,7 +40,7 @@ app.post('/register', async (req, res) => {
 // Ruta de inicio de sesión
 app.post('/login', async (req, res) => {
     const { username, password } = req.body;
-    console.log('users: ', users);
+    //console.log('users: ', users);
     const user = users.find(u => u.username === username);
 
     if (!user) {
@@ -61,7 +62,7 @@ app.post('/login', async (req, res) => {
 // Ruta protegida (requiere autenticación)
 app.get('/protected', (req, res) => {
     const authHeader = req.headers['authorization'];
-
+    //console.log('authHeader: ', authHeader)
     if (!authHeader) {
         return res.status(401).send('Access denied');
     }
@@ -76,6 +77,7 @@ app.get('/protected', (req, res) => {
         res.json({ message: 'This is a protected route', user });
     });
 });
+
 
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
