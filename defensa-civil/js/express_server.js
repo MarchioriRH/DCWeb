@@ -78,6 +78,24 @@ app.get('/protected', (req, res) => {
     });
 });
 
+app.get('/startbootstrap-agency-gh-pages/assets/sections/forms/event_form.html', (req, res) => {
+    const authHeader = req.headers['authorization'];
+    console.log('authHeader: ', authHeader)
+    if (!authHeader) {
+        return res.status(401).send('Access denied');
+    }
+
+    const token = authHeader.split(' ')[1];
+
+    jwt.verify(token, JWT_SECRET, (err, user) => {
+        if (err) {
+            return res.status(403).send('Invalid token');
+        }
+
+        res.json({ message: 'This is a protected route', user });
+        res.sendFile(__dirname + '/startbootstrap-agency-gh-pages/assets/sections/forms/event_form.html');
+    });
+});
 
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);

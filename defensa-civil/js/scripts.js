@@ -97,7 +97,7 @@ window.addEventListener('DOMContentLoaded', event => {
             if (response.ok) {
                 window.open('http://127.0.0.1:5500/startbootstrap-agency-gh-pages/assets/sections/forms/event_form.html', '_blank');
             } else {
-                console.log('Failed to access protected route:');
+                console.log('Failed to access protected route:', error);
             }
         } catch (error) {
             console.log('Failed to access protected route:', error);
