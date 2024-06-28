@@ -4,10 +4,9 @@ body {
     padding: 0;
 }
 
-
 body {
-    width: 100vw;
-    height: 100vh;
+    /* width: 100vw;
+    height: 100vh; */
     font-family: 'Open sans';
     box-sizing: border-box;
     display: flex;
@@ -23,8 +22,13 @@ body>* {
     box-sizing: inherit;
 }
 
+textarea {
+    width: -webkit-fill-available;
+}
+
 .wrapper {
-    margin-top: 20rem;
+    margin-top: 10rem;
+    margin-bottom: 10rem;
     width: 700px;
     background: #FFF;
     border-radius: 10px;
@@ -51,7 +55,37 @@ h1.title {
     grid-gap: 25px
 }
 
-.myform label {
+.form-header {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 25px;
+    margin-bottom: 25px;
+    margin-top: 25px;
+}
+
+.form-logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #FFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(57, 50, 173, 1);
+    font-size: 1.5rem;
+    font-weight: bold;
+
+}
+
+#close-form {
+    cursor: pointer;   
+    font-size: 1.5rem;
+
+}
+
+.myform label, #type-select {
     display: block;
     color: #A8AAC5;
     font-weight: bold;
@@ -59,7 +93,7 @@ h1.title {
     margin-bottom: 10px;
 }
 
-.myform input {
+.myform input, .type-select, .myform textarea{
     border: 0;
     outline: 0;
     height: 50px;
@@ -74,8 +108,17 @@ h1.title {
     transition: border 250ms;
 }
 
+.myform input:focus, .type-select:focus, .myform textarea:focus {
+    border: 2px solid rgba(57, 50, 173, 1);
+}
+
 .full-width {
-    grid-column: -1 / 1
+    grid-column: -1 / 1;
+}
+
+.buttons-box {
+    display: flex;
+    justify-content: space-around;
 }
 
 .button {
@@ -100,3 +143,4 @@ h1.title {
 .button button:hover {
     background: rgba(57, 50, 173, 1);
 }
+

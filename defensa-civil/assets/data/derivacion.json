@@ -1,0 +1,64 @@
+{
+    "tipo_evento":[
+        {
+        "id": 0,
+        "data": "¿A QUIEN SE DERIVO?"
+        },
+        {
+        "id": 1,
+        "data": "DEFENSA CIVIL"
+        },
+        {
+        "id": 2,
+        "data": "SERVICIOS URBANOS"
+        },
+        {
+        "id": 3,
+        "data": "PARQUES Y PASEOS"
+        },
+        {
+        "id": 4,
+        "data": "DESARROLLO HUMANO Y HABITAT"
+        },
+        {
+        "id": 5,
+        "data": "CONTROL URBANO VEHICULAR"
+        },
+        {
+        "id": 6,
+        "data": "INSPECCION GENERAL"
+        },
+        {
+        "id": 7,
+        "data": "BOMBEROS"
+        },
+        {
+        "id": 8,
+        "data": "SAME"
+        },
+        {
+        "id": 9,
+        "data": "USINA"
+        },
+        {
+        "id": 10,
+        "data": "POLICIA"
+        },
+        {
+        "id": 11,
+        "data": "TELEFONICA"
+        },
+        {
+        "id": 12,
+        "data": "CAMUZZI"
+        },
+        {
+        "id": 13,
+        "data": "PERSONAL FLOW"
+        },
+        {
+        "id": 14,
+        "data": "OTRO (ESPECIFICAR EN DESCRIPCION)"
+        }          
+    ]
+}

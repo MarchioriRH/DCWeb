@@ -1,0 +1,172 @@
+{
+    "tipo_evento":[
+        {
+        "id": 0,
+        "data": "SELECCIONE TIPO DE EVENTO"
+        },
+        {
+        "id": 1,
+        "data": "ANIMALES PELIGROSOS"
+        },
+        {
+        "id": 2,
+        "data": "ANIMALES SUELTOS"
+        },
+        {
+        "id": 3,
+        "data": "ANIMALES MUERTOS"
+        },
+        {
+        "id": 4,
+        "data": "POSTE PELIGROSO"
+        },
+        {
+        "id": 5,
+        "data": "POSTE CAIDO"
+        },
+        {
+        "id": 6,
+        "data": "CABLE PELIGROSO"
+        },
+        {
+        "id": 7,
+        "data": "CABLE CAIDO"
+        },
+        {
+        "id": 8,
+        "data": "INUNDACION"
+        },
+        {
+        "id": 9,
+        "data": "PELIGRO DE INUNDACION"
+        },
+        {
+        "id": 10,
+        "data": "ANEGAMIENTO"
+        },
+        {
+        "id": 11,
+        "data": "HUNDIMIENTO DE SUELO"
+        },
+        {
+        "id": 12,
+        "data": "BOCA DE TORMENTA TAPADA"
+        },
+        {
+        "id": 13,
+        "data": "ARBOL PELIGROSO"
+        },
+        {
+        "id": 14,
+        "data": "ARBOL CAIDO"
+        },
+        {
+        "id": 15,
+        "data": "RAMA PELIGROSA"
+        },
+        {
+        "id": 16,
+        "data": "RAMA CAIDA"
+        },
+        {
+        "id": 17,
+        "data": "VOLADURA DE TECHO"
+        },
+        {
+        "id": 18,
+        "data": "PERDIDA DE AGUA"
+        },
+        {
+        "id": 19,
+        "data": "DERRAME DE COMBUSTIBLES"
+        },
+        {
+        "id": 20,
+        "data": "DERRAME DE QUIMICOS"
+        },
+        {
+        "id": 21,
+        "data": "PERDIDAD DE GAS"
+        },
+        {
+        "id": 22,
+        "data": "INCENDIO"
+        },
+        {
+        "id": 23,
+        "data": "ACCIDENTE"
+        },
+        {
+        "id": 24,
+        "data": "RUIDOS MOLESTOS"
+        },
+        {
+        "id": 25,
+        "data": "CALLE EN MAL ESTADO"
+        },
+        {
+        "id": 26,
+        "data": "ELECTRIFICACION"
+        },
+        {
+        "id": 27,
+        "data": "BOTON DE PANICO VVG"
+        },
+        {
+        "id": 28,
+        "data": "BOTON DE PANICO GENERAL"
+        },
+        {
+        "id": 30,
+        "data": "ROBO\/HURTO EN FINCA"
+        },
+        {
+        "id": 31,
+        "data": "ROBO\/HURTO DE AUTOMOVILES"
+        },
+        {
+        "id": 32,
+        "data": "ROBO A MANO ARMADA"
+        },
+        {
+        "id": 33,
+        "data": "CONFLICTO DE PAREJA"
+        },
+        {
+        "id": 34,
+        "data": "CONFLICTO VECINAL"
+        },
+        {
+        "id": 35,
+        "data": "OTRO"
+        },
+        {
+        "id": 36,
+        "data": "CONFLICTO ARMADO"
+        },
+        {
+        "id": 37,
+        "data": "ROBO\/HURTO DE MOTOCICLETAS"
+        },
+        {
+        "id": 38,
+        "data": "ROBO\/HURTO EN CENTRO COMERCIAL"
+        },
+        {
+        "id": 39,
+        "data": "ROBO\/HURTO EN VIA PUBLICA"
+        },
+        {
+        "id": 40,
+        "data": "ALARMA ACTIVADA"
+        },
+        {
+        "id": 41,
+        "data": "CONFRONTACION EN VIA PCA"
+        },
+        {
+        "id": 42,
+        "data": "OTRO (ESPECIFICAR EN DESCRIPCION)"
+        } 
+    ]
+}

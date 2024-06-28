@@ -3,6 +3,11 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = 'H:/Ruben/WebDC/landing-page';
+
 
 const app = express();
 const PORT = 5500;
@@ -78,7 +83,7 @@ app.get('/protected', (req, res) => {
     });
 });
 
-app.get('/startbootstrap-agency-gh-pages/assets/sections/forms/event_form.html', (req, res) => {
+app.get('/defensa-civil/assets/sections/forms/event_form.html', (req, res) => {
     const authHeader = req.headers['authorization'];
     console.log('authHeader: ', authHeader)
     if (!authHeader) {
@@ -90,10 +95,10 @@ app.get('/startbootstrap-agency-gh-pages/assets/sections/forms/event_form.html',
     jwt.verify(token, JWT_SECRET, (err, user) => {
         if (err) {
             return res.status(403).send('Invalid token');
-        }
-
-        res.json({ message: 'This is a protected route', user });
-        res.sendFile(__dirname + '/startbootstrap-agency-gh-pages/assets/sections/forms/event_form.html');
+        } 
+     
+        res.sendFile(path.join(__dirname, '/defensa-civil/assets/sections/forms/event_form.html'));
+       
     });
 });
 

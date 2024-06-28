@@ -86,18 +86,19 @@ window.addEventListener('DOMContentLoaded', event => {
     const eventFormBtn = document.getElementById('event-form-button');
     eventFormBtn.addEventListener('click', async () => {
         try {
-            const response = await fetch(`http://localhost:${SERVER_PORT}/protected`, {
+            const response = await fetch(`http://localhost:${SERVER_PORT}/defensa-civil/assets/sections/forms/event_form.html`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'text/html',
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
                 }
             });
-            console.log(response);
+            //console.log(response);
             if (response.ok) {
-                window.open('http://127.0.0.1:5500/startbootstrap-agency-gh-pages/assets/sections/forms/event_form.html', '_blank');
+                console.log('Protected route data:', response);
+                window.open(response.url, '_blank');
             } else {
-                console.log('Failed to access protected route:', error);
+                console.log('Failed to access protected route:', response);
             }
         } catch (error) {
             console.log('Failed to access protected route:', error);

@@ -1,0 +1,3120 @@
+{
+"calles_tandil":[
+ {
+  "id": 0,
+  "data": "SELECCIONE CALLE"
+ },
+ {
+  "id": 1,
+  "data": "11 DE SEPTIEMBRE"
+ },
+ {
+  "id": 2,
+  "data": "12 DE OCTUBRE"
+ },
+ {
+  "id": 3,
+  "data": "14 DE JULIO"
+ },
+ {
+  "id": 4,
+  "data": "25 DE FEBRERO"
+ },
+ {
+  "id": 5,
+  "data": "25 DE MAYO"
+ },
+ {
+  "id": 6,
+  "data": "4 DE ABRIL"
+ },
+ {
+  "id": 7,
+  "data": "9 DE JULIO"
+ },
+ {
+  "id": 8,
+  "data": "ACCESO BASE AEREA"
+ },
+ {
+  "id": 9,
+  "data": "ACCESO CANTERA CARBA"
+ },
+ {
+  "id": 10,
+  "data": "ACCESO HARAS GRAL. LAVALLE"
+ },
+ {
+  "id": 11,
+  "data": "ACCESO HARAS GRAL. LAVALLE data 1"
+ },
+ {
+  "id": 12,
+  "data": "ACTIS LUIS J."
+ },
+ {
+  "id": 13,
+  "data": "ADOLFO BERRUTTI"
+ },
+ {
+  "id": 14,
+  "data": "ADOLFO BIOY CASARES"
+ },
+ {
+  "id": 15,
+  "data": "AERONAUTICA ARG."
+ },
+ {
+  "id": 16,
+  "data": "AGOTE L."
+ },
+ {
+  "id": 17,
+  "data": "AGUADO"
+ },
+ {
+  "id": 18,
+  "data": "AGUILERA"
+ },
+ {
+  "id": 19,
+  "data": "ALBERDI"
+ },
+ {
+  "id": 20,
+  "data": "ALEM"
+ },
+ {
+  "id": 21,
+  "data": "ALEMANIA"
+ },
+ {
+  "id": 22,
+  "data": "ALICIA MOREAU DE JUSTO"
+ },
+ {
+  "id": 23,
+  "data": "ALIGHIERI"
+ },
+ {
+  "id": 24,
+  "data": "ALMADA J. G."
+ },
+ {
+  "id": 25,
+  "data": "ALMAFUERTE"
+ },
+ {
+  "id": 26,
+  "data": "ALONSO"
+ },
+ {
+  "id": 27,
+  "data": "ALSINA"
+ },
+ {
+  "id": 28,
+  "data": "ALVARADO"
+ },
+ {
+  "id": 29,
+  "data": "ALVEAR"
+ },
+ {
+  "id": 30,
+  "data": "AMEGHINO"
+ },
+ {
+  "id": 31,
+  "data": "AMERICA"
+ },
+ {
+  "id": 32,
+  "data": "AMESTOY J."
+ },
+ {
+  "id": 33,
+  "data": "ANCAVILU"
+ },
+ {
+  "id": 34,
+  "data": "ANT. ARGENTINA"
+ },
+ {
+  "id": 35,
+  "data": "ANTONENA"
+ },
+ {
+  "id": 36,
+  "data": "ARANA"
+ },
+ {
+  "id": 37,
+  "data": "ARENALES"
+ },
+ {
+  "id": 38,
+  "data": "ARGERICH"
+ },
+ {
+  "id": 39,
+  "data": "ARISTEGUY J. C."
+ },
+ {
+  "id": 40,
+  "data": "ARLT"
+ },
+ {
+  "id": 41,
+  "data": "ARRILLAGA"
+ },
+ {
+  "id": 42,
+  "data": "ARROYO SECO"
+ },
+ {
+  "id": 43,
+  "data": "ARTIGAS"
+ },
+ {
+  "id": 44,
+  "data": "ASTOR PIAZZOLA"
+ },
+ {
+  "id": 45,
+  "data": "ATAHUALPA YUPANQUI"
+ },
+ {
+  "id": 46,
+  "data": "AV OSVALDO SORIANO"
+ },
+ {
+  "id": 47,
+  "data": "AV. EVA DUARTE"
+ },
+ {
+  "id": 48,
+  "data": "AVELINO MARTINEZ"
+ },
+ {
+  "id": 49,
+  "data": "AVELLANEDA"
+ },
+ {
+  "id": 50,
+  "data": "AYACUCHO"
+ },
+ {
+  "id": 51,
+  "data": "AZCUENAGA"
+ },
+ {
+  "id": 52,
+  "data": "AZUCENA"
+ },
+ {
+  "id": 53,
+  "data": "BAIGORRIA"
+ },
+ {
+  "id": 54,
+  "data": "BAILEN"
+ },
+ {
+  "id": 55,
+  "data": "BALBIN"
+ },
+ {
+  "id": 56,
+  "data": "BALLOT O."
+ },
+ {
+  "id": 57,
+  "data": "BARIFFI"
+ },
+ {
+  "id": 58,
+  "data": "BARRUFALDI"
+ },
+ {
+  "id": 59,
+  "data": "BASILICO"
+ },
+ {
+  "id": 60,
+  "data": "BASSO AGUIRRE J."
+ },
+ {
+  "id": 61,
+  "data": "BAUDRIX"
+ },
+ {
+  "id": 62,
+  "data": "BEIRO"
+ },
+ {
+  "id": 63,
+  "data": "BELGRANO"
+ },
+ {
+  "id": 64,
+  "data": "BELTRAN"
+ },
+ {
+  "id": 65,
+  "data": "BENTEVEO"
+ },
+ {
+  "id": 66,
+  "data": "BERETERBidE"
+ },
+ {
+  "id": 67,
+  "data": "BISOGNI J."
+ },
+ {
+  "id": 68,
+  "data": "BO. 38 VIVIENDAS INT 3"
+ },
+ {
+  "id": 69,
+  "data": "BO. AMEMT I INT 2"
+ },
+ {
+  "id": 70,
+  "data": "BO. AMEMT I INT 3"
+ },
+ {
+  "id": 71,
+  "data": "BO. AMEMT II INT 1"
+ },
+ {
+  "id": 72,
+  "data": "BO. AMEMT II INT 2"
+ },
+ {
+  "id": 73,
+  "data": "BO. ARCO IRIS 1 INT 1"
+ },
+ {
+  "id": 74,
+  "data": "BO. ARCO IRIS 1 INT 2"
+ },
+ {
+  "id": 75,
+  "data": "BO. ARCO IRIS 1 INT 3"
+ },
+ {
+  "id": 76,
+  "data": "BO. ARCO IRIS 1 INT 4"
+ },
+ {
+  "id": 77,
+  "data": "BO. ARCO IRIS 1 INT 5"
+ },
+ {
+  "id": 78,
+  "data": "BO. ARCO IRIS 1 INT 6"
+ },
+ {
+  "id": 79,
+  "data": "BO. ARCO IRIS 2 INT 1"
+ },
+ {
+  "id": 80,
+  "data": "BO. ARCO IRIS 2 INT 2"
+ },
+ {
+  "id": 81,
+  "data": "BO. ARCO IRIS 2 INT 3"
+ },
+ {
+  "id": 82,
+  "data": "BO. ARCO IRIS 2 INT 4"
+ },
+ {
+  "id": 83,
+  "data": "BO. ARCO IRIS 2 INT 5"
+ },
+ {
+  "id": 84,
+  "data": "BO. ATSA INT 1"
+ },
+ {
+  "id": 85,
+  "data": "BO. ATSA INT 2"
+ },
+ {
+  "id": 86,
+  "data": "BO. ATSA INT 3"
+ },
+ {
+  "id": 87,
+  "data": "BO. ATSA INT 4"
+ },
+ {
+  "id": 88,
+  "data": "BO. ATSA INT 5"
+ },
+ {
+  "id": 89,
+  "data": "BO. ATSA INT 6"
+ },
+ {
+  "id": 90,
+  "data": "BO. ATSA INT 7"
+ },
+ {
+  "id": 91,
+  "data": "BO. ATSA INT 8"
+ },
+ {
+  "id": 92,
+  "data": "BO. AUTOC. LA TANDILERA INT"
+ },
+ {
+  "id": 93,
+  "data": "BO. AUTOC. VILLA ITALIA INT 1"
+ },
+ {
+  "id": 94,
+  "data": "BO. AUTOGESTION INT"
+ },
+ {
+  "id": 95,
+  "data": "BO. CANADA INT"
+ },
+ {
+  "id": 96,
+  "data": "BO. COSTA RICA INT. 1"
+ },
+ {
+  "id": 97,
+  "data": "BO. COSTA RICA INT. 2"
+ },
+ {
+  "id": 98,
+  "data": "BO. COSTA RICA INT. 3"
+ },
+ {
+  "id": 99,
+  "data": "BO. COSTA RICA INT. 4"
+ },
+ {
+  "id": 100,
+  "data": "BO. COSTA RICA INT. 5"
+ },
+ {
+  "id": 101,
+  "data": "BO. IVIFA INT 1"
+ },
+ {
+  "id": 102,
+  "data": "BO. IVIFA INT 2"
+ },
+ {
+  "id": 103,
+  "data": "BO. IVIFA INT 3"
+ },
+ {
+  "id": 104,
+  "data": "BO. IVIFA INT 4"
+ },
+ {
+  "id": 105,
+  "data": "BO. LA ESPERANZA INT."
+ },
+ {
+  "id": 106,
+  "data": "BO. MIRAGE INT 2"
+ },
+ {
+  "id": 107,
+  "data": "BO. MONOBLOCK PERON 1 INT. I"
+ },
+ {
+  "id": 108,
+  "data": "BO. MONOBLOCK PERON 1 INT. II"
+ },
+ {
+  "id": 109,
+  "data": "BO. MONOBLOCK PERON 1 INT. III"
+ },
+ {
+  "id": 110,
+  "data": "BO. MONOBLOCK PERON 2 INT. I"
+ },
+ {
+  "id": 111,
+  "data": "BO. MONOBLOCK PERON 2 INT. II"
+ },
+ {
+  "id": 112,
+  "data": "BO. MONOBLOCK PERON 2 INT. III"
+ },
+ {
+  "id": 113,
+  "data": "BO. MONOBLOCK PERON 2 INT. IV"
+ },
+ {
+  "id": 114,
+  "data": "BO. OFICIALES INT. 1"
+ },
+ {
+  "id": 115,
+  "data": "BO. OFICIALES INT. 10"
+ },
+ {
+  "id": 116,
+  "data": "BO. OFICIALES INT. 2"
+ },
+ {
+  "id": 117,
+  "data": "BO. OFICIALES INT. 3"
+ },
+ {
+  "id": 118,
+  "data": "BO. OFICIALES INT. 4"
+ },
+ {
+  "id": 119,
+  "data": "BO. OFICIALES INT. 5"
+ },
+ {
+  "id": 120,
+  "data": "BO. OFICIALES INT. 6"
+ },
+ {
+  "id": 121,
+  "data": "BO. OFICIALES INT. 7"
+ },
+ {
+  "id": 122,
+  "data": "BO. OFICIALES INT. 8"
+ },
+ {
+  "id": 123,
+  "data": "BO. PROCASA I\/2 INT."
+ },
+ {
+  "id": 124,
+  "data": "BO. PROCASA II INT 4"
+ },
+ {
+  "id": 125,
+  "data": "BO. PROCASA III INT 1"
+ },
+ {
+  "id": 126,
+  "data": "BO. PROCASA III INT 2"
+ },
+ {
+  "id": 127,
+  "data": "BO. PROCASA III INT 3"
+ },
+ {
+  "id": 128,
+  "data": "BO. PROCASA III INT 4"
+ },
+ {
+  "id": 129,
+  "data": "BO. PROCASA IV INT 1"
+ },
+ {
+  "id": 130,
+  "data": "BO. PROCASA IV INT 2"
+ },
+ {
+  "id": 131,
+  "data": "BO. R. SELVETTI INT"
+ },
+ {
+  "id": 132,
+  "data": "BO. RAFA INT 1"
+ },
+ {
+  "id": 133,
+  "data": "BO. RAFA INT 2"
+ },
+ {
+  "id": 134,
+  "data": "BO. RAFA INT 3"
+ },
+ {
+  "id": 135,
+  "data": "BO. SAN FRANCISCO INT"
+ },
+ {
+  "id": 136,
+  "data": "BO. SIERRAS SUD INT 1"
+ },
+ {
+  "id": 137,
+  "data": "BO. SUBOFICIALES INT 1"
+ },
+ {
+  "id": 138,
+  "data": "BO. SUBOFICIALES INT 2"
+ },
+ {
+  "id": 139,
+  "data": "BO. SUBOFICIALES INT 3"
+ },
+ {
+  "id": 140,
+  "data": "BO. SUBOFICIALES INT 4"
+ },
+ {
+  "id": 141,
+  "data": "BO. SUBOFICIALES INT 5"
+ },
+ {
+  "id": 142,
+  "data": "BO. TERMINAL INT 1"
+ },
+ {
+  "id": 143,
+  "data": "BO. TERMINAL INT 2"
+ },
+ {
+  "id": 144,
+  "data": "BO. UNIVERSITARIO INT 1"
+ },
+ {
+  "id": 145,
+  "data": "BO. UNIVERSITARIO INT 2"
+ },
+ {
+  "id": 146,
+  "data": "BO. UNIVERSITARIO INT 3"
+ },
+ {
+  "id": 147,
+  "data": "BO. UNIVERSITARIO INT 4"
+ },
+ {
+  "id": 148,
+  "data": "BO. UNIVERSITARIO INT 5"
+ },
+ {
+  "id": 149,
+  "data": "BO. UNIVERSITARIO INT 6"
+ },
+ {
+  "id": 150,
+  "data": "BO. UOM INT 1"
+ },
+ {
+  "id": 151,
+  "data": "BO. UOM INT 2"
+ },
+ {
+  "id": 152,
+  "data": "BO. VENEZUELA INT 1"
+ },
+ {
+  "id": 153,
+  "data": "BO. VENEZUELA INT 2"
+ },
+ {
+  "id": 154,
+  "data": "BOLIVAR"
+ },
+ {
+  "id": 155,
+  "data": "BOLIVIA"
+ },
+ {
+  "id": 156,
+  "data": "BOULOGNE SUR MER"
+ },
+ {
+  "id": 157,
+  "data": "BRANDSEN"
+ },
+ {
+  "id": 158,
+  "data": "BRASIL"
+ },
+ {
+  "id": 159,
+  "data": "BRIVIO"
+ },
+ {
+  "id": 160,
+  "data": "BROWN"
+ },
+ {
+  "id": 161,
+  "data": "BUENOS AIRES"
+ },
+ {
+  "id": 162,
+  "data": "BULEWSKI"
+ },
+ {
+  "id": 163,
+  "data": "BUSOGNI J."
+ },
+ {
+  "id": 164,
+  "data": "BUZON"
+ },
+ {
+  "id": 165,
+  "data": "CABANA L."
+ },
+ {
+  "id": 166,
+  "data": "CABILDO"
+ },
+ {
+  "id": 167,
+  "data": "CABRAL JOSE A."
+ },
+ {
+  "id": 168,
+  "data": "CABRERA Z."
+ },
+ {
+  "id": 169,
+  "data": "CACHEUTA"
+ },
+ {
+  "id": 170,
+  "data": "CADONA G"
+ },
+ {
+  "id": 171,
+  "data": "CADONA G."
+ },
+ {
+  "id": 172,
+  "data": "CAGNOLI P."
+ },
+ {
+  "id": 173,
+  "data": "CALIHUE"
+ },
+ {
+  "id": 174,
+  "data": "CALLAO"
+ },
+ {
+  "id": 175,
+  "data": "CALVO"
+ },
+ {
+  "id": 176,
+  "data": "CAMINO 12 DE OCTUBRE"
+ },
+ {
+  "id": 177,
+  "data": "CAMPICHUELO"
+ },
+ {
+  "id": 178,
+  "data": "CAMPOS"
+ },
+ {
+  "id": 179,
+  "data": "CANADA"
+ },
+ {
+  "id": 180,
+  "data": "CAP SARMIENTO"
+ },
+ {
+  "id": 181,
+  "data": "CARDENAL"
+ },
+ {
+  "id": 182,
+  "data": "CARDIEL"
+ },
+ {
+  "id": 183,
+  "data": "CARLOS GARDEL"
+ },
+ {
+  "id": 184,
+  "data": "CARPINTERO"
+ },
+ {
+  "id": 185,
+  "data": "CARRIEGO"
+ },
+ {
+  "id": 186,
+  "data": "CASACUBERTA"
+ },
+ {
+  "id": 187,
+  "data": "CASEROS"
+ },
+ {
+  "id": 188,
+  "data": "CASTEX M."
+ },
+ {
+  "id": 189,
+  "data": "CATAMARCA"
+ },
+ {
+  "id": 190,
+  "data": "CERRILLADA"
+ },
+ {
+  "id": 191,
+  "data": "CESAR MILSTEIN"
+ },
+ {
+  "id": 192,
+  "data": "CHACABUCO"
+ },
+ {
+  "id": 193,
+  "data": "CHACO"
+ },
+ {
+  "id": 194,
+  "data": "CHAPALEOFU"
+ },
+ {
+  "id": 195,
+  "data": "CHAPEROUGE"
+ },
+ {
+  "id": 196,
+  "data": "CHAPLIN"
+ },
+ {
+  "id": 197,
+  "data": "CHEVERRIER"
+ },
+ {
+  "id": 198,
+  "data": "CHIENNO"
+ },
+ {
+  "id": 199,
+  "data": "CHILE"
+ },
+ {
+  "id": 200,
+  "data": "CHIMANGO"
+ },
+ {
+  "id": 201,
+  "data": "CHIMPAY"
+ },
+ {
+  "id": 202,
+  "data": "CHORROARIN"
+ },
+ {
+  "id": 203,
+  "data": "CHUBUT"
+ },
+ {
+  "id": 204,
+  "data": "CHURRINCHE"
+ },
+ {
+  "id": 205,
+  "data": "CIRCUNVALACION"
+ },
+ {
+  "id": 206,
+  "data": "CIRCUNVALACION ESTE"
+ },
+ {
+  "id": 207,
+  "data": "COLECTORA - RUTA 226"
+ },
+ {
+  "id": 208,
+  "data": "COLIBRI"
+ },
+ {
+  "id": 209,
+  "data": "COLOMBIA"
+ },
+ {
+  "id": 210,
+  "data": "COLON"
+ },
+ {
+  "id": 211,
+  "data": "COMBAT. DE MALVINAS"
+ },
+ {
+  "id": 212,
+  "data": "COMBATE DE OBLIGADO"
+ },
+ {
+  "id": 213,
+  "data": "CONSTITUCION"
+ },
+ {
+  "id": 214,
+  "data": "CORDOBA"
+ },
+ {
+  "id": 215,
+  "data": "CORRIENTES"
+ },
+ {
+  "id": 216,
+  "data": "COSTA RICA"
+ },
+ {
+  "id": 217,
+  "data": "CRUCERO GRAL. BELGRANO"
+ },
+ {
+  "id": 218,
+  "data": "CRUZ RAUL"
+ },
+ {
+  "id": 219,
+  "data": "CRUZ ROJA ARGENTINA"
+ },
+ {
+  "id": 220,
+  "data": "CUBA"
+ },
+ {
+  "id": 221,
+  "data": "CURUZU CUATIA"
+ },
+ {
+  "id": 222,
+  "data": "D ALESANDRO"
+ },
+ {
+  "id": 223,
+  "data": "DAGLIO A."
+ },
+ {
+  "id": 224,
+  "data": "DAGNAC"
+ },
+ {
+  "id": 225,
+  "data": "DAMAS MENDOCINAS"
+ },
+ {
+  "id": 226,
+  "data": "DARRAGUEIRA"
+ },
+ {
+  "id": 227,
+  "data": "DAVidOS R"
+ },
+ {
+  "id": 228,
+  "data": "DAVidOS R."
+ },
+ {
+  "id": 229,
+  "data": "DE LA BANDERA"
+ },
+ {
+  "id": 230,
+  "data": "DE LA CANAL"
+ },
+ {
+  "id": 231,
+  "data": "DE LA TORRE"
+ },
+ {
+  "id": 232,
+  "data": "DE LOS GRANADEROS"
+ },
+ {
+  "id": 233,
+  "data": "DE LOS REYES"
+ },
+ {
+  "id": 234,
+  "data": "DE MARCHI F."
+ },
+ {
+  "id": 235,
+  "data": "DE PIETRI"
+ },
+ {
+  "id": 236,
+  "data": "DE ROSAS JUAN M."
+ },
+ {
+  "id": 237,
+  "data": "DE ROXAS"
+ },
+ {
+  "id": 238,
+  "data": "DE UGALDE"
+ },
+ {
+  "id": 239,
+  "data": "DEL LIBERTADOR"
+ },
+ {
+  "id": 240,
+  "data": "DEL MEDIO"
+ },
+ {
+  "id": 241,
+  "data": "DEL RIO"
+ },
+ {
+  "id": 242,
+  "data": "DEL VALLE"
+ },
+ {
+  "id": 243,
+  "data": "DHERS"
+ },
+ {
+  "id": 244,
+  "data": "DIAZ"
+ },
+ {
+  "id": 245,
+  "data": "DIAZ VELEZ"
+ },
+ {
+  "id": 246,
+  "data": "DINAMARCA"
+ },
+ {
+  "id": 247,
+  "data": "DINELLI"
+ },
+ {
+  "id": 248,
+  "data": "DOERING"
+ },
+ {
+  "id": 249,
+  "data": "DOMINGUEZ"
+ },
+ {
+  "id": 250,
+  "data": "DON BOSCO"
+ },
+ {
+  "id": 251,
+  "data": "DORREGO"
+ },
+ {
+  "id": 252,
+  "data": "DR CURUCHET"
+ },
+ {
+  "id": 253,
+  "data": "DR. SALCEDA"
+ },
+ {
+  "id": 254,
+  "data": "DUFAU"
+ },
+ {
+  "id": 255,
+  "data": "ECHENAGUCIA"
+ },
+ {
+  "id": 256,
+  "data": "ECHEVERRIA"
+ },
+ {
+  "id": 257,
+  "data": "ECUADOR"
+ },
+ {
+  "id": 258,
+  "data": "EDISON"
+ },
+ {
+  "id": 259,
+  "data": "EL AMANECER"
+ },
+ {
+  "id": 260,
+  "data": "EL ARROYITO"
+ },
+ {
+  "id": 261,
+  "data": "EL ATARDECER"
+ },
+ {
+  "id": 262,
+  "data": "EL PE├æASCO"
+ },
+ {
+  "id": 263,
+  "data": "EL REMANSO"
+ },
+ {
+  "id": 264,
+  "data": "ENTRE RIOS"
+ },
+ {
+  "id": 265,
+  "data": "ESPA├æA"
+ },
+ {
+  "id": 266,
+  "data": "ESPORA"
+ },
+ {
+  "id": 267,
+  "data": "ESQUERDO"
+ },
+ {
+  "id": 268,
+  "data": "ESTOMBA"
+ },
+ {
+  "id": 269,
+  "data": "ESTRADA"
+ },
+ {
+  "id": 270,
+  "data": "ETERNITA"
+ },
+ {
+  "id": 271,
+  "data": "EXP. AL DESIERTO"
+ },
+ {
+  "id": 272,
+  "data": "EZEIZA"
+ },
+ {
+  "id": 273,
+  "data": "FALKNER"
+ },
+ {
+  "id": 274,
+  "data": "FALUCHO"
+ },
+ {
+  "id": 275,
+  "data": "FEELS"
+ },
+ {
+  "id": 276,
+  "data": "FERNANDEZ DE LA CRUZ"
+ },
+ {
+  "id": 277,
+  "data": "FERNANDEZ I."
+ },
+ {
+  "id": 278,
+  "data": "FERNANDEZ J."
+ },
+ {
+  "id": 279,
+  "data": "FERNANDEZ MORENO BALDOMERO"
+ },
+ {
+  "id": 280,
+  "data": "FidANZA"
+ },
+ {
+  "id": 281,
+  "data": "FIGUEROA"
+ },
+ {
+  "id": 282,
+  "data": "FILIBERTO"
+ },
+ {
+  "id": 283,
+  "data": "FIORI"
+ },
+ {
+  "id": 284,
+  "data": "FLAMENCO"
+ },
+ {
+  "id": 285,
+  "data": "FLEMING"
+ },
+ {
+  "id": 286,
+  "data": "FONTANA"
+ },
+ {
+  "id": 287,
+  "data": "FONTANARROSA"
+ },
+ {
+  "id": 288,
+  "data": "FORMOSA"
+ },
+ {
+  "id": 289,
+  "data": "FORTINEROS"
+ },
+ {
+  "id": 290,
+  "data": "FRAG. SARMIENTO"
+ },
+ {
+  "id": 291,
+  "data": "FRANCIA"
+ },
+ {
+  "id": 292,
+  "data": "FRANKLIN"
+ },
+ {
+  "id": 293,
+  "data": "FREERS E. B. R."
+ },
+ {
+  "id": 294,
+  "data": "FRONDIZI"
+ },
+ {
+  "id": 295,
+  "data": "FTE. INDEPENDENCIA"
+ },
+ {
+  "id": 296,
+  "data": "FUGL"
+ },
+ {
+  "id": 297,
+  "data": "FULTON"
+ },
+ {
+  "id": 298,
+  "data": "FUSCHINI"
+ },
+ {
+  "id": 299,
+  "data": "GALFRE"
+ },
+ {
+  "id": 300,
+  "data": "GALICIA"
+ },
+ {
+  "id": 301,
+  "data": "GALILEO GALILEI"
+ },
+ {
+  "id": 302,
+  "data": "GARCIA"
+ },
+ {
+  "id": 303,
+  "data": "GARCIA MY."
+ },
+ {
+  "id": 304,
+  "data": "GARIBALDI"
+ },
+ {
+  "id": 305,
+  "data": "GAUCHO RIVERO"
+ },
+ {
+  "id": 306,
+  "data": "GAVIOTA"
+ },
+ {
+  "id": 307,
+  "data": "GERNICA"
+ },
+ {
+  "id": 308,
+  "data": "GHANDI M."
+ },
+ {
+  "id": 309,
+  "data": "GIACONI"
+ },
+ {
+  "id": 310,
+  "data": "GIUSEPPE CIMA"
+ },
+ {
+  "id": 311,
+  "data": "GIUSSEPE CIMA"
+ },
+ {
+  "id": 312,
+  "data": "GIUSSEPPE CIMA"
+ },
+ {
+  "id": 313,
+  "data": "GOÑI J."
+ },
+ {
+  "id": 314,
+  "data": "GODOY CRUZ"
+ },
+ {
+  "id": 315,
+  "data": "GOLONDRINA"
+ },
+ {
+  "id": 316,
+  "data": "GOMEZ R."
+ },
+ {
+  "id": 317,
+  "data": "GONZALEZ PACHECO"
+ },
+ {
+  "id": 318,
+  "data": "GORMAN"
+ },
+ {
+  "id": 319,
+  "data": "GORRION"
+ },
+ {
+  "id": 320,
+  "data": "GORRITI"
+ },
+ {
+  "id": 321,
+  "data": "GRAND BOURG"
+ },
+ {
+  "id": 322,
+  "data": "GROTHE"
+ },
+ {
+  "id": 323,
+  "data": "GUATEMALA"
+ },
+ {
+  "id": 324,
+  "data": "GUAYAQUIL"
+ },
+ {
+  "id": 325,
+  "data": "GUEMES"
+ },
+ {
+  "id": 326,
+  "data": "GUERNICA"
+ },
+ {
+  "id": 327,
+  "data": "GUidO"
+ },
+ {
+  "id": 328,
+  "data": "GUIRALDES BALDOMERO"
+ },
+ {
+  "id": 329,
+  "data": "GUISSE"
+ },
+ {
+  "id": 330,
+  "data": "GUTIERREZ R."
+ },
+ {
+  "id": 331,
+  "data": "HAITI"
+ },
+ {
+  "id": 332,
+  "data": "HANSEN"
+ },
+ {
+  "id": 333,
+  "data": "HERNANDEZ"
+ },
+ {
+  "id": 334,
+  "data": "HNO. CRISOSTOMO"
+ },
+ {
+  "id": 335,
+  "data": "HNO. SABINO"
+ },
+ {
+  "id": 336,
+  "data": "HOLANDA"
+ },
+ {
+  "id": 337,
+  "data": "HOLMBERG"
+ },
+ {
+  "id": 338,
+  "data": "HONDURAS"
+ },
+ {
+  "id": 339,
+  "data": "HORNERO"
+ },
+ {
+  "id": 340,
+  "data": "HUASAÑAN"
+ },
+ {
+  "id": 341,
+  "data": "HUDSON"
+ },
+ {
+  "id": 342,
+  "data": "HUENULEN"
+ },
+ {
+  "id": 343,
+  "data": "HURRACA"
+ },
+ {
+  "id": 344,
+  "data": "IJURCO"
+ },
+ {
+  "id": 345,
+  "data": "INDEPENDENCIA"
+ },
+ {
+  "id": 346,
+  "data": "INGENIEROS"
+ },
+ {
+  "id": 347,
+  "data": "IRAOLA"
+ },
+ {
+  "id": 348,
+  "data": "ISRAEL"
+ },
+ {
+  "id": 349,
+  "data": "ITALIA"
+ },
+ {
+  "id": 350,
+  "data": "ITUZAINGO"
+ },
+ {
+  "id": 351,
+  "data": "J. B . CIAO"
+ },
+ {
+  "id": 352,
+  "data": "J. G. ALMADA"
+ },
+ {
+  "id": 353,
+  "data": "JAPON"
+ },
+ {
+  "id": 354,
+  "data": "JILGUERO"
+ },
+ {
+  "id": 355,
+  "data": "JORGE LUIS BORGES"
+ },
+ {
+  "id": 356,
+  "data": "JUAN DE SAN MARTIN"
+ },
+ {
+  "id": 357,
+  "data": "JUAN XXIII"
+ },
+ {
+  "id": 358,
+  "data": "JUAREZ"
+ },
+ {
+  "id": 359,
+  "data": "JUJUY"
+ },
+ {
+  "id": 360,
+  "data": "JULDAIN"
+ },
+ {
+  "id": 361,
+  "data": "JULIO CORTAZAR"
+ },
+ {
+  "id": 362,
+  "data": "JUNCAL"
+ },
+ {
+  "id": 363,
+  "data": "JUNCO A."
+ },
+ {
+  "id": 364,
+  "data": "JURADO"
+ },
+ {
+  "id": 365,
+  "data": "JURAMENTO"
+ },
+ {
+  "id": 366,
+  "data": "JUSTO JUAN B."
+ },
+ {
+  "id": 367,
+  "data": "KRAMER"
+ },
+ {
+  "id": 368,
+  "data": "LA BLANCA"
+ },
+ {
+  "id": 369,
+  "data": "LA CA├æADA"
+ },
+ {
+  "id": 370,
+  "data": "LA CASCADA"
+ },
+ {
+  "id": 371,
+  "data": "LA MERCED"
+ },
+ {
+  "id": 372,
+  "data": "LA MOVEDIZA"
+ },
+ {
+  "id": 373,
+  "data": "LA PAMPA"
+ },
+ {
+  "id": 374,
+  "data": "LA PASTORA"
+ },
+ {
+  "id": 375,
+  "data": "LA PESQUERIA"
+ },
+ {
+  "id": 376,
+  "data": "LA RESOLANA"
+ },
+ {
+  "id": 377,
+  "data": "LA RIOJA"
+ },
+ {
+  "id": 378,
+  "data": "LABARDEN"
+ },
+ {
+  "id": 379,
+  "data": "LAMADRid"
+ },
+ {
+  "id": 380,
+  "data": "LAMBERTO A."
+ },
+ {
+  "id": 381,
+  "data": "LANGUEYU"
+ },
+ {
+  "id": 382,
+  "data": "LANZA DEL VASTO"
+ },
+ {
+  "id": 383,
+  "data": "LAPRidA"
+ },
+ {
+  "id": 384,
+  "data": "LARREA"
+ },
+ {
+  "id": 385,
+  "data": "LAS AMAPOLAS"
+ },
+ {
+  "id": 386,
+  "data": "LAS ANIMAS"
+ },
+ {
+  "id": 387,
+  "data": "LAS BRISAS"
+ },
+ {
+  "id": 388,
+  "data": "LAS CHILCAS"
+ },
+ {
+  "id": 389,
+  "data": "LAS HERAS"
+ },
+ {
+  "id": 390,
+  "data": "LAS HORTENSIAS"
+ },
+ {
+  "id": 391,
+  "data": "LAS MALVINAS"
+ },
+ {
+  "id": 392,
+  "data": "LAS MARGARITAS"
+ },
+ {
+  "id": 393,
+  "data": "LAS ORQUidEAS"
+ },
+ {
+  "id": 394,
+  "data": "LAS PIEDRAS"
+ },
+ {
+  "id": 395,
+  "data": "LAS RETAMAS"
+ },
+ {
+  "id": 396,
+  "data": "LAS VERTIENTES"
+ },
+ {
+  "id": 397,
+  "data": "LAURALEOFU"
+ },
+ {
+  "id": 398,
+  "data": "LAVALLE"
+ },
+ {
+  "id": 399,
+  "data": "LECHUZA"
+ },
+ {
+  "id": 400,
+  "data": "LEESON N.A."
+ },
+ {
+  "id": 401,
+  "data": "LEMOS"
+ },
+ {
+  "id": 402,
+  "data": "LENNON J."
+ },
+ {
+  "id": 403,
+  "data": "LESTER"
+ },
+ {
+  "id": 404,
+  "data": "LIBERTAD"
+ },
+ {
+  "id": 405,
+  "data": "LIMA"
+ },
+ {
+  "id": 406,
+  "data": "LINIERS"
+ },
+ {
+  "id": 407,
+  "data": "LINSTOW"
+ },
+ {
+  "id": 408,
+  "data": "LOBERIA"
+ },
+ {
+  "id": 409,
+  "data": "LOPEZ DE OSORNIO"
+ },
+ {
+  "id": 410,
+  "data": "LORENZINI"
+ },
+ {
+  "id": 411,
+  "data": "LOS ALAMOS"
+ },
+ {
+  "id": 412,
+  "data": "LOS AROMOS"
+ },
+ {
+  "id": 413,
+  "data": "LOS CEDROS"
+ },
+ {
+  "id": 414,
+  "data": "LOS CEIBOS"
+ },
+ {
+  "id": 415,
+  "data": "LOS CORALES"
+ },
+ {
+  "id": 416,
+  "data": "LOS CRISANTELMOS"
+ },
+ {
+  "id": 417,
+  "data": "LOS FRESNOS"
+ },
+ {
+  "id": 418,
+  "data": "LOS HUESOS"
+ },
+ {
+  "id": 419,
+  "data": "LOS JAZMINES"
+ },
+ {
+  "id": 420,
+  "data": "LOS LIRIOS"
+ },
+ {
+  "id": 421,
+  "data": "LOS MANANTIALES"
+ },
+ {
+  "id": 422,
+  "data": "LOS MIMBRES"
+ },
+ {
+  "id": 423,
+  "data": "LOS NOGALES"
+ },
+ {
+  "id": 424,
+  "data": "LOS OLMOS"
+ },
+ {
+  "id": 425,
+  "data": "LOS OMBUES"
+ },
+ {
+  "id": 426,
+  "data": "LOS PATOS"
+ },
+ {
+  "id": 427,
+  "data": "LOS PENSAMIENTOS"
+ },
+ {
+  "id": 428,
+  "data": "LOS PINOS"
+ },
+ {
+  "id": 429,
+  "data": "LOS REMOLINOS"
+ },
+ {
+  "id": 430,
+  "data": "LOS ROBLES"
+ },
+ {
+  "id": 431,
+  "data": "LOS ROSALES"
+ },
+ {
+  "id": 432,
+  "data": "LOS SAUCES"
+ },
+ {
+  "id": 433,
+  "data": "LOS TALAS"
+ },
+ {
+  "id": 434,
+  "data": "LOS TAMARINDOS"
+ },
+ {
+  "id": 435,
+  "data": "LOS TILOS"
+ },
+ {
+  "id": 436,
+  "data": "LOS TULIPANES"
+ },
+ {
+  "id": 437,
+  "data": "LOSFRESNOS"
+ },
+ {
+  "id": 438,
+  "data": "LUNGHI"
+ },
+ {
+  "id": 439,
+  "data": "LUTHER KING M."
+ },
+ {
+  "id": 440,
+  "data": "MACAYA A."
+ },
+ {
+  "id": 441,
+  "data": "MACAYA L. M."
+ },
+ {
+  "id": 442,
+  "data": "MACHADO"
+ },
+ {
+  "id": 443,
+  "data": "MADERNI A."
+ },
+ {
+  "id": 444,
+  "data": "MADRE TERESA DE CALCUTA"
+ },
+ {
+  "id": 445,
+  "data": "MAESTROS DE TANDIL"
+ },
+ {
+  "id": 446,
+  "data": "MAGALLANES"
+ },
+ {
+  "id": 447,
+  "data": "MAGNASCO L."
+ },
+ {
+  "id": 448,
+  "data": "MAIPU"
+ },
+ {
+  "id": 449,
+  "data": "MANCINI"
+ },
+ {
+  "id": 450,
+  "data": "MANDISOVI"
+ },
+ {
+  "id": 451,
+  "data": "MARCIALO LENDES"
+ },
+ {
+  "id": 452,
+  "data": "MARCONI"
+ },
+ {
+  "id": 453,
+  "data": "MARITORENA"
+ },
+ {
+  "id": 454,
+  "data": "MAROCCHI"
+ },
+ {
+  "id": 455,
+  "data": "MARTI"
+ },
+ {
+  "id": 456,
+  "data": "MARTIGNONI D."
+ },
+ {
+  "id": 457,
+  "data": "MARTIN FIERRO"
+ },
+ {
+  "id": 458,
+  "data": "MARTINETA"
+ },
+ {
+  "id": 459,
+  "data": "MARTINEZ I. A."
+ },
+ {
+  "id": 460,
+  "data": "MARZORATTI"
+ },
+ {
+  "id": 461,
+  "data": "MASSINI"
+ },
+ {
+  "id": 462,
+  "data": "MATHIASEN"
+ },
+ {
+  "id": 463,
+  "data": "MATORRAS DE SAN MARTIN"
+ },
+ {
+  "id": 464,
+  "data": "MAY. NOVOA"
+ },
+ {
+  "id": 465,
+  "data": "MENDOZA"
+ },
+ {
+  "id": 466,
+  "data": "MERCEDES DE SAN MARTIN"
+ },
+ {
+  "id": 467,
+  "data": "MEXICO"
+ },
+ {
+  "id": 468,
+  "data": "MISIONES"
+ },
+ {
+  "id": 469,
+  "data": "MITRE"
+ },
+ {
+  "id": 470,
+  "data": "MONSE├æOR DE ANDREA"
+ },
+ {
+  "id": 471,
+  "data": "MONTEVidEO"
+ },
+ {
+  "id": 472,
+  "data": "MONTIEL"
+ },
+ {
+  "id": 473,
+  "data": "MOREL R."
+ },
+ {
+  "id": 474,
+  "data": "MORENO"
+ },
+ {
+  "id": 475,
+  "data": "MORENO BALDOMERO"
+ },
+ {
+  "id": 476,
+  "data": "MOSCONI"
+ },
+ {
+  "id": 477,
+  "data": "MUÑIZ"
+ },
+ {
+  "id": 478,
+  "data": "MUÑOZ"
+ },
+ {
+  "id": 479,
+  "data": "NAMUNCURA"
+ },
+ {
+  "id": 480,
+  "data": "NAMUNCURA C."
+ },
+ {
+  "id": 481,
+  "data": "NANCAI"
+ },
+ {
+  "id": 482,
+  "data": "NAPALEOFU"
+ },
+ {
+  "id": 483,
+  "data": "NAVARRO"
+ },
+ {
+  "id": 484,
+  "data": "NECOCHEA"
+ },
+ {
+  "id": 485,
+  "data": "NEUQUEN"
+ },
+ {
+  "id": 486,
+  "data": "NEWTON"
+ },
+ {
+  "id": 487,
+  "data": "NICARAGUA"
+ },
+ {
+  "id": 488,
+  "data": "NIGRO"
+ },
+ {
+  "id": 489,
+  "data": "NOVOA M."
+ },
+ {
+  "id": 490,
+  "data": "ÑANDU"
+ },
+ {
+  "id": 491,
+  "data": "O'HIGGINS"
+ },
+ {
+  "id": 492,
+  "data": "OLIVERO"
+ },
+ {
+  "id": 493,
+  "data": "OSVALDO SORIANO"
+ },
+ {
+  "id": 494,
+  "data": "OTAMENDI"
+ },
+ {
+  "id": 495,
+  "data": "PABON"
+ },
+ {
+  "id": 496,
+  "data": "PAINMIL"
+ },
+ {
+  "id": 497,
+  "data": "PALACIOS"
+ },
+ {
+  "id": 498,
+  "data": "PANAMA"
+ },
+ {
+  "id": 499,
+  "data": "PARAGUAY"
+ },
+ {
+  "id": 500,
+  "data": "PAROISSIEND DR."
+ },
+ {
+  "id": 501,
+  "data": "PARQUE INDEPENDENCIA INT."
+ },
+ {
+  "id": 502,
+  "data": "PASCUZZI R."
+ },
+ {
+  "id": 503,
+  "data": "PASEO DE LOS ABUELOS"
+ },
+ {
+  "id": 504,
+  "data": "PASEO DE LOS NIÑOS"
+ },
+ {
+  "id": 505,
+  "data": "PASO"
+ },
+ {
+  "id": 506,
+  "data": "PASO DE LOS ANDES"
+ },
+ {
+  "id": 507,
+  "data": "PASTEUR"
+ },
+ {
+  "id": 508,
+  "data": "PASTORIZA DORA"
+ },
+ {
+  "id": 509,
+  "data": "PATAGONIA"
+ },
+ {
+  "id": 510,
+  "data": "PAYANYEU"
+ },
+ {
+  "id": 511,
+  "data": "PAYRO"
+ },
+ {
+  "id": 512,
+  "data": "PAZ"
+ },
+ {
+  "id": 513,
+  "data": "PEÑA"
+ },
+ {
+  "id": 514,
+  "data": "PEDERSEN"
+ },
+ {
+  "id": 515,
+  "data": "PEDRONI JOSE"
+ },
+ {
+  "id": 516,
+  "data": "PELLEGRINI"
+ },
+ {
+  "id": 517,
+  "data": "PERDIZ"
+ },
+ {
+  "id": 518,
+  "data": "PERE"
+ },
+ {
+  "id": 519,
+  "data": "PEREYRA"
+ },
+ {
+  "id": 520,
+  "data": "PERON"
+ },
+ {
+  "id": 521,
+  "data": "PEYREL"
+ },
+ {
+  "id": 522,
+  "data": "PICCIRILLI"
+ },
+ {
+  "id": 523,
+  "data": "PICHEUTA"
+ },
+ {
+  "id": 524,
+  "data": "PIEDRABUENA"
+ },
+ {
+  "id": 525,
+  "data": "PIERRONE"
+ },
+ {
+  "id": 526,
+  "data": "PINTO"
+ },
+ {
+  "id": 527,
+  "data": "PIO XII"
+ },
+ {
+  "id": 528,
+  "data": "PIZZORNO"
+ },
+ {
+  "id": 529,
+  "data": "PJE INT 1 Bº FALUCHO 56"
+ },
+ {
+  "id": 530,
+  "data": "PJE INT 1 PROCREAR"
+ },
+ {
+  "id": 531,
+  "data": "PJE INT 2 Bº FALUCHO 56"
+ },
+ {
+  "id": 532,
+  "data": "PJE INT 3 Bº FALUCHO 56"
+ },
+ {
+  "id": 533,
+  "data": "PJE INT 4 Bº FALUCHO 56"
+ },
+ {
+  "id": 534,
+  "data": "PJE INT 6 PROCREAR"
+ },
+ {
+  "id": 535,
+  "data": "PJE INT 7 PROCREAR"
+ },
+ {
+  "id": 536,
+  "data": "PJE SAN CARLOS"
+ },
+ {
+  "id": 537,
+  "data": "PJE. AZOPARDO"
+ },
+ {
+  "id": 538,
+  "data": "PJE. BALCARCE"
+ },
+ {
+  "id": 539,
+  "data": "PJE. BARRIENTOS"
+ },
+ {
+  "id": 540,
+  "data": "PJE. BASSI"
+ },
+ {
+  "id": 541,
+  "data": "PJE. BLANDENGUES"
+ },
+ {
+  "id": 542,
+  "data": "PJE. CASTELLI"
+ },
+ {
+  "id": 543,
+  "data": "PJE. CATRIEL"
+ },
+ {
+  "id": 544,
+  "data": "PJE. CHOPIN"
+ },
+ {
+  "id": 545,
+  "data": "PJE. CURUPAYTI"
+ },
+ {
+  "id": 546,
+  "data": "PJE. DEFENSA"
+ },
+ {
+  "id": 547,
+  "data": "PJE. DISNEY"
+ },
+ {
+  "id": 548,
+  "data": "PJE. EANDI"
+ },
+ {
+  "id": 549,
+  "data": "PJE. ENTUBAMIENTO"
+ },
+ {
+  "id": 550,
+  "data": "PJE. FORT"
+ },
+ {
+  "id": 551,
+  "data": "PJE. FOURNIER"
+ },
+ {
+  "id": 552,
+  "data": "PJE. GALINDEZ"
+ },
+ {
+  "id": 553,
+  "data": "PJE. GARDEY"
+ },
+ {
+  "id": 554,
+  "data": "PJE. GAVAZZI"
+ },
+ {
+  "id": 555,
+  "data": "PJE. GUIRALDES"
+ },
+ {
+  "id": 556,
+  "data": "PJE. JAURETCHE"
+ },
+ {
+  "id": 557,
+  "data": "PJE. LOPEZ"
+ },
+ {
+  "id": 558,
+  "data": "PJE. MISTRAL"
+ },
+ {
+  "id": 559,
+  "data": "PJE. MURATURE"
+ },
+ {
+  "id": 560,
+  "data": "PJE. NERVO A."
+ },
+ {
+  "id": 561,
+  "data": "PJE. NEWBERY"
+ },
+ {
+  "id": 562,
+  "data": "PJE. ORBE"
+ },
+ {
+  "id": 563,
+  "data": "PJE. PERU"
+ },
+ {
+  "id": 564,
+  "data": "PJE. PIÑERO"
+ },
+ {
+  "id": 565,
+  "data": "PJE. PONTAUT"
+ },
+ {
+  "id": 566,
+  "data": "PJE. PRIMERO DE MAYO"
+ },
+ {
+  "id": 567,
+  "data": "PJE. REBOL"
+ },
+ {
+  "id": 568,
+  "data": "PJE. RENIS"
+ },
+ {
+  "id": 569,
+  "data": "PJE. ROJAS"
+ },
+ {
+  "id": 570,
+  "data": "PJE. SABIN"
+ },
+ {
+  "id": 571,
+  "data": "PJE. SALDIVAR"
+ },
+ {
+  "id": 572,
+  "data": "PJE. SALK"
+ },
+ {
+  "id": 573,
+  "data": "PJE. SAN LUIS"
+ },
+ {
+  "id": 574,
+  "data": "PJE. SANTA ANA"
+ },
+ {
+  "id": 575,
+  "data": "PJE. SERITTI"
+ },
+ {
+  "id": 576,
+  "data": "PJE. SOL DE MAYO"
+ },
+ {
+  "id": 577,
+  "data": "PJE. SOSA"
+ },
+ {
+  "id": 578,
+  "data": "PJE. URUGUAY"
+ },
+ {
+  "id": 579,
+  "data": "PJE. VARAS"
+ },
+ {
+  "id": 580,
+  "data": "PJE. VAZQUEZ"
+ },
+ {
+  "id": 581,
+  "data": "POLI L."
+ },
+ {
+  "id": 582,
+  "data": "PORTUGAL"
+ },
+ {
+  "id": 583,
+  "data": "POSTA DE YATASTO"
+ },
+ {
+  "id": 584,
+  "data": "POTRERILLOS"
+ },
+ {
+  "id": 585,
+  "data": "POZOS"
+ },
+ {
+  "id": 586,
+  "data": "PQUE INDEPENDENCIA INT"
+ },
+ {
+  "id": 587,
+  "data": "PRAT"
+ },
+ {
+  "id": 588,
+  "data": "PRIMERA JUNTA"
+ },
+ {
+  "id": 589,
+  "data": "PTE ILLIA"
+ },
+ {
+  "id": 590,
+  "data": "PUEBLO VASCO"
+ },
+ {
+  "id": 591,
+  "data": "PUERTO ARGENTINO"
+ },
+ {
+  "id": 592,
+  "data": "PUEYRREDON"
+ },
+ {
+  "id": 593,
+  "data": "PUGLIESE"
+ },
+ {
+  "id": 594,
+  "data": "PUJOL"
+ },
+ {
+  "id": 595,
+  "data": "QUEQUEN"
+ },
+ {
+  "id": 596,
+  "data": "QUINQUELA MARTIN"
+ },
+ {
+  "id": 597,
+  "data": "QUINTANA"
+ },
+ {
+  "id": 598,
+  "data": "RAUCH"
+ },
+ {
+  "id": 599,
+  "data": "RECONQUISTA"
+ },
+ {
+  "id": 600,
+  "data": "REFORMA UNIVERSITARIA"
+ },
+ {
+  "id": 601,
+  "data": "RIATO"
+ },
+ {
+  "id": 602,
+  "data": "RICHIERI"
+ },
+ {
+  "id": 603,
+  "data": "RIVADAVIA"
+ },
+ {
+  "id": 604,
+  "data": "ROCA"
+ },
+ {
+  "id": 605,
+  "data": "RODRIGUEZ"
+ },
+ {
+  "id": 606,
+  "data": "RODRIGUEZ E"
+ },
+ {
+  "id": 607,
+  "data": "ROMEO"
+ },
+ {
+  "id": 608,
+  "data": "RONCA HUE"
+ },
+ {
+  "id": 609,
+  "data": "RONDEAU"
+ },
+ {
+  "id": 610,
+  "data": "ROSALES"
+ },
+ {
+  "id": 611,
+  "data": "ROSALIA DE CASTRO"
+ },
+ {
+  "id": 612,
+  "data": "ROSELLO"
+ },
+ {
+  "id": 613,
+  "data": "ROSSER"
+ },
+ {
+  "id": 614,
+  "data": "RTA 226"
+ },
+ {
+  "id": 615,
+  "data": "RUBEN DARIO"
+ },
+ {
+  "id": 616,
+  "data": "RUCAMALEN"
+ },
+ {
+  "id": 617,
+  "data": "RUTA 226 KM 155"
+ },
+ {
+  "id": 618,
+  "data": "RUTA 226 KM 156"
+ },
+ {
+  "id": 619,
+  "data": "RUTA 226 KM 157"
+ },
+ {
+  "id": 620,
+  "data": "RUTA 226 KM 158"
+ },
+ {
+  "id": 621,
+  "data": "RUTA 226 KM 159"
+ },
+ {
+  "id": 622,
+  "data": "RUTA 226 KM 160"
+ },
+ {
+  "id": 623,
+  "data": "RUTA 226 KM 161"
+ },
+ {
+  "id": 624,
+  "data": "RUTA 226 KM 162"
+ },
+ {
+  "id": 625,
+  "data": "RUTA 226 KM 163"
+ },
+ {
+  "id": 626,
+  "data": "RUTA 226 KM 164"
+ },
+ {
+  "id": 627,
+  "data": "RUTA 226 KM 165"
+ },
+ {
+  "id": 628,
+  "data": "RUTA 226 KM 166"
+ },
+ {
+  "id": 629,
+  "data": "RUTA 226 KM 167"
+ },
+ {
+  "id": 630,
+  "data": "RUTA 226 KM 168"
+ },
+ {
+  "id": 631,
+  "data": "RUTA 226 KM 169"
+ },
+ {
+  "id": 632,
+  "data": "RUTA 226 KM 170"
+ },
+ {
+  "id": 633,
+  "data": "RUTA 226 KM 171"
+ },
+ {
+  "id": 634,
+  "data": "RUTA 226 KM 172"
+ },
+ {
+  "id": 635,
+  "data": "RUTA 226 KM 173"
+ },
+ {
+  "id": 636,
+  "data": "RUTA 226 KM 174"
+ },
+ {
+  "id": 637,
+  "data": "RUTA 226 KM 175"
+ },
+ {
+  "id": 638,
+  "data": "RUTA 30"
+ },
+ {
+  "id": 639,
+  "data": "RUTA 30 KM 126"
+ },
+ {
+  "id": 640,
+  "data": "RUTA 30 KM 127"
+ },
+ {
+  "id": 641,
+  "data": "RUTA 30 KM 128"
+ },
+ {
+  "id": 642,
+  "data": "RUTA 30 KM 129"
+ },
+ {
+  "id": 643,
+  "data": "RUTA 30 KM 130"
+ },
+ {
+  "id": 644,
+  "data": "RUTA 30 KM 131"
+ },
+ {
+  "id": 645,
+  "data": "RUTA 30 KM 132"
+ },
+ {
+  "id": 646,
+  "data": "RUTA 30 KM 133"
+ },
+ {
+  "id": 647,
+  "data": "RUTA 30 KM 134"
+ },
+ {
+  "id": 648,
+  "data": "RUTA 74 KM 82"
+ },
+ {
+  "id": 649,
+  "data": "RUTA 74 KM 83"
+ },
+ {
+  "id": 650,
+  "data": "RUTA 74 KM 84"
+ },
+ {
+  "id": 651,
+  "data": "RUTA 74 KM 85"
+ },
+ {
+  "id": 652,
+  "data": "RUTA 74 KM 86"
+ },
+ {
+  "id": 653,
+  "data": "RUTA 74 KM 87"
+ },
+ {
+  "id": 654,
+  "data": "RUTA 74 KM 88"
+ },
+ {
+  "id": 655,
+  "data": "RUTA 74 KM 89"
+ },
+ {
+  "id": 656,
+  "data": "RUTA 74 KM 90"
+ },
+ {
+  "id": 657,
+  "data": "SAAVEDRA"
+ },
+ {
+  "id": 658,
+  "data": "SAAVEDRA LAMAS"
+ },
+ {
+  "id": 659,
+  "data": "SAENZ PEÑA"
+ },
+ {
+  "id": 660,
+  "data": "SAINT MIQUEU"
+ },
+ {
+  "id": 661,
+  "data": "SALCEDA"
+ },
+ {
+  "id": 662,
+  "data": "SALTA"
+ },
+ {
+  "id": 663,
+  "data": "SALUSTIANO RIVAS"
+ },
+ {
+  "id": 664,
+  "data": "SAN FELIPE"
+ },
+ {
+  "id": 665,
+  "data": "SAN FRANCISCO"
+ },
+ {
+  "id": 666,
+  "data": "SAN GABRIEL"
+ },
+ {
+  "id": 667,
+  "data": "SAN JUAN"
+ },
+ {
+  "id": 668,
+  "data": "SAN LORENZO"
+ },
+ {
+  "id": 669,
+  "data": "SAN MARTIN"
+ },
+ {
+  "id": 670,
+  "data": "SANDINO"
+ },
+ {
+  "id": 671,
+  "data": "SANTA CRUZ"
+ },
+ {
+  "id": 672,
+  "data": "SANTA FE"
+ },
+ {
+  "id": 673,
+  "data": "SANTAMARINA"
+ },
+ {
+  "id": 674,
+  "data": "SANTAMARINA A."
+ },
+ {
+  "id": 675,
+  "data": "SANTOS VEGA"
+ },
+ {
+  "id": 676,
+  "data": "SARMIENTO"
+ },
+ {
+  "id": 677,
+  "data": "SAVIO"
+ },
+ {
+  "id": 678,
+  "data": "SCAVINI"
+ },
+ {
+  "id": 679,
+  "data": "SCHWEITZER A."
+ },
+ {
+  "id": 680,
+  "data": "SEGUNDO SOMBRA"
+ },
+ {
+  "id": 681,
+  "data": "SERRANO"
+ },
+ {
+  "id": 682,
+  "data": "SGO. DEL ESTERO"
+ },
+ {
+  "id": 683,
+  "data": "SIERRA BLANCA"
+ },
+ {
+  "id": 684,
+  "data": "SINKA A."
+ },
+ {
+  "id": 685,
+  "data": "SOBERANIA AUSTRAL"
+ },
+ {
+  "id": 686,
+  "data": "SOLDADO ARGENTINO"
+ },
+ {
+  "id": 687,
+  "data": "SPEGAZZINI CARLOS"
+ },
+ {
+  "id": 688,
+  "data": "STA CRUZ"
+ },
+ {
+  "id": 689,
+  "data": "STA. MA. DE ORO"
+ },
+ {
+  "id": 690,
+  "data": "SUAREZ GARCIA"
+ },
+ {
+  "id": 691,
+  "data": "SUECIA"
+ },
+ {
+  "id": 692,
+  "data": "SUIPACHA"
+ },
+ {
+  "id": 693,
+  "data": "SUIZA"
+ },
+ {
+  "id": 694,
+  "data": "T. DEL FUEGO"
+ },
+ {
+  "id": 695,
+  "data": "TABORIN GABRIEL"
+ },
+ {
+  "id": 696,
+  "data": "TACUARI"
+ },
+ {
+  "id": 697,
+  "data": "TANDILEOFU"
+ },
+ {
+  "id": 698,
+  "data": "TASENDE"
+ },
+ {
+  "id": 699,
+  "data": "TERO"
+ },
+ {
+  "id": 700,
+  "data": "TIJERETA"
+ },
+ {
+  "id": 701,
+  "data": "TILCARA"
+ },
+ {
+  "id": 702,
+  "data": "TILCARA D"
+ },
+ {
+  "id": 703,
+  "data": "TILCARA I"
+ },
+ {
+  "id": 704,
+  "data": "TOMAS"
+ },
+ {
+  "id": 705,
+  "data": "TORCAZA"
+ },
+ {
+  "id": 706,
+  "data": "TORDO"
+ },
+ {
+  "id": 707,
+  "data": "TRABAJADORES MUNICIPALES"
+ },
+ {
+  "id": 708,
+  "data": "TUCUMAN"
+ },
+ {
+  "id": 709,
+  "data": "TWEESDALE"
+ },
+ {
+  "id": 710,
+  "data": "UGARTE"
+ },
+ {
+  "id": 711,
+  "data": "URIBURU"
+ },
+ {
+  "id": 712,
+  "data": "URQUIZA"
+ },
+ {
+  "id": 713,
+  "data": "USPALLATA"
+ },
+ {
+  "id": 714,
+  "data": "VALOR"
+ },
+ {
+  "id": 715,
+  "data": "VELA"
+ },
+ {
+  "id": 716,
+  "data": "VELEZ SARSFIELD"
+ },
+ {
+  "id": 717,
+  "data": "VENEZUELA"
+ },
+ {
+  "id": 718,
+  "data": "VERNET J."
+ },
+ {
+  "id": 719,
+  "data": "VIAMONTE"
+ },
+ {
+  "id": 720,
+  "data": "VIGIL"
+ },
+ {
+  "id": 721,
+  "data": "VILLA CORDOBITA C 4"
+ },
+ {
+  "id": 722,
+  "data": "VISTALLI"
+ },
+ {
+  "id": 723,
+  "data": "VIVOT"
+ },
+ {
+  "id": 724,
+  "data": "VTE. LOPEZ"
+ },
+ {
+  "id": 725,
+  "data": "WALCALDE"
+ },
+ {
+  "id": 726,
+  "data": "YAPEYU"
+ },
+ {
+  "id": 727,
+  "data": "YRIGOYEN"
+ },
+ {
+  "id": 728,
+  "data": "YUGOSLAVIA"
+ },
+ {
+  "id": 729,
+  "data": "ZARINI"
+ },
+ {
+  "id": 730,
+  "data": "ZONA ARROYO SECO data 3"
+ },
+ {
+  "id": 731,
+  "data": "ZONA BASE AEREA data 2"
+ },
+ {
+  "id": 732,
+  "data": "ZONA BASE AEREA data 3"
+ },
+ {
+  "id": 733,
+  "data": "ZONA BASE AEREA data 4"
+ },
+ {
+  "id": 734,
+  "data": "ZONA BASE AEREA data 5"
+ },
+ {
+  "id": 735,
+  "data": "ZONA BASE AEREA data 6"
+ },
+ {
+  "id": 736,
+  "data": "ZONA CAMPING data 1"
+ },
+ {
+  "id": 737,
+  "data": "ZONA CAMPING data 2"
+ },
+ {
+  "id": 738,
+  "data": "ZONA CAVALLERI data 1"
+ },
+ {
+  "id": 739,
+  "data": "ZONA CAVALLERI data 2"
+ },
+ {
+  "id": 740,
+  "data": "ZONA CERRO LEONES data 1"
+ },
+ {
+  "id": 741,
+  "data": "ZONA CERRO LEONES data 10"
+ },
+ {
+  "id": 742,
+  "data": "ZONA CERRO LEONES data 12"
+ },
+ {
+  "id": 743,
+  "data": "ZONA CERRO LEONES data 3"
+ },
+ {
+  "id": 744,
+  "data": "ZONA CERRO LEONES data 4"
+ },
+ {
+  "id": 745,
+  "data": "ZONA CERRO LEONES data 5"
+ },
+ {
+  "id": 746,
+  "data": "ZONA DESVIO AGUIRRE data 2"
+ },
+ {
+  "id": 747,
+  "data": "ZONA DESVIO AGUIRRE data 4"
+ },
+ {
+  "id": 748,
+  "data": "ZONA DON BOSCO data 11"
+ },
+ {
+  "id": 749,
+  "data": "ZONA DON BOSCO data 15"
+ },
+ {
+  "id": 750,
+  "data": "ZONA DON BOSCO data 2"
+ },
+ {
+  "id": 751,
+  "data": "ZONA DON BOSCO data 3"
+ },
+ {
+  "id": 752,
+  "data": "ZONA DON BOSCO data 6"
+ },
+ {
+  "id": 753,
+  "data": "ZONA EL CENTINELA data 10"
+ },
+ {
+  "id": 754,
+  "data": "ZONA EL CENTINELA data 12"
+ },
+ {
+  "id": 755,
+  "data": "ZONA EL CENTINELA data 14"
+ },
+ {
+  "id": 756,
+  "data": "ZONA EL CENTINELA data 2"
+ },
+ {
+  "id": 757,
+  "data": "ZONA EL CENTINELA data 25"
+ },
+ {
+  "id": 758,
+  "data": "ZONA EL CENTINELA data 26"
+ },
+ {
+  "id": 759,
+  "data": "ZONA EL CENTINELA data 3"
+ },
+ {
+  "id": 760,
+  "data": "ZONA EL CENTINELA data 7"
+ },
+ {
+  "id": 761,
+  "data": "ZONA EL CENTINELA data 8"
+ },
+ {
+  "id": 762,
+  "data": "ZONA EL CENTINELA data 9"
+ },
+ {
+  "id": 763,
+  "data": "ZONA INTERLEND data 1"
+ },
+ {
+  "id": 764,
+  "data": "ZONA LA ELENA data 14"
+ },
+ {
+  "id": 765,
+  "data": "ZONA LA MOVEDIZA data 1"
+ },
+ {
+  "id": 766,
+  "data": "ZONA LA PORTEÑA data 11"
+ },
+ {
+  "id": 767,
+  "data": "ZONA LA PORTEÑA data 12"
+ },
+ {
+  "id": 768,
+  "data": "ZONA LA PORTEÑA data 15"
+ },
+ {
+  "id": 769,
+  "data": "ZONA LA POSADA data 1"
+ },
+ {
+  "id": 770,
+  "data": "ZONA LA UNION data 1"
+ },
+ {
+  "id": 771,
+  "data": "ZONA LAGO DEL FUERTE INT 1"
+ },
+ {
+  "id": 772,
+  "data": "ZONA PARQUE INDUSTR data 1"
+ },
+ {
+  "id": 773,
+  "data": "ZONA PARQUE INDUSTR data 2"
+ },
+ {
+  "id": 774,
+  "data": "ZONA PARQUE INDUSTR data 3"
+ },
+ {
+  "id": 775,
+  "data": "ZONA PARQUE INDUSTR data 4"
+ },
+ {
+  "id": 776,
+  "data": "ZONA PARQUE INDUSTR data 5"
+ },
+ {
+  "id": 777,
+  "data": "ZONA PARQUE INDUSTR data 6"
+ },
+ {
+    "id": 778,
+    "data": "OTRO (ESPECIFICAR EN DESCRIPCION)"
+ }
+]
+}

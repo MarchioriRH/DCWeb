@@ -20,48 +20,87 @@
 
     <div class="wrapper">
         <div class="form">
-            <h1 class="title">Create an account</h1>
-   
-            <form action="#" class="myform">
+            <div class="form-header">
+                <div class="form-header-title">
+                    <h1>Registro de eventos</h1>
+                </div>
+                <div class="form-header-close">
+                    <img class="form-logo" src="../../img/dc-logo.png"></img>
+                </div>
+            </div>
+            
+            <form action="#" class="myform" id="myForm">
                 <div class="control-from">
-                    <label for="firstname">First Name *</label>
-                    <input type="text" id="firstname" value="" required>
+                    <label for="date-time">Fecha *</label>
+                    <div class="date-time">
+                        <div>
+                            <input type="date" id="date" value="" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-from">
+                    <label for="date-time">Hora *</label>
+                    <div>
+                        <input type="time" id="time" value="" required>
+                    </div>
+                </div>
+                <div class="full-width">Sobre el evento</div>
+                <div class="full-width">
+                    <label for="tipo">Tipo *</label>                    
+                    <select class="type-select" name="tipo" id="event-type" required></select>
+                </div>
+                <div class="control-from">
+                    <label for="street">Calle *</label>
+                    <select class="type-select" name="tandil-street-list" id="tandil-street-list" required></select>
+                </div>
+                <div class="control-from">
+                    <label for="street-number">Numero *</label>
+                    <input type="number" id="street-number" value="" required>
+                </div>
+                <div class="control-from">
+                    <label for="tandil-street-list">Entre calle</label>
+                    <select class="type-select" name="tandil-street-list" id="tandil-street-list" required></select>                    
+                </div>
+                <div class="control-from">
+                    <label for="tandil-street-list">y calle</label>
+                    <select class="type-select" name="tandil-street-list" id="tandil-street-list" required></select>
+                </div>
+                <div class="full-width">
+                    <label for="derivation">Derivacion *</label>
+                    <select class="type-select" name="derivation" id="derivation" required></select>
+                </div>
+                <div class="full-width">
+                    <label for="description">Descripcion del evento *</label>
+                    <textarea class="full-width" name="description" id="description" required></textarea>
+                </div>
+                <div class="full-width">Sobre el llamante</div>
+                <div class="control-from">
+                    <label for="name">Nombre *</label>
+                    <input type="text" id="name" value="" required>
                 </div>
    
                 <div class="control-from">
-                    <label for="lastname">Last Name *</label>
-                    <input type="text" id="lastname" value="" required>
+                    <label for="last-name">Apellido *</label>
+                    <input type="text" id="last-name" value="" required>
                 </div>
    
                 <div class="control-from">
-                    <label for="emailaddress">Email Address *</label>
-                    <input type="text" id="emailaddress" value="" required>
-                </div>
-   
-                <div class="control-from">
-                    <label for="phonenumber">Phone Number</label>
-                    <input type="phone" id="phonenumber" value="" required>
+                    <label for="phone-number">Telefono *</label>
+                    <input type="tel" id="phone-number" value="" required>
                 </div>
    
                 <div class="full-width">
-                    <label for="companyname">Company Name</label>
-                    <input type="text" id="companyname" value="" required>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" value="" required>
                 </div>
-   
-                <div class="control-from">
-                    <label for="businesscategory">Business Category</label>
-                    <input type="text" id="businesscategory" value="" required>
+                <div class="full-width buttons-box">
+                    <div class="button">
+                        <button id="-btn">Registrar</button>
+                    </div>
+                    <div class="button">
+                        <button id="cancel-btn">Cancelar</button>
+                    </div>
                 </div>
-   
-                <div class="control-from">
-                    <label for="location">Location </label>
-                    <input type="text" id="location" value="" required>
-                </div>
-   
-                <div class="button">
-                    <button id="register">Register</button>
-                </div>
-   
             </form>
         </div>
     </div>
@@ -80,6 +119,6 @@
     <!-- Local scripts -->
     <script type="module" src="../../../js/scripts.js"></script> 
     <script type="module" src="../../../js/express_server.js"></script>
-    
+    <script type="module" src="../../../js/eventForm.js"></script>
 </body>
 </html>
