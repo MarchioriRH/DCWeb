@@ -51,19 +51,19 @@
                 </div>
                 <div class="control-from">
                     <label for="street">Calle *</label>
-                    <select class="type-select" name="tandil-street-list" id="tandil-street-list" required></select>
+                    <select class="type-select tandil-street-list" id="street-1" required></select>
                 </div>
                 <div class="control-from">
                     <label for="street-number">Numero *</label>
-                    <input type="number" id="street-number" value="" required>
+                    <input type="number" id="street-1-number" value="" required>
                 </div>
                 <div class="control-from">
                     <label for="tandil-street-list">Entre calle</label>
-                    <select class="type-select" name="tandil-street-list" id="tandil-street-list" required></select>                    
+                    <select class="type-select tandil-street-list" id="street-2" required></select>                    
                 </div>
                 <div class="control-from">
                     <label for="tandil-street-list">y calle</label>
-                    <select class="type-select" name="tandil-street-list" id="tandil-street-list" required></select>
+                    <select class="type-select tandil-street-list" id="street-3" required></select>
                 </div>
                 <div class="full-width">
                     <label for="derivation">Derivacion *</label>
@@ -75,30 +75,30 @@
                 </div>
                 <div class="full-width">Sobre el llamante</div>
                 <div class="control-from">
-                    <label for="name">Nombre *</label>
-                    <input type="text" id="name" value="" required>
+                    <label for="informer-name">Nombre *</label>
+                    <input type="text" id="informer-name" value="" required>
                 </div>
    
                 <div class="control-from">
-                    <label for="last-name">Apellido *</label>
-                    <input type="text" id="last-name" value="" required>
+                    <label for="informer-last-name">Apellido *</label>
+                    <input type="text" id="informer-last-name" value="" required>
                 </div>
    
                 <div class="control-from">
-                    <label for="phone-number">Telefono *</label>
-                    <input type="tel" id="phone-number" value="" required>
+                    <label for="informer-phone">Telefono *</label>
+                    <input type="tel" id="informer-phone-number" value="" required>
                 </div>
    
                 <div class="full-width">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" value="" required>
+                    <label for="informer-email">Email</label>
+                    <input type="email" id="informer-email" value="" required>
                 </div>
                 <div class="full-width buttons-box">
                     <div class="button">
-                        <button id="-btn">Registrar</button>
+                        <button type="submit" id="new-event-btn">Registrar</button>
                     </div>
                     <div class="button">
-                        <button id="cancel-btn">Cancelar</button>
+                        <button id="cancel-new-event-btn">Cancelar</button>
                     </div>
                 </div>
             </form>
@@ -117,7 +117,7 @@
     <!-- <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script> -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <!-- Local scripts -->
-    <script type="module" src="../../../js/scripts.js"></script> 
+    <!-- <script type="module" src="../../../js/scripts.js"></script>  -->
     <script type="module" src="../../../js/express_server.js"></script>
     <script type="module" src="../../../js/eventForm.js"></script>
 </body>
