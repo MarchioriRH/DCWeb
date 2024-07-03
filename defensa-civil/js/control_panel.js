@@ -3,6 +3,7 @@ import { formatDate, formatTime, completeSelectOptions } from './utils.js';
 const SERVER_PORT = 3000;
 const APP_PORT = 5500;
 const __EVENTS_TYPES__ = `http://localhost:${APP_PORT}/assets/data/tipo_evento.json`;
+const __SEARCH_URL__ = `http://localhost:${SERVER_PORT}/events`;
 
 document.addEventListener("DOMContentLoaded", () => {
     const searchAllBtn = document.getElementById('search-all-btn');
@@ -10,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();
         
         try {
-            const response = await searchAllEvents();      
+            const response = await searchEvents(__SEARCH_URL__);      
     
             generateEventsList(response);
         } catch (error) {
@@ -46,17 +47,18 @@ document.addEventListener("DOMContentLoaded", () => {
         searchEventTypeBtn.addEventListener('click', async (e) => {
             e.preventDefault();
             const eventType = document.getElementById('event-type').value;
-            const response = await searchEventsByType(eventType);
+            const dataUrl = `${__SEARCH_URL__}?eventType=${eventType}`;
+            const response = await searchEvents(dataUrl);
             generateEventsList(response);
         });
 
     });
 });
 
-async function searchEventsByType(eventType) {
+async function searchEvents(dataUrl) {
     try {
         
-        const response = await fetch(`http://localhost:${SERVER_PORT}/events?eventType=${eventType}`);
+        const response = await fetch(dataUrl);
         if (!response.ok) {
             throw new Error('Network response was not ok' + response.statusText);
         }
@@ -140,17 +142,5 @@ function generateCloseButton() {
     });
 }
 
-async function searchAllEvents() {
-    try {
-        const response = await fetch(`http://localhost:${SERVER_PORT}/events`);
-        if (!response.ok) {
-            throw new Error('Network response was not ok' + response.statusText);
-        }
-        const data = await response.json();
-        return data; // Retorna los datos como un array de objetos
-    } catch (error) {
-        console.error('Error al obtener los eventos:', error);
-        return []; // Retorna un array vacío en caso de error
-    }
-}
+
 
