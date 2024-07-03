@@ -118,8 +118,79 @@ app.get('/defensa-civil/assets/sections/forms/event_form.html', (req, res) => {
 });
 
 /** Events routes */ 
+// app.get('/events', (req, res) => {
+//     console.log('GET /events');
+//     connection.query('SELECT * FROM events_form', (err, results) => {
+//         if (err) {
+//             res.status(500).send(err);
+//             return;
+//         }
+//         res.json(results);
+//     });
+// });
+
+// app.get('/events/:id', (req, res) => { 
+//     const { id } = req.params;
+//     connection.query('SELECT * FROM events_form WHERE id = ?', [id], (err, results) => {
+//         if (err) {
+//             res.status(500).send(err);
+//             return;
+//         }
+//         res.json(results);
+//     });
+// });
+
+// app.get('/events/:eventType', (req, res) => {
+//     const { eventType } = req.query;
+    
+    
+//     connection.query('SELECT * FROM events_form WHERE type = ?', [eventType], (err, results) => {
+//         if (err) {
+//             res.status(500).send(err);
+//             return;
+//         }
+//         res.json(results);
+//     });
+// });
+
+// app.get('events/:date1/:date2', (req, res) => {
+//     const { date1, date2 } = req.params;
+//     connection.query('SELECT * FROM events_form WHERE date BETWEEN ? AND ?', [date1, date2], (err, results) => {
+//         if (err) {
+//             res.status(500).send(err);
+//             return;
+//         }
+//         res.json(results);
+//     });
+// });
+
 app.get('/events', (req, res) => {
-connection.query('SELECT * FROM events_form', (err, results) => {
+    const { date, street, eventType, derivation } = req.query;
+    let query = 'SELECT * FROM events_form WHERE 1';
+    let values = [];
+    
+    if (date) {
+        query += ' AND date = ?';
+        values.push(date);
+    }
+    
+    if (street) {
+        query += ' AND street = ?';
+        values.push(street);
+    }
+    
+    if (eventType) {
+        console.log('eventType:', eventType);
+        query += ' AND type = ?';
+        values.push(eventType);
+    }
+
+    if (derivation) {
+        query += ' AND derivation = ?';
+        values.push(derivation);
+    }
+
+    connection.query(query, values, (err, results) => {
         if (err) {
             res.status(500).send(err);
             return;

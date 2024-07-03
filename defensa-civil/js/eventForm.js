@@ -1,7 +1,10 @@
-const SERVER_PORT = 5500;
-const __STREETS_LIST__ = `http://localhost:${SERVER_PORT}/assets/data/calles_tandil.json`;
-const __EVENTS_TYPES__ = `http://localhost:${SERVER_PORT}/assets/data/tipo_evento.json`;
-const __DERIVATION_TYPES__ = `http://localhost:${SERVER_PORT}/assets/data/derivacion.json`;
+import { completeSelectOptions } from './utils.js';
+
+const SERVER_PORT = 3000;
+const APP_PORT = 5500;
+const __STREETS_LIST__ = `http://localhost:${APP_PORT}/assets/data/calles_tandil.json`;
+const __EVENTS_TYPES__ = `http://localhost:${APP_PORT}/assets/data/tipo_evento.json`;
+const __DERIVATION_TYPES__ = `http://localhost:${APP_PORT}/assets/data/derivacion.json`;
 
 document.addEventListener("DOMContentLoaded", () => {
     
@@ -36,46 +39,33 @@ document.addEventListener("DOMContentLoaded", () => {
         var informer_phone = document.getElementById('informer-phone-number').value;
         var informer_email = document.getElementById('informer-email').value;        
        
-        await fetch(`http://localhost:3000/events`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ date, time, eventType, street_1, street_1_number, street_2, street_3, derivation, event_description,
-                informer_name, informer_last_name, informer_phone, informer_email })
-        }).then(response => {
-            if (response.ok) {
-                console.log('Event added');
-            } else {
-                console.log('Event failed to add');
-            }
-        }).catch(error => {
-            console.error('Error:', error);
-        }); 
+        await addNewEvent(date, time, eventType, street_1, street_1_number, street_2, street_3, 
+            derivation, event_description, informer_name, informer_last_name, informer_phone, informer_email); 
     });
 });
     
 
 
     
-function completeSelectOptions(selectList, dataSource) {
-    fetch(dataSource)
-    .then(response => response.json())
-    .then(data => {
-        data = Object.values(data)[0];             
-        if (Array.isArray(data)) { 
-            for (let i = 0; i < selectList.length; i++) {
-                data.forEach(item => {
-                    const option = document.createElement('option');
-                    option.value = item.data;
-                    option.text = item.data;
-                    selectList[i].appendChild(option);
-                });
-            }
+async function addNewEvent(date, time, eventType, street_1, street_1_number, street_2, street_3, 
+    derivation, event_description, informer_name, informer_last_name, informer_phone, informer_email) {
+    await fetch(`http://localhost:${SERVER_PORT}/events`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            date, time, eventType, street_1, street_1_number, street_2, street_3, derivation, event_description,
+            informer_name, informer_last_name, informer_phone, informer_email
+        })
+    }).then(response => {
+        if (response.ok) {
+            console.log('Event added');
         } else {
-            console.error('Expected an array, received:', data);
-            }
-        }).catch(error => {
-            console.error('Error:', error);
+            console.log('Event failed to add');
+        }
+    }).catch(error => {
+        console.error('Error:', error);
     });
 }
+
