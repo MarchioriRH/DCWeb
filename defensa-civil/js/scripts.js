@@ -7,8 +7,8 @@
 // Scripts
 // 
 
-const SERVER_PORT = 5500;
-const LOCAL_PORT = 5500;
+const SERVER_PORT = 3000;
+const APP_PORT = 5500;
 
 window.addEventListener('DOMContentLoaded', event => {
     
@@ -39,7 +39,7 @@ window.addEventListener('DOMContentLoaded', event => {
     
     // If user is logged in, show event form and logout button
     if (localStorage.getItem('token')) {
-        document.getElementById('event-form').style.display = 'block';
+        document.getElementById('control-panel').style.display = 'block';
         document.getElementById('logout-button').style.display = 'block';
         document.getElementById('login-button').style.display = 'none';
     }
@@ -83,10 +83,10 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
     
-    const eventFormBtn = document.getElementById('event-form-button');
-    eventFormBtn.addEventListener('click', async () => {
+    const eventsControlPanelBtn = document.getElementById('control-panel-btn');
+    eventsControlPanelBtn.addEventListener('click', async () => {
         try {
-            const response = await fetch(`http://localhost:${SERVER_PORT}/defensa-civil/assets/sections/forms/event_form.html`, {
+            const response = await fetch(`http://localhost:${APP_PORT}/assets/sections/forms/control_panel.html`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'text/html',
@@ -96,7 +96,7 @@ window.addEventListener('DOMContentLoaded', event => {
             //console.log(response);
             if (response.ok) {
                 console.log('Protected route data:', response);
-                window.open(response.url, '_blank');
+                window.open(response.url);
             } else {
                 console.log('Failed to access protected route:', response);
             }

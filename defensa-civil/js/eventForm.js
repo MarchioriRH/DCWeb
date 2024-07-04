@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const cancelBtn = document.getElementById('cancel-new-event-btn');
     cancelBtn.addEventListener('click', () => {
         document.getElementById('myForm').reset();
+        window.location.href = `http://localhost:${APP_PORT}/assets/sections/forms/control_panel.html`;
     });
 
     const submitBtn = document.getElementById('new-event-btn');

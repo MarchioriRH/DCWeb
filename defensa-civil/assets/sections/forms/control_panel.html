@@ -33,25 +33,25 @@
                     </button>
                   </h2>
                   <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                    <a href="" class="list-group-item list-group-item-action" id="search-event-type">Tipo de evento</a>
-                    <a href="" class="list-group-item list-group-item-action">Fecha</a>
-                    <a href="" class="list-group-item list-group-item-action">Derivacion</a>
-                    <a href="" class="list-group-item list-group-item-action">Calle</a>
+                    <a href="" class="list-group-item list-group-item-action" id="search-by-event-type">Tipo de evento</a>
+                    <a href="" class="list-group-item list-group-item-action" id="search-by-date">Fecha</a>
+                    <a href="" class="list-group-item list-group-item-action" id="search-by-date-range">Entre fechas</a>
+                    <a href="" class="list-group-item list-group-item-action" id="search-by-derivation">Derivacion</a>
+                    <a href="" class="list-group-item list-group-item-action" id="search-by-street">Calle</a>
                     <a href="" class="list-group-item list-group-item-action" id="search-all-btn">Todos</a>
                   </div>
                 </div>                
               </div>
-              <a href="#" class="list-group-item list-group-item-action">Cargar Nuevo Evento</a>
+              <a href="./event_form.html" class="list-group-item list-group-item-action list-group-new-event">Cargar Nuevo Evento</a>
+              <a href="../../../index.html" class="list-group-item list-group-item-action list-group-new-event">Salir</a>
             </div>
           </div>
           <div class="col-md-9">
             <div class="card">
-              <div class="card-body" id="card-body">
+              <div class="card-body event-card-body" id="card-body">
                 <h5 class="card-title" id="card-title">Bienvenido al Panel de Control</h5>
                 <p class="card-text" id="card-text">Utiliza el menú de la izquierda para navegar a través de las diferentes opciones.</p>
                 <div id="card-container"></div>
-                <!-- <button type="button" class="btn btn-primary">Consultas</button>
-                <button type="button" class="btn btn-secondary">Cargar Nuevo Evento</button> -->
               </div>
             </div>
           </div>
@@ -69,7 +69,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <!-- Local scripts -->
     <!-- <script type="module" src="../../../js/scripts.js"></script>  -->
-    <script type="module" src="../../../js/express_server.js"></script>
+    <!-- <script type="module" src="../../../js/express_server.js"></script> -->
     <script type="module" src="../../../js/control_panel.js"></script>
 </body>
 </html>

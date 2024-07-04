@@ -1,10 +1,10 @@
-const PORT = 5500;
+const SERVER_PORT = 3000;
 document.getElementById('loginForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
     //console.log(username, ' ',password);
-    const response = await fetch(`http://localhost:${PORT}/login` , {
+    const response = await fetch(`http://localhost:${SERVER_PORT}/login` , {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -19,7 +19,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
         //$('#messageModal').modal('show');
         //document.getElementById('message').innerText = 'Login successful';
         document.getElementById('loginForm').reset();
-        document.getElementById('event-form').style.display = 'block';
+        document.getElementById('control-panel').style.display = 'block';
         document.getElementById('logout-button').style.display = 'block';
         document.getElementById('login-button').style.display = 'none';
     } else {
@@ -35,7 +35,7 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
     const password = document.getElementById('registerPassword').value;
     //console.log(username, ' ',password);
 
-    const response = await fetch(`http://localhost:${PORT}/register`, {
+    const response = await fetch(`http://localhost:${SERVER_PORT}/register`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -58,7 +58,7 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
 const logout = () => {
     console.log('Logout');
     localStorage.removeItem('token');
-    document.getElementById('event-form').style.display = 'none';
+    document.getElementById('control-panel').style.display = 'none';
     document.getElementById('logout-button').style.display = 'none';
     document.getElementById('login-button').style.display = 'block';
     console.log('users: ', users);

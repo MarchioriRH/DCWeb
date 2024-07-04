@@ -82,7 +82,6 @@ app.post('/login', async (req, res) => {
 // Ruta protegida (requiere autenticación)
 app.get('/protected', (req, res) => {
     const authHeader = req.headers['authorization'];
-    //console.log('authHeader: ', authHeader)
     if (!authHeader) {
         return res.status(401).send('Access denied');
     }
@@ -118,54 +117,8 @@ app.get('/defensa-civil/assets/sections/forms/event_form.html', (req, res) => {
 });
 
 /** Events routes */ 
-// app.get('/events', (req, res) => {
-//     console.log('GET /events');
-//     connection.query('SELECT * FROM events_form', (err, results) => {
-//         if (err) {
-//             res.status(500).send(err);
-//             return;
-//         }
-//         res.json(results);
-//     });
-// });
-
-// app.get('/events/:id', (req, res) => { 
-//     const { id } = req.params;
-//     connection.query('SELECT * FROM events_form WHERE id = ?', [id], (err, results) => {
-//         if (err) {
-//             res.status(500).send(err);
-//             return;
-//         }
-//         res.json(results);
-//     });
-// });
-
-// app.get('/events/:eventType', (req, res) => {
-//     const { eventType } = req.query;
-    
-    
-//     connection.query('SELECT * FROM events_form WHERE type = ?', [eventType], (err, results) => {
-//         if (err) {
-//             res.status(500).send(err);
-//             return;
-//         }
-//         res.json(results);
-//     });
-// });
-
-// app.get('events/:date1/:date2', (req, res) => {
-//     const { date1, date2 } = req.params;
-//     connection.query('SELECT * FROM events_form WHERE date BETWEEN ? AND ?', [date1, date2], (err, results) => {
-//         if (err) {
-//             res.status(500).send(err);
-//             return;
-//         }
-//         res.json(results);
-//     });
-// });
-
 app.get('/events', (req, res) => {
-    const { date, street, eventType, derivation } = req.query;
+    const { date, date1, date2, street, type, derivation } = req.query;
     let query = 'SELECT * FROM events_form WHERE 1';
     let values = [];
     
@@ -173,16 +126,21 @@ app.get('/events', (req, res) => {
         query += ' AND date = ?';
         values.push(date);
     }
-    
-    if (street) {
-        query += ' AND street = ?';
-        values.push(street);
+
+    if (date1 && date2) {
+        query += ' AND date BETWEEN ? AND ?';
+        values.push(date1);
+        values.push(date2);
     }
     
-    if (eventType) {
-        console.log('eventType:', eventType);
+    if (street) {
+        query += ' AND street = ? OR street_1 = ? OR street_2 = ?';
+        values.push(street, street, street);
+    }
+    
+    if (type) {
         query += ' AND type = ?';
-        values.push(eventType);
+        values.push(type);
     }
 
     if (derivation) {
@@ -200,7 +158,6 @@ app.get('/events', (req, res) => {
 });
 
 app.post('/events', (req, res) => {
-    console.log('req-body: ',req.body);
     const { date, time, eventType, street_1, street_1_number, street_2, street_3, derivation, event_description, informer_name, informer_last_name, informer_phone, informer_email } = req.body;
     const query = 'INSERT INTO events_form (date, time, type, street, number, street_1, street_2, derivation, event_description, informer_name, informer_last_name, informer_phone, informer_email) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
     const values = [date, time, eventType, street_1, street_1_number, street_2, street_3, derivation, event_description, informer_name, informer_last_name, informer_phone, informer_email];
@@ -212,7 +169,6 @@ app.post('/events', (req, res) => {
                 
             }
             console.log('Event added');
-            //result.status(201).send('Event added');
         });
 });
 
