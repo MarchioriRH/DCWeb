@@ -421,7 +421,7 @@ form {
 
 }
 
-#event-form, #logout-button {
+#event-form {
   display:none;
 }
 

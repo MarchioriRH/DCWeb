@@ -2,9 +2,9 @@ import { completeSelectOptions } from './utils.js';
 
 const SERVER_PORT = 3000;
 const APP_PORT = 5500;
-const __STREETS_LIST__ = `http://localhost:${APP_PORT}/assets/data/calles_tandil.json`;
-const __EVENTS_TYPES__ = `http://localhost:${APP_PORT}/assets/data/tipo_evento.json`;
-const __DERIVATION_TYPES__ = `http://localhost:${APP_PORT}/assets/data/derivacion.json`;
+const __STREETS_LIST__ = `http://localhost:${APP_PORT}/defensa-civil/assets/data/calles_tandil.json`;
+const __EVENTS_TYPES__ = `http://localhost:${APP_PORT}/defensa-civil/assets/data/tipo_evento.json`;
+const __DERIVATION_TYPES__ = `http://localhost:${APP_PORT}/defensa-civil/assets/data/derivacion.json`;
 
 document.addEventListener("DOMContentLoaded", () => {
     
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const cancelBtn = document.getElementById('cancel-new-event-btn');
     cancelBtn.addEventListener('click', () => {
         document.getElementById('myForm').reset();
-        window.location.href = `http://localhost:${APP_PORT}/assets/sections/forms/control_panel.html`;
+        window.location.href = `http://localhost:${APP_PORT}/defensa-civil/assets/sections/forms/control_panel.html`;
     });
 
     const submitBtn = document.getElementById('new-event-btn');

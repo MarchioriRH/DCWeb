@@ -1,4 +1,5 @@
 const SERVER_PORT = 3000;
+
 document.getElementById('loginForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     const username = document.getElementById('username').value;
@@ -15,13 +16,12 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
     const data = await response.json();   
 
     if (response.ok) {
+        console.log('token: ',data.token);
         localStorage.setItem('token', data.token);
         //$('#messageModal').modal('show');
         //document.getElementById('message').innerText = 'Login successful';
         document.getElementById('loginForm').reset();
-        document.getElementById('control-panel').style.display = 'block';
-        document.getElementById('logout-button').style.display = 'block';
-        document.getElementById('login-button').style.display = 'none';
+        location.reload();
     } else {
         console.log('Login failed')
         document.getElementById('message').innerText = 'Login failed';
@@ -54,16 +54,7 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
     }
 });
 
-// Logout
-const logout = () => {
-    console.log('Logout');
-    localStorage.removeItem('token');
-    document.getElementById('control-panel').style.display = 'none';
-    document.getElementById('logout-button').style.display = 'none';
-    document.getElementById('login-button').style.display = 'block';
-    console.log('users: ', users);
-}
-document.getElementById('logout-button').addEventListener('click', logout);
+
 
 
 

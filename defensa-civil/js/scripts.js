@@ -39,9 +39,23 @@ window.addEventListener('DOMContentLoaded', event => {
     
     // If user is logged in, show event form and logout button
     if (localStorage.getItem('token')) {
-        document.getElementById('control-panel').style.display = 'block';
-        document.getElementById('logout-button').style.display = 'block';
-        document.getElementById('login-button').style.display = 'none';
+        const navbarUlList = document.getElementById('navbar-list-ul');
+        const eventFormLiControlPanel = document.createElement('li');
+        eventFormLiControlPanel.className = 'nav-item';
+        eventFormLiControlPanel.id = 'control-panel';
+        eventFormLiControlPanel.innerHTML = '<a class="nav-link" id="control-panel-btn" href="#">Eventos</a>';
+
+        const eventFormLiLogout = document.createElement('li');
+        eventFormLiLogout.className = 'nav-item';
+        eventFormLiLogout.id = 'logout';
+        eventFormLiLogout.innerHTML = '<a class="nav-link" id="logout-btn" href="#">Cerrar sesion</a>';
+        
+        navbarUlList.appendChild(eventFormLiControlPanel);
+        navbarUlList.appendChild(eventFormLiLogout);
+
+        // document.getElementById('control-panel').style.display = 'block';
+        // document.getElementById('logout-button').style.display = 'block';
+        document.getElementById('login-btn').style.display = 'none';
     }
 
     // Change navbar link color when toggler is clicked
@@ -82,11 +96,11 @@ window.addEventListener('DOMContentLoaded', event => {
         touch: false
     });
 
-    
-    const eventsControlPanelBtn = document.getElementById('control-panel-btn');
+    if (document.getElementById('control-panel-btn')) 
+        var eventsControlPanelBtn = document.getElementById('control-panel-btn');
     eventsControlPanelBtn.addEventListener('click', async () => {
         try {
-            const response = await fetch(`http://localhost:${APP_PORT}/assets/sections/forms/control_panel.html`, {
+            const response = await fetch(`http://localhost:${APP_PORT}/defensa-civil/assets/sections/forms/control_panel.html`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'text/html',
@@ -105,7 +119,16 @@ window.addEventListener('DOMContentLoaded', event => {
         }
     });
 
-    
+    // Logout
+    const logout = () => {
+        console.log('Logout');
+        localStorage.removeItem('token');
+        document.getElementById('control-panel').remove();
+        document.getElementById('logout').remove();
+        document.getElementById('login-btn').style.display = 'block';
+    }
+    if (document.getElementById('logout-btn'))
+        document.getElementById('logout-btn').addEventListener('click', logout);
     // async function accessProtectedRoute() {
     //     const token = localStorage.getItem('token');
     

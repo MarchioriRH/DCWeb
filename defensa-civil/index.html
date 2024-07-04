@@ -29,7 +29,7 @@
                     <i class="fas fa-bars ms-1"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0" id="navbar-list-ul">
                         <li class="nav-item"><a class="nav-link" href="#weather-info">El tiempo</a></li>
                         <li class="nav-item"><a class="nav-link" href="#notices">Noticias</a></li>
                         <li class="nav-item"><a class="nav-link" href="#advice">Consejos</a></li>
@@ -44,10 +44,8 @@
                                 <li><a class="dropdown-item text-uppercase ms-auto py-4 py-lg-0" href="http://meteotandil.com.ar/index.htm" target="_blank" >EMA Meteotandil</a></li>
                                 <li><a class="dropdown-item text-uppercase ms-auto py-4 py-lg-0" href="https://mapa.tandil.gov.ar" target="_blank" >IDE Tandil</a></li>
                             </ul>
-                        </li>
-                        <li class="nav-item" id="control-panel"><a class="nav-link" id="control-panel-btn" href="#">Eventos</a></li>
-                        <li class="nav-item" id="login-button"><a class="nav-link" data-bs-toggle="modal" href="#loginModal">Login</a></li>
-                        <li class="nav-item" id="logout-button"><a class="nav-link" href="#">Logout</a></li>
+                        </li>                        
+                        <li class="nav-item" id="login-btn"><a class="nav-link" data-bs-toggle="modal" href="#loginModal">Iniciar sesion</a></li>
                     </ul>
                 </div>
             </div>
@@ -871,8 +869,8 @@
         <!-- <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script> -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <!-- Local scripts -->
-        <script type="module" src="js/scripts.js"></script> 
         <script type="module" src="js/login.js"></script>
+        <script type="module" src="js/scripts.js"></script> 
         <!-- <script type="module" src="js/express_server.js"></script> -->
         <!-- <script type="module" src="js/router.js"></script> -->
     </body>
