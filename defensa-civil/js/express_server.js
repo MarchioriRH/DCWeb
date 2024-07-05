@@ -4,11 +4,8 @@ import jwt from 'jsonwebtoken';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import path from 'path';
-import { fileURLToPath } from 'url';
 
 import { createConnection } from 'mysql2';
-
-const __dirname = 'H:/Ruben/WebDC/landing-page';
 
 const app = express();
 const PORT = 3000;
@@ -19,7 +16,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Simulación de una base de datos
-const users = [];
+// const users = [];
 
 // Clave secreta para firmar los JWT
 const JWT_SECRET = 'your_jwt_secret_key';
@@ -47,36 +44,68 @@ app.post('/register', async (req, res) => {
     // Hash de la contraseña
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    if (users.some(u => u.username === username)) {
+    if (await getUser(username)) {
         return res.status(400).send('User already exists');
     } else {
-        users.push({ username, password: hashedPassword });
+        //users.push({ username, password: hashedPassword });
+        const query = 'INSERT INTO users (username, password) VALUES (?, ?)';
+        connection.query(query, [username, hashedPassword], (err, result) => {
+            if (err) {
+                console.error('Database query error:', err);
+                return result.status(500).send
+            }
 
-        console.log(users);
+        });
+        //console.log(users);
         res.status(201).send('User registered');
     }
 });
 
+function getUser(username) {
+    return new Promise((resolve, reject) => {
+        const query = 'SELECT * FROM users WHERE username = ?';
+        connection.query(query, [username], (err, res) => {
+            if (err) {
+                reject(err);
+                return;
+            }
+            resolve(res);
+        });
+    });
+}
+
 // Ruta de inicio de sesión
 app.post('/login', async (req, res) => {
-    const { username, password } = req.body;
+    const { username, password, keepSesion } = req.body;
     //console.log('users: ', users);
-    const user = users.find(u => u.username === username);
-
-    if (!user) {
+    const user = await getUser(username);
+    console.log('user: ', user);
+    if (user.length === 0) {
+        console.log('User not found');
         res.status(400).send('User not found');
+        return;
     }
 
-    const isPasswordValid = await bcrypt.compare(password, user.password);
+    const isPasswordValid = await bcrypt.compare(password, user[0].password);
 
     if (!isPasswordValid) {
-        return res.status(400).send('Invalid password');
+        res.status(400).send('Invalid password');
+        return;
+    } else {   
+        // Generar el token JWT
+        const rol = user[0].rol;
+        const expiresPeriod = '1h';
+        if (keepSesion) {
+            expiresPeriod = '7d'
+        }   
+            
+        const token = jwt.sign({ username: user[0].username }, JWT_SECRET, { expiresIn: expiresPeriod });
+        console.log('token: ', token);
+        res.status(200).json({ token, rol });
+        return;
+       
     }
-
-    // Generar el token JWT
-    const token = jwt.sign({ username: user.username }, JWT_SECRET, { expiresIn: '1h' });
-
-    res.json({ token });
+    
 });
 
 // Ruta protegida (requiere autenticación)

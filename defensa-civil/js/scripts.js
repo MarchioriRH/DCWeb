@@ -96,28 +96,29 @@ window.addEventListener('DOMContentLoaded', event => {
         touch: false
     });
 
-    if (document.getElementById('control-panel-btn')) 
-        var eventsControlPanelBtn = document.getElementById('control-panel-btn');
-    eventsControlPanelBtn.addEventListener('click', async () => {
-        try {
-            const response = await fetch(`http://localhost:${APP_PORT}/defensa-civil/assets/sections/forms/control_panel.html`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'text/html',
-                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+    if (document.getElementById('control-panel')) {
+        const eventsControlPanelBtn = document.getElementById('control-panel-btn');
+        eventsControlPanelBtn.addEventListener('click', async () => {
+            try {
+                const response = await fetch(`http://localhost:${APP_PORT}/defensa-civil/assets/sections/forms/control_panel.html`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'text/html',
+                        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                    }
+                });
+                //console.log(response);
+                if (response.ok) {
+                    console.log('Protected route data:', response);
+                    window.open(response.url);
+                } else {
+                    console.log('Failed to access protected route:', response);
                 }
-            });
-            //console.log(response);
-            if (response.ok) {
-                console.log('Protected route data:', response);
-                window.open(response.url);
-            } else {
-                console.log('Failed to access protected route:', response);
+            } catch (error) {
+                console.log('Failed to access protected route:', error);
             }
-        } catch (error) {
-            console.log('Failed to access protected route:', error);
-        }
-    });
+        });
+    }
 
     // Logout
     const logout = () => {
@@ -129,6 +130,18 @@ window.addEventListener('DOMContentLoaded', event => {
     }
     if (document.getElementById('logout-btn'))
         document.getElementById('logout-btn').addEventListener('click', logout);
+
+
+    if (document.getElementById('messageModal')) {
+        const messageModal = document.getElementById('msg-modal-close');
+        messageModal.addEventListener('click', () => {
+            console.log('Close modal');
+            //document.getElementById('message').innerText = '';
+            location.reload();
+        });
+    }
+
+    
     // async function accessProtectedRoute() {
     //     const token = localStorage.getItem('token');
     

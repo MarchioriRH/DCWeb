@@ -141,4 +141,10 @@ function generateCloseButton() {
     });
 }
 
-export { formatDate, formatTime, completeSelectOptions, generateCloseButton, generateEventsList};
+
+function showMessageModal(msg) {
+    $("#message1").html(`<p style="color:black;">${msg}</p>`);
+    $('#messageModal').modal('show');
+}
+
+export { formatDate, formatTime, completeSelectOptions, generateCloseButton, generateEventsList, showMessageModal};
