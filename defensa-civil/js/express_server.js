@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import path from 'path';
+
 
 import { createConnection } from 'mysql2';
 
@@ -15,8 +15,6 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Simulación de una base de datos
-// const users = [];
 
 // Clave secreta para firmar los JWT
 const JWT_SECRET = 'your_jwt_secret_key';
@@ -39,29 +37,29 @@ connection.connect(err => {
 
 // Ruta de registro
 app.post('/register', async (req, res) => {
-    const { username, password } = req.body;
-    //console.log(req);
+    const { username, password, rol } = req.body;
     // Hash de la contraseña
     const hashedPassword = await bcrypt.hash(password, 10);
-
-    if (await getUser(username)) {
-        return res.status(400).send('User already exists');
+    const user = await getUser(username);
+    if (user.length > 0) {
+        return res.status(400).send('El usuario ya existe');
     } else {
         //users.push({ username, password: hashedPassword });
-        const query = 'INSERT INTO users (username, password) VALUES (?, ?)';
-        connection.query(query, [username, hashedPassword], (err, result) => {
+        const query = 'INSERT INTO users (username, password, rol) VALUES (?, ?, ?)';
+        connection.query(query, [username, hashedPassword, rol], (err, result) => {
             if (err) {
-                console.error('Database query error:', err);
-                return result.status(500).send
+                console.error('Error en la consulta:', err);
+                return result.status(500).send('Error al registrar el usuario');
             }
 
         });
         //console.log(users);
-        res.status(201).send('User registered');
+        res.status(201).send('Usuario registrado');
     }
 });
 
 function getUser(username) {
+    debugger;
     return new Promise((resolve, reject) => {
         const query = 'SELECT * FROM users WHERE username = ?';
         connection.query(query, [username], (err, res) => {
@@ -81,29 +79,28 @@ app.post('/login', async (req, res) => {
     const user = await getUser(username);
     console.log('user: ', user);
     if (user.length === 0) {
-        console.log('User not found');
-        res.status(400).send('User not found');
+        console.log('Usuario no registrado');
+        res.status(400).send('Usuario no registrado');
         return;
     }
 
     const isPasswordValid = await bcrypt.compare(password, user[0].password);
 
     if (!isPasswordValid) {
-        res.status(400).send('Invalid password');
+        res.status(400).send('Constraseña incorrecta');
         return;
     } else {   
         // Generar el token JWT
         const rol = user[0].rol;
+        //console.log('rol: ', rol);
         const expiresPeriod = '1h';
         if (keepSesion) {
             expiresPeriod = '7d'
-        }   
-            
+        }             
         const token = jwt.sign({ username: user[0].username }, JWT_SECRET, { expiresIn: expiresPeriod });
-        console.log('token: ', token);
+        //console.log('token: ', token);
         res.status(200).json({ token, rol });
-        return;
-       
+        return;       
     }
     
 });
@@ -112,38 +109,39 @@ app.post('/login', async (req, res) => {
 app.get('/protected', (req, res) => {
     const authHeader = req.headers['authorization'];
     if (!authHeader) {
-        return res.status(401).send('Access denied');
+        return res.status(401).send('Acceso denegado');
     }
 
     const token = authHeader.split(' ')[1];
 
     jwt.verify(token, JWT_SECRET, (err, user) => {
         if (err) {
-            return res.status(403).send('Invalid token');
+            return res.status(403).send('Token invalido');
         }
 
-        res.json({ message: 'This is a protected route', user });
+        res.status(201).send('/defensa-civil/assets/sections/forms/control_panel.html');
     });
 });
 
-app.get('/defensa-civil/assets/sections/forms/event_form.html', (req, res) => {
-    const authHeader = req.headers['authorization'];
-    console.log('authHeader: ', authHeader)
-    if (!authHeader) {
-        return res.status(401).send('Access denied');
+// Middleware de autenticación
+function authenticateToken(req, res, next) {
+    const token = req.cookies.token;
+
+    if (!token) {
+        return res.sendStatus(403); 
     }
 
-    const token = authHeader.split(' ')[1];
-
-    jwt.verify(token, JWT_SECRET, (err, user) => {
+    jwt.verify(token, SECRET_KEY, (err, user) => {
         if (err) {
-            return res.status(403).send('Invalid token');
-        } 
-     
-        res.sendFile(path.join(__dirname, '/defensa-civil/assets/sections/forms/event_form.html'));
-       
+            return res.sendStatus(403);
+        }
+        req.user = user;
+        next();
     });
-});
+}
+
+
+
 
 /** Events routes */ 
 app.get('/events', (req, res) => {
@@ -197,7 +195,7 @@ app.post('/events', (req, res) => {
                 return result.status(500).send(err);
                 
             }
-            console.log('Event added');
+            console.log('Evento agregado');
         });
 });
 

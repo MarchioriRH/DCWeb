@@ -52,7 +52,7 @@ function completeSelectOptions(selectList, dataSource) {
 * @param {Array} response - Respuesta de la petición fetch
 */
 function generateEventsList(response) {
-    document.getElementById('card-title').innerHTML = 'Registros encontrados:';
+    document.getElementById('card-title').innerHTML = 'Registros hallados:';
     document.getElementById('card-text').innerHTML = '';
     generateCloseButton();
 

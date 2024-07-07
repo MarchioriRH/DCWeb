@@ -1,4 +1,4 @@
-import { completeSelectOptions, generateEventsList } from './utils.js';
+import { completeSelectOptions, generateEventsList, showMessageModal } from './utils.js';
 
 const SERVER_PORT = 3000;
 const APP_PORT = 5500;
@@ -8,7 +8,14 @@ const __STREETS_LIST__ = `http://localhost:${APP_PORT}/assets/data/calles_tandil
 const __DERIVATION_TYPES__ = `http://localhost:${APP_PORT}/assets/data/derivacion.json`;
 
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {  
+    if (window.location.pathname === '/defensa-civil/assets/sections/forms/control_panel.html' && !localStorage.getItem('token')) {
+        console.log('Access denied');
+        showMessageModal('Acceso denegado');
+        document.getElementById('msg-modal-close').addEventListener('click', () => {
+            window.location.href = `http://localhost:${APP_PORT}/defensa-civil/index.html`;        
+        });
+    }
     
     const searchAllBtn = document.getElementById('search-all-btn');
     searchAllBtn.addEventListener('click', async (e) => {
@@ -171,11 +178,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const searchDateBtn = document.getElementById('search-event-date-range-btn');
         searchByRangeFunction(searchDateBtn, 'search-before', 'search-after');
     });
-
-    // const exitBtn = document.getElementById('exit-btn');
-    // exitBtn.addEventListener('click', () => {
-    //     window.location.
-    // });
 });
 
 function searchByRangeFunction(btnId, inputId1, inputId2) {

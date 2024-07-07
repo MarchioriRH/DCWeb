@@ -52,9 +52,6 @@ window.addEventListener('DOMContentLoaded', event => {
         
         navbarUlList.appendChild(eventFormLiControlPanel);
         navbarUlList.appendChild(eventFormLiLogout);
-
-        // document.getElementById('control-panel').style.display = 'block';
-        // document.getElementById('logout-button').style.display = 'block';
         document.getElementById('login-btn').style.display = 'none';
     }
 
@@ -100,25 +97,28 @@ window.addEventListener('DOMContentLoaded', event => {
         const eventsControlPanelBtn = document.getElementById('control-panel-btn');
         eventsControlPanelBtn.addEventListener('click', async () => {
             try {
-                const response = await fetch(`http://localhost:${APP_PORT}/defensa-civil/assets/sections/forms/control_panel.html`, {
+                const response = await fetch(`http://localhost:${SERVER_PORT}/protected`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'text/html',
                         'Authorization': `Bearer ${localStorage.getItem('token')}`,
                     }
                 });
-                //console.log(response);
                 if (response.ok) {
                     console.log('Protected route data:', response);
-                    window.open(response.url);
+                    response.text().then(text => {
+                        window.location.href = `http://localhost:${APP_PORT}${text}`;
+                        console.log('text: ', text)});
                 } else {
-                    console.log('Failed to access protected route:', response);
+                    console.log('Error al acceder a la ruta protegida:', response);
                 }
             } catch (error) {
-                console.log('Failed to access protected route:', error);
+                console.log('Error al acceder a la ruta protegida:', error);
             }
         });
     }
+    
+    
 
     // Logout
     const logout = () => {
@@ -135,32 +135,7 @@ window.addEventListener('DOMContentLoaded', event => {
     if (document.getElementById('messageModal')) {
         const messageModal = document.getElementById('msg-modal-close');
         messageModal.addEventListener('click', () => {
-            console.log('Close modal');
-            //document.getElementById('message').innerText = '';
             location.reload();
         });
     }
-
-    
-    // async function accessProtectedRoute() {
-    //     const token = localStorage.getItem('token');
-    
-    //     const response = await fetch(`http://localhost:${SERVER_PORT}/protected`, {
-    //         headers: {
-    //             'Authorization': `Bearer ${token}`
-    //         }
-    //     });
-    
-    //     const data = await response.json();
-    
-    //     if (response.ok) {
-    //         console.log('Protected route data:', data);
-    //         return true;    
-    //     }
-    //     console.log('Failed to access protected route:', data);
-    //     return false;
-    // }
-
-    
-
 });

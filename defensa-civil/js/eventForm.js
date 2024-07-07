@@ -1,4 +1,4 @@
-import { completeSelectOptions } from './utils.js';
+import { completeSelectOptions, showMessageModal } from './utils.js';
 
 const SERVER_PORT = 3000;
 const APP_PORT = 5500;
@@ -7,6 +7,15 @@ const __EVENTS_TYPES__ = `http://localhost:${APP_PORT}/defensa-civil/assets/data
 const __DERIVATION_TYPES__ = `http://localhost:${APP_PORT}/defensa-civil/assets/data/derivacion.json`;
 
 document.addEventListener("DOMContentLoaded", () => {
+
+    if (window.location.pathname === '/defensa-civil/assets/sections/forms/event_form.html' && !localStorage.getItem('token')) {
+        console.log('Access denied');
+        showMessageModal('Acceso denegado');
+        document.getElementById('msg-modal-close').addEventListener('click', () => {
+            //window.location.href = `http://localhost:${APP_PORT}/defensa-civil/index.html`;      
+            window.close();  
+        });
+    }
     
     const streets = document.querySelectorAll('.tandil-street-list');
     completeSelectOptions(streets, __STREETS_LIST__);
