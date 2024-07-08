@@ -8,7 +8,7 @@ const __DERIVATION_TYPES__ = `http://localhost:${APP_PORT}/defensa-civil/assets/
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    if (window.location.pathname === '/defensa-civil/assets/sections/forms/event_form.html' && !localStorage.getItem('token')) {
+    if (window.location.pathname === '/defensa-civil/eventos/forms/event_form.html' && !localStorage.getItem('token')) {
         console.log('Access denied');
         showMessageModal('Acceso denegado');
         document.getElementById('msg-modal-close').addEventListener('click', () => {
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const cancelBtn = document.getElementById('cancel-new-event-btn');
     cancelBtn.addEventListener('click', () => {
         document.getElementById('myForm').reset();
-        window.location.href = `http://localhost:${APP_PORT}/defensa-civil/assets/sections/forms/control_panel.html`;
+        window.location.href = `http://localhost:${APP_PORT}/defensa-civil/eventos/control_panel.html`;
     });
 
     const submitBtn = document.getElementById('new-event-btn');

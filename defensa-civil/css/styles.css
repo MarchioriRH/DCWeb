@@ -5470,6 +5470,11 @@ textarea.form-control-lg {
   transition: transform 0.3s ease-out;
   transform: translate(0, -50px);
 }
+
+.opaque-modal {
+  background-color: currentColor;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .modal.fade .modal-dialog {
     transition: none;

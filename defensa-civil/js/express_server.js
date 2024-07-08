@@ -119,7 +119,7 @@ app.get('/protected', (req, res) => {
             return res.status(403).send('Token invalido');
         }
 
-        res.status(201).send('/defensa-civil/assets/sections/forms/control_panel.html');
+        res.status(201).send('/defensa-civil/eventos/control_panel.html');
     });
 });
 

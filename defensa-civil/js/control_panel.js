@@ -9,7 +9,7 @@ const __DERIVATION_TYPES__ = `http://localhost:${APP_PORT}/assets/data/derivacio
 
 
 document.addEventListener("DOMContentLoaded", () => {  
-    if (window.location.pathname === '/defensa-civil/assets/sections/forms/control_panel.html' && !localStorage.getItem('token')) {
+    if (window.location.pathname === '/defensa-civil/eventos/control_panel.html' && !localStorage.getItem('token')) {
         console.log('Access denied');
         showMessageModal('Acceso denegado');
         document.getElementById('msg-modal-close').addEventListener('click', () => {

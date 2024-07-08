@@ -143,7 +143,7 @@ function generateCloseButton() {
 
 
 function showMessageModal(msg) {
-    $("#message1").html(`<p style="color:black;">${msg}</p>`);
+    $("#message").html(`<p style="color:black;">${msg}</p>`);
     $('#messageModal').modal('show');
 }
 
