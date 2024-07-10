@@ -118,30 +118,9 @@ app.get('/protected', (req, res) => {
         if (err) {
             return res.status(403).send('Token invalido');
         }
-
-        res.status(201).send('/defensa-civil/eventos/control_panel.html');
+        res.status(201);
     });
 });
-
-// Middleware de autenticación
-function authenticateToken(req, res, next) {
-    const token = req.cookies.token;
-
-    if (!token) {
-        return res.sendStatus(403); 
-    }
-
-    jwt.verify(token, SECRET_KEY, (err, user) => {
-        if (err) {
-            return res.sendStatus(403);
-        }
-        req.user = user;
-        next();
-    });
-}
-
-
-
 
 /** Events routes */ 
 app.get('/events', (req, res) => {

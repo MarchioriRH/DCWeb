@@ -14,7 +14,7 @@
      <!-- Core theme CSS (includes Bootstrap)-->
      <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.3/dist/css/bootstrap.min.css">
      <link rel="stylesheet" href="../../css/eventFormStyle.css">
-     <link rel="stylesheet" href="../../css/style.css">
+     <link rel="stylesheet" href="../../css/styles.css">
 </head>
 <body>
 
@@ -32,17 +32,12 @@
             <form action="#" class="myform" id="myForm">
                 <div class="control-from">
                     <label for="date-time">Fecha *</label>
-                    <div class="date-time">
-                        <div>
-                            <input type="date" id="date" value="" required>
-                        </div>
+                    <div class="date" id="date">            
                     </div>
                 </div>
                 <div class="control-from">
-                    <label for="date-time">Hora *</label>
-                    <div>
-                        <input type="time" id="time" value="" required>
-                    </div>
+                    <label for="time">Hora *</label>
+                    <div id="time"></div>
                 </div>
                 <div class="full-width">Sobre el evento</div>
                 <div class="full-width">

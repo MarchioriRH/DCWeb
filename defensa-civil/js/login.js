@@ -6,14 +6,15 @@ const MSG_LOGIN_FAILED = 'Login fallido';
 const MSG_REGISTER_SUCCESS = 'Usuario registrado';
 const MSG_REGISTER_FAILED = 'Error al registrar el usuario';
 
-window.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('loginForm').addEventListener('submit', async (e) => {
         e.preventDefault();
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
         const keepSession = document.getElementById('remember_me').checked;
         //console.log(username, ' ',password);
-        const response = await fetch(`http://localhost:${SERVER_PORT}/login` , {
+        
+        await fetch(`http://localhost:${SERVER_PORT}/login` , {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -24,16 +25,15 @@ window.addEventListener('DOMContentLoaded', () => {
                 response.json().then(response => {
                     localStorage.setItem('token', response.token); 
                     localStorage.setItem('rol', response.rol);
-                });
-                showMessageModal(MSG_LOGIN_SUCCESS);                
-                document.getElementById('loginForm').reset();
+                });        
+                showMessageModal('Loggin exitoso');
             } else {
                 response.text().then(text => showMessageModal(text));
-                document.getElementById('loginForm').reset();
             }
         }).catch(error => {
             console.error('Error:', error);
         });
+        document.getElementById('loginForm').reset();
     });
 
     document.getElementById('registerForm').addEventListener('submit', async (e) => {
@@ -44,7 +44,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const rol = 'USER';
         //console.log(username, ' ',password);
 
-        const response = await fetch(`http://localhost:${SERVER_PORT}/register`, {
+        await fetch(`http://localhost:${SERVER_PORT}/register`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

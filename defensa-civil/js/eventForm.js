@@ -9,11 +9,23 @@ const __DERIVATION_TYPES__ = `http://localhost:${APP_PORT}/defensa-civil/assets/
 document.addEventListener("DOMContentLoaded", () => {
 
     if (window.location.pathname === '/defensa-civil/eventos/forms/event_form.html' && !localStorage.getItem('token')) {
-        console.log('Access denied');
-        showMessageModal('Acceso denegado');
-        document.getElementById('msg-modal-close').addEventListener('click', () => {
-            //window.location.href = `http://localhost:${APP_PORT}/defensa-civil/index.html`;      
-            window.close();  
+        fetch(`http://localhost:${SERVER_PORT}/protected` , {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            },
+        }).then(response => { 
+            console.log('response: ', response);               
+            if (!response.ok) {
+                console.log('Access denied');
+                showMessageModal('Acceso denegado');
+                document.getElementById('msg-modal-close').addEventListener('click', () => {
+                    window.location.href = `http://localhost:${APP_PORT}/defensa-civil/index.html`; 
+                });                
+            } 
+        }).catch(error => {
+            console.error('Error:', error);
         });
     }
     
@@ -32,11 +44,17 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href = `http://localhost:${APP_PORT}/defensa-civil/eventos/control_panel.html`;
     });
 
+    const date = document.getElementById('date');
+    date.textContent = new Date().toISOString().split('T')[0];
+
+    const time = document.getElementById('time');
+    time.textContent = new Date().toLocaleTimeString().split(' ')[0];
+
     const submitBtn = document.getElementById('new-event-btn');
     submitBtn.addEventListener('click', async(e) => {
         e.preventDefault();
-        var date = document.getElementById('date').value;
-        var time = document.getElementById('time').value;
+        var date = document.getElementById('date').textContent;
+        var time = document.getElementById('time').textContent;
         var eventType = document.getElementById('event-type').value;
         var street_1 = document.getElementById('street-1').value;
         var street_1_number = document.getElementById('street-1-number').value;

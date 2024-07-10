@@ -141,10 +141,20 @@ function generateCloseButton() {
     });
 }
 
-
+/**
+ * Funcion para mostrar un modal con un mensaje
+ * @param {*} msg 
+ */
 function showMessageModal(msg) {
-    $("#message").html(`<p style="color:black;">${msg}</p>`);
+    console.log('msg: ', msg);
+    $('#messageModal').modal({
+        backdrop: 'static',
+        keyboard: false,
+    });
+    $('#message').html(`<p style="color:black;">hola</p>`);
     $('#messageModal').modal('show');
 }
+
+
 
 export { formatDate, formatTime, completeSelectOptions, generateCloseButton, generateEventsList, showMessageModal};

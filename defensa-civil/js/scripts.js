@@ -10,7 +10,7 @@
 const SERVER_PORT = 3000;
 const APP_PORT = 5500;
 
-window.addEventListener('DOMContentLoaded', event => {
+document.addEventListener('DOMContentLoaded', event => {
     
     // Navbar shrink function
     document.addEventListener('scroll', () => {
@@ -107,7 +107,7 @@ window.addEventListener('DOMContentLoaded', event => {
                 if (response.ok) {
                     console.log('Protected route data:', response);
                     response.text().then(text => {
-                        window.location.href = `http://localhost:${APP_PORT}${text}`;
+                        window.location.href = `http://localhost:${APP_PORT}/defensa-civil/eventos/control_panel.html`;
                         console.log('text: ', text)});
                 } else {
                     console.log('Error al acceder a la ruta protegida:', response);

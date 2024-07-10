@@ -3,17 +3,30 @@ import { completeSelectOptions, generateEventsList, showMessageModal } from './u
 const SERVER_PORT = 3000;
 const APP_PORT = 5500;
 const __SEARCH_URL__ = `http://localhost:${SERVER_PORT}/events`;
-const __EVENTS_TYPES__ = `http://localhost:${APP_PORT}/assets/data/tipo_evento.json`;
-const __STREETS_LIST__ = `http://localhost:${APP_PORT}/assets/data/calles_tandil.json`;
-const __DERIVATION_TYPES__ = `http://localhost:${APP_PORT}/assets/data/derivacion.json`;
+const __EVENTS_TYPES__ = `http://localhost:${APP_PORT}/defensa-civil/assets/data/tipo_evento.json`;
+const __STREETS_LIST__ = `http://localhost:${APP_PORT}/defensa-civil/assets/data/calles_tandil.json`;
+const __DERIVATION_TYPES__ = `http://localhost:${APP_PORT}/defensa-civil/assets/data/derivacion.json`;
 
 
 document.addEventListener("DOMContentLoaded", () => {  
-    if (window.location.pathname === '/defensa-civil/eventos/control_panel.html' && !localStorage.getItem('token')) {
-        console.log('Access denied');
-        showMessageModal('Acceso denegado');
-        document.getElementById('msg-modal-close').addEventListener('click', () => {
-            window.location.href = `http://localhost:${APP_PORT}/defensa-civil/index.html`;        
+    if (window.location.pathname === '/defensa-civil/eventos/control_panel.html') {
+        fetch(`http://localhost:${SERVER_PORT}/protected` , {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            },
+        }).then(response => { 
+            console.log('response: ', response);               
+            if (!response.ok) {
+                console.log('Access denied');
+                showMessageModal('Acceso denegado');
+                document.getElementById('msg-modal-close').addEventListener('click', () => {
+                    window.location.href = `http://localhost:${APP_PORT}/defensa-civil/index.html`; 
+                });                
+            } 
+        }).catch(error => {
+            console.error('Error:', error);
         });
     }
     

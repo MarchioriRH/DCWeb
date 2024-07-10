@@ -1,1 +1,0 @@
-create DATABASE IF NOT EXISTS events;
