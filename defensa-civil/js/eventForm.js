@@ -1,33 +1,15 @@
-import { completeSelectOptions, showMessageModal } from './utils.js';
+import { completeSelectOptions, showMessageModal, verifyAccessToken } from './utils.js';
 
 const SERVER_PORT = 3000;
 const APP_PORT = 5500;
 const __STREETS_LIST__ = `http://localhost:${APP_PORT}/defensa-civil/assets/data/calles_tandil.json`;
 const __EVENTS_TYPES__ = `http://localhost:${APP_PORT}/defensa-civil/assets/data/tipo_evento.json`;
 const __DERIVATION_TYPES__ = `http://localhost:${APP_PORT}/defensa-civil/assets/data/derivacion.json`;
+const __PATH_NAME__ = '/defensa-civil/eventos/forms/event_form.html';
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    if (window.location.pathname === '/defensa-civil/eventos/forms/event_form.html' && !localStorage.getItem('token')) {
-        fetch(`http://localhost:${SERVER_PORT}/protected` , {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}`,
-            },
-        }).then(response => { 
-            console.log('response: ', response);               
-            if (!response.ok) {
-                console.log('Access denied');
-                showMessageModal('Acceso denegado');
-                document.getElementById('msg-modal-close').addEventListener('click', () => {
-                    window.location.href = `http://localhost:${APP_PORT}/defensa-civil/index.html`; 
-                });                
-            } 
-        }).catch(error => {
-            console.error('Error:', error);
-        });
-    }
+    verifyAccessToken(__PATH_NAME__);    
     
     const streets = document.querySelectorAll('.tandil-street-list');
     completeSelectOptions(streets, __STREETS_LIST__);
@@ -71,9 +53,6 @@ document.addEventListener("DOMContentLoaded", () => {
             derivation, event_description, informer_name, informer_last_name, informer_phone, informer_email); 
     });
 });
-    
-
-
     
 async function addNewEvent(date, time, eventType, street_1, street_1_number, street_2, street_3, 
     derivation, event_description, informer_name, informer_last_name, informer_phone, informer_email) {

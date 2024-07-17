@@ -19,7 +19,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Clave secreta para firmar los JWT
 const JWT_SECRET = 'your_jwt_secret_key';
 
-/** Data base connection */
+/**
+ * Conexión a la base de datos
+ * @param {string} host - Host de la base de datos
+ * @param {string} user - Usuario de la base de datos
+ * @param {string} password - Contraseña de la base de datos
+ * @param {string} database - Nombre de la base de datos
+ * @returns {object} - Conexión a la base de datos
+ * @throws {string} - Mensaje de error al conectar a la base de datos
+ */
 const connection = createConnection({
     host: 'localhost',
     user: 'root',
@@ -35,7 +43,15 @@ connection.connect(err => {
     console.log('Connected to the database.');
 });
 
-// Ruta de registro
+/**
+ * Ruta de registro
+ * @param {string} username - Nombre de usuario
+ * @param {string} password - Contraseña
+ * @param {string} rol - Rol del usuario
+ * @returns {string} - Mensaje de usuario registrado
+ * @throws {string} - Mensaje de usuario ya existente
+ * 
+ */
 app.post('/register', async (req, res) => {
     const { username, password, rol } = req.body;
     // Hash de la contraseña
@@ -44,7 +60,6 @@ app.post('/register', async (req, res) => {
     if (user.length > 0) {
         return res.status(400).send('El usuario ya existe');
     } else {
-        //users.push({ username, password: hashedPassword });
         const query = 'INSERT INTO users (username, password, rol) VALUES (?, ?, ?)';
         connection.query(query, [username, hashedPassword, rol], (err, result) => {
             if (err) {
@@ -53,11 +68,15 @@ app.post('/register', async (req, res) => {
             }
 
         });
-        //console.log(users);
         res.status(201).send('Usuario registrado');
     }
 });
 
+/**
+ * Obtiene un usuario de la base de datos
+ * @param {*} username 
+ * @returns 
+ */
 function getUser(username) {
     debugger;
     return new Promise((resolve, reject) => {
@@ -72,12 +91,18 @@ function getUser(username) {
     });
 }
 
-// Ruta de inicio de sesión
+/** 
+ * Ruta de inicio de sesión
+ * @param {string} username - Nombre de usuario
+ * @param {string} password - Contraseña
+ * @param {boolean} keepSesion - Mantener la sesión activa
+ * @returns {object} - Token JWT
+ * @throws {string} - Mensaje de usuario no registrado o contraseña incorrecta
+ * 
+ * */
 app.post('/login', async (req, res) => {
     const { username, password, keepSesion } = req.body;
-    //console.log('users: ', users);
     const user = await getUser(username);
-    console.log('user: ', user);
     if (user.length === 0) {
         console.log('Usuario no registrado');
         res.status(400).send('Usuario no registrado');
@@ -92,37 +117,46 @@ app.post('/login', async (req, res) => {
     } else {   
         // Generar el token JWT
         const rol = user[0].rol;
-        //console.log('rol: ', rol);
         const expiresPeriod = '1h';
         if (keepSesion) {
             expiresPeriod = '7d'
         }             
         const token = jwt.sign({ username: user[0].username }, JWT_SECRET, { expiresIn: expiresPeriod });
-        //console.log('token: ', token);
         res.status(200).json({ token, rol });
         return;       
-    }
-    
+    }    
 });
 
-// Ruta protegida (requiere autenticación)
-app.get('/protected', (req, res) => {
-    const authHeader = req.headers['authorization'];
-    if (!authHeader) {
-        return res.status(401).send('Acceso denegado');
-    }
-
-    const token = authHeader.split(' ')[1];
-
+/**
+ * Ruta para verificar el token
+ * @param {string} token - Token JWT
+ * @returns {string} - Mensaje de token válido o inválido
+ * @throws {string} - Mensaje de token inválido
+ * 
+ */
+app.get('/verifyToken', (req, res) =>{  
+    const token = req.headers['token']; 
+    console.log('token: ', token);
     jwt.verify(token, JWT_SECRET, (err, user) => {
         if (err) {
             return res.status(403).send('Token invalido');
         }
-        res.status(201);
+        res.status(200).send('Token valido');
     });
 });
 
-/** Events routes */ 
+/** 
+ * Events routes 
+ * @param {string} date - Event date
+ * @param {string} date1 - Initial date range
+ * @param {string} date2 - Final date range
+ * @param {string} street - Street name
+ * @param {string} type - Event type
+ * @param {string} derivation - Event derivation
+ * @returns {object} - Events list
+ * @throws {object} - Error message
+ * 
+ * */ 
 app.get('/events', (req, res) => {
     const { date, date1, date2, street, type, derivation } = req.query;
     let query = 'SELECT * FROM events_form WHERE 1';
@@ -163,6 +197,24 @@ app.get('/events', (req, res) => {
     });
 });
 
+/**
+ * Ruta para agregar un evento
+ * @param {string} date - Fecha del evento
+ * @param {string} time - Hora del evento
+ * @param {string} eventType - Tipo de evento
+ * @param {string} street_1 - Calle del evento
+ * @param {string} street_1_number - Número de calle
+ * @param {string} street_2 - Entre calle
+ * @param {string} street_3 - y calle
+ * @param {string} derivation - Derivación del evento
+ * @param {string} event_description - Descripción del evento
+ * @param {string} informer_name - Nombre del informante
+ * @param {string} informer_last_name - Apellido del informante
+ * @param {string} informer_phone - Teléfono del informante
+ * @param {string} informer_email - Email del informante
+ * @returns {string} - Mensaje de evento agregado
+ * @throws {object} - Error en la consulta
+ */
 app.post('/events', (req, res) => {
     const { date, time, eventType, street_1, street_1_number, street_2, street_3, derivation, event_description, informer_name, informer_last_name, informer_phone, informer_email } = req.body;
     const query = 'INSERT INTO events_form (date, time, type, street, number, street_1, street_2, derivation, event_description, informer_name, informer_last_name, informer_phone, informer_email) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
@@ -171,8 +223,7 @@ app.post('/events', (req, res) => {
     connection.query(query, values, (err, result) => {
             if (err) {
                 console.error('Database query error:', err);
-                return result.status(500).send(err);
-                
+                return result.status(500).send(err);                
             }
             console.log('Evento agregado');
         });

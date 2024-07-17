@@ -1,4 +1,4 @@
-import { completeSelectOptions, generateEventsList, showMessageModal } from './utils.js';
+import { completeSelectOptions, generateEventsList0, verifyAccessToken } from './utils.js';
 
 const SERVER_PORT = 3000;
 const APP_PORT = 5500;
@@ -6,29 +6,11 @@ const __SEARCH_URL__ = `http://localhost:${SERVER_PORT}/events`;
 const __EVENTS_TYPES__ = `http://localhost:${APP_PORT}/defensa-civil/assets/data/tipo_evento.json`;
 const __STREETS_LIST__ = `http://localhost:${APP_PORT}/defensa-civil/assets/data/calles_tandil.json`;
 const __DERIVATION_TYPES__ = `http://localhost:${APP_PORT}/defensa-civil/assets/data/derivacion.json`;
+const __PATH_NAME__ = '/defensa-civil/eventos/control_panel.html';
 
 
 document.addEventListener("DOMContentLoaded", () => {  
-    if (window.location.pathname === '/defensa-civil/eventos/control_panel.html') {
-        fetch(`http://localhost:${SERVER_PORT}/protected` , {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}`,
-            },
-        }).then(response => { 
-            console.log('response: ', response);               
-            if (!response.ok) {
-                console.log('Access denied');
-                showMessageModal('Acceso denegado');
-                document.getElementById('msg-modal-close').addEventListener('click', () => {
-                    window.location.href = `http://localhost:${APP_PORT}/defensa-civil/index.html`; 
-                });                
-            } 
-        }).catch(error => {
-            console.error('Error:', error);
-        });
-    }
+    verifyAccessToken(__PATH_NAME__);
     
     const searchAllBtn = document.getElementById('search-all-btn');
     searchAllBtn.addEventListener('click', async (e) => {
@@ -192,6 +174,8 @@ document.addEventListener("DOMContentLoaded", () => {
         searchByRangeFunction(searchDateBtn, 'search-before', 'search-after');
     });
 });
+
+
 
 function searchByRangeFunction(btnId, inputId1, inputId2) {
     btnId.addEventListener('click', async (e) => {

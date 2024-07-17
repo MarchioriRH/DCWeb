@@ -3,6 +3,9 @@
 * Copyright 2013-2023 Start Bootstrap
 * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-agency/blob/master/LICENSE)
 */
+
+import { showEventsLogoutBtns, showMessageModal } from "./utils.js";
+
 //
 // Scripts
 // 
@@ -10,7 +13,7 @@
 const SERVER_PORT = 3000;
 const APP_PORT = 5500;
 
-document.addEventListener('DOMContentLoaded', event => {
+document.addEventListener('DOMContentLoaded', () => {
     
     // Navbar shrink function
     document.addEventListener('scroll', () => {
@@ -37,24 +40,33 @@ document.addEventListener('DOMContentLoaded', event => {
         }                
     });   
     
-    // If user is logged in, show event form and logout button
-    if (localStorage.getItem('token')) {
-        const navbarUlList = document.getElementById('navbar-list-ul');
-        const eventFormLiControlPanel = document.createElement('li');
-        eventFormLiControlPanel.className = 'nav-item';
-        eventFormLiControlPanel.id = 'control-panel';
-        eventFormLiControlPanel.innerHTML = '<a class="nav-link" id="control-panel-btn" href="#">Eventos</a>';
-
-        const eventFormLiLogout = document.createElement('li');
-        eventFormLiLogout.className = 'nav-item';
-        eventFormLiLogout.id = 'logout';
-        eventFormLiLogout.innerHTML = '<a class="nav-link" id="logout-btn" href="#">Cerrar sesion</a>';
+    /**
+     * Si el token está presente, muestra los botones de eventos y logout
+     * @returns {void}
+     * 
+     */
+    async function showEventsLogoutBtnsAsync() {
+        if (!localStorage.getItem('token')) {
+            return;
+        }
+        try {
+            const response = await fetch(`http://localhost:${SERVER_PORT}/verifyToken`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'token': localStorage.getItem('token'),
+                },                
+            });
+            if (response.ok) {            
+                showEventsLogoutBtns();
+            } 
+        } catch (error) {
+            console.error('Error:', error);   
+        }
+    };
+    showEventsLogoutBtnsAsync(); 
         
-        navbarUlList.appendChild(eventFormLiControlPanel);
-        navbarUlList.appendChild(eventFormLiLogout);
-        document.getElementById('login-btn').style.display = 'none';
-    }
-
+  
     // Change navbar link color when toggler is clicked
     const togglerMenuBtn = document.querySelector('.navbar-toggler');
     togglerMenuBtn.addEventListener('click', event => { 
@@ -63,7 +75,7 @@ document.addEventListener('DOMContentLoaded', event => {
             element.style.color = 'white';            
         });
     });
-
+    
     //  Activate Bootstrap scrollspy on the main nav element
     const mainNav = document.body.querySelector('#mainNav');
     if (mainNav) {
@@ -86,6 +98,7 @@ document.addEventListener('DOMContentLoaded', event => {
         });
     });
 
+    
     // Carousel
     const myCarouselElement = document.querySelector('#adviceCarousel');
     const carousel = new bootstrap.Carousel(myCarouselElement, {
@@ -93,49 +106,40 @@ document.addEventListener('DOMContentLoaded', event => {
         touch: false
     });
 
-    if (document.getElementById('control-panel')) {
-        const eventsControlPanelBtn = document.getElementById('control-panel-btn');
-        eventsControlPanelBtn.addEventListener('click', async () => {
-            try {
-                const response = await fetch(`http://localhost:${SERVER_PORT}/protected`, {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'text/html',
-                        'Authorization': `Bearer ${localStorage.getItem('token')}`,
-                    }
-                });
-                if (response.ok) {
-                    console.log('Protected route data:', response);
-                    response.text().then(text => {
-                        window.location.href = `http://localhost:${APP_PORT}/defensa-civil/eventos/control_panel.html`;
-                        console.log('text: ', text)});
-                } else {
-                    console.log('Error al acceder a la ruta protegida:', response);
-                }
-            } catch (error) {
-                console.log('Error al acceder a la ruta protegida:', error);
-            }
-        });
-    }
     
     
-
-    // Logout
-    const logout = () => {
-        console.log('Logout');
+    /**
+     * Cierra la sesión del usuario
+     * @returns {void}
+     * 
+     */
+    function clearUserData() {
         localStorage.removeItem('token');
-        document.getElementById('control-panel').remove();
-        document.getElementById('logout').remove();
-        document.getElementById('login-btn').style.display = 'block';
+        localStorage.removeItem('user_data');
     }
-    if (document.getElementById('logout-btn'))
-        document.getElementById('logout-btn').addEventListener('click', logout);
-
-
-    if (document.getElementById('messageModal')) {
-        const messageModal = document.getElementById('msg-modal-close');
-        messageModal.addEventListener('click', () => {
-            location.reload();
-        });
+    
+    /**
+     * Verifica si la página ha sido recargada
+     * @returns {boolean}
+     */
+    function isPageReload() {
+        const entries = performance.getEntriesByType("navigation");
+        if (entries.length > 0 && entries[0].type === "reload") {
+            return true;
+        }
+        return false;
     }
+    
+    /**
+     * Cierra la sesión del usuario si la página no ha sido recargada
+     * @returns {void}
+     */
+    window.addEventListener('beforeunload', function() {
+        if (!isPageReload()) {
+            clearUserData();
+        }
+    });
+    
+            
 });
+        

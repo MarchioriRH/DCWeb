@@ -1,4 +1,5 @@
-
+const SERVER_PORT = 3000;
+const APP_PORT = 5500;
 
 /** Función para formatear fecha
  * @param {String} sqlDate - Fecha en formato SQL
@@ -146,7 +147,7 @@ function generateCloseButton() {
  * @param {*} msg 
  */
 function showMessageModal(msg) {
-    console.log('msg: ', msg);
+    //console.log('msg: ', msg);
     $('#messageModal').modal({
         backdrop: 'static',
         keyboard: false,
@@ -155,6 +156,81 @@ function showMessageModal(msg) {
     $('#messageModal').modal('show');
 }
 
+function verifyAccessToken(pathName) {
+    if (window.location.pathname === pathName && !localStorage.getItem('token')) {
+        console.log('No token found. Redirecting to index page.');
+        showMessageModal('Acceso denegado');
+        document.getElementById('msg-modal-close').addEventListener('click', () => {
+            window.location.href = `http://localhost:${APP_PORT}/defensa-civil/index.html`;
+        });
+    } else {
+        fetch(`http://localhost:${SERVER_PORT}/verifyToken`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'token': `${localStorage.getItem('token')}`,
+            },
+        })
+        .then(response => {
+            if (!response.ok) {
+                console.log('Access denied');
+                showMessageModal('Acceso denegado');
+                document.getElementById('msg-modal-close').addEventListener('click', () => {
+                    window.location.href = `http://localhost:${APP_PORT}/defensa-civil/index.html`;
+                });
+            } else {
+                console.log('Access granted');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            showMessageModal('Error en la conexión');
+            document.getElementById('msg-modal-close').addEventListener('click', () => {
+                window.location.href = `http://localhost:${APP_PORT}/defensa-civil/index.html`;
+            });
+        });
+    }
+}
+
+function showEventsLogoutBtns() {
+    if (document.getElementById('control-panel') && document.getElementById('logout')) {
+        return
+    }
+    const navbarUlList = document.getElementById('navbar-list-ul');
+
+    const eventFormLiControlPanel = document.createElement('li');
+    eventFormLiControlPanel.className = 'nav-item';
+    eventFormLiControlPanel.id = 'control-panel';
+    eventFormLiControlPanel.innerHTML = '<a class="nav-link" id="control-panel-btn" href="#">Eventos</a>';
+    navbarUlList.appendChild(eventFormLiControlPanel);
+
+    const eventFormLiLogout = document.createElement('li');
+    eventFormLiLogout.className = 'nav-item';
+    eventFormLiLogout.id = 'logout';
+    eventFormLiLogout.innerHTML = '<a class="nav-link" id="logout-btn" href="#">Cerrar sesion</a>';
+    navbarUlList.appendChild(eventFormLiLogout);
+
+    // Ocultar el botón de inicio de sesión
+    document.getElementById('login-btn').style.display = 'none';
+
+    // Añadir event listener al botón "Eventos"
+    document.getElementById('control-panel-btn').addEventListener('click', () => {
+        // Acción a realizar cuando se hace clic en el botón "Eventos"
+        //console.log('Botón Eventos clicado');
+        // Aquí puedes redirigir o cargar la página de eventos
+        window.location.href = `http://localhost:${APP_PORT}/defensa-civil/eventos/control_panel.html`;
+    });
+
+    // Añadir event listener al botón "Cerrar sesión"
+    document.getElementById('logout-btn').addEventListener('click', () => {
+        // Acción a realizar cuando se hace clic en el botón "Cerrar sesión"
+        //console.log('Botón Cerrar sesión clicado');
+        localStorage.removeItem('token');
+        localStorage.removeItem('rol');
+        window.location.href = `http://localhost:${APP_PORT}/defensa-civil/index.html`;
+    });
+}
 
 
-export { formatDate, formatTime, completeSelectOptions, generateCloseButton, generateEventsList, showMessageModal};
+export { formatDate, formatTime, completeSelectOptions, generateCloseButton, 
+    generateEventsList, showMessageModal, verifyAccessToken , showEventsLogoutBtns };

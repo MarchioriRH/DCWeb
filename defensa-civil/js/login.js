@@ -1,48 +1,65 @@
-import { showMessageModal } from './utils.js';
+import { showMessageModal, showEventsLogoutBtns } from './utils.js';
 
 const SERVER_PORT = 3000;
+const APP_PORT = 5500;
 const MSG_LOGIN_SUCCESS = 'Login exitoso';
 const MSG_LOGIN_FAILED = 'Login fallido';
 const MSG_REGISTER_SUCCESS = 'Usuario registrado';
 const MSG_REGISTER_FAILED = 'Error al registrar el usuario';
 
 document.addEventListener('DOMContentLoaded', () => {
+    /**
+     * Event listener para el formulario de login
+     * @param {string} username - Nombre de usuario
+     * @param {string} password - Contraseña
+     * @param {boolean} keepSession - Mantener la sesión activa
+     * @returns {void}
+     */
     document.getElementById('loginForm').addEventListener('submit', async (e) => {
         e.preventDefault();
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
         const keepSession = document.getElementById('remember_me').checked;
-        //console.log(username, ' ',password);
         
-        await fetch(`http://localhost:${SERVER_PORT}/login` , {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ username, password, keepSession })
-        }).then(response => {                
+        try {
+            const response = await fetch(`http://localhost:${SERVER_PORT}/login`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password, keepSession })
+            });
+    
             if (response.ok) {
-                response.json().then(response => {
-                    localStorage.setItem('token', response.token); 
-                    localStorage.setItem('rol', response.rol);
-                });        
+                const responseData = await response.json();
+                localStorage.setItem('token', responseData.token);
+                localStorage.setItem('rol', responseData.rol);
                 showMessageModal('Loggin exitoso');
+                showEventsLogoutBtns();
             } else {
-                response.text().then(text => showMessageModal(text));
+                const errorMessage = await response.text();
+                showMessageModal(errorMessage);
             }
-        }).catch(error => {
+        } catch (error) {
             console.error('Error:', error);
-        });
+        }
         document.getElementById('loginForm').reset();
     });
 
+    /**
+     * Event listener para el formulario de registro
+     * @param {string} username - Nombre de usuario
+     * @param {string} password - Contraseña
+     * @param {string} rol - Rol del usuario
+     * @returns {void}
+     * 
+     */
     document.getElementById('registerForm').addEventListener('submit', async (e) => {
         e.preventDefault();
 
         const username = document.getElementById('registerUsername').value;
         const password = document.getElementById('registerPassword').value;
         const rol = 'USER';
-        //console.log(username, ' ',password);
 
         await fetch(`http://localhost:${SERVER_PORT}/register`, {
             method: 'POST',
@@ -51,19 +68,16 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             body: JSON.stringify({ username, password, rol })
         }).then(async response => {
-            // if (response.ok) {
-            //     response.text().then(text => showMessageModal(text));
-            //     document.getElementById('registerForm').reset();
-            // } else {
-                response.text().then(text => showMessageModal(text));
-                document.getElementById('registerForm').reset();
-            // }
+            response.text().then(text => showMessageModal(text));
+            document.getElementById('registerForm').reset();
         }).catch(error => {
             console.error('Error:', error);
         });       
     });
 
 });
+
+
 
 
 
