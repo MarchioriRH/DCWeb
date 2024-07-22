@@ -1,3 +1,6 @@
+import { searchByEventId } from './control_panel.js';
+import { editEvent } from './eventForm.js';
+
 const SERVER_PORT = 3000;
 const APP_PORT = 5500;
 
@@ -27,8 +30,8 @@ function formatTime(sqlTime) {
  * @param {Array} selectList - Lista de elementos select
  * @param {String} dataSource - URL de la fuente de datos
 */
-function completeSelectOptions(selectList, dataSource) {
-    fetch(dataSource)
+async function completeSelectOptions(selectList, dataSource, defaultValue) {
+    await fetch(dataSource)
     .then(response => response.json())
     .then(data => {
         data = Object.values(data)[0];             
@@ -38,6 +41,9 @@ function completeSelectOptions(selectList, dataSource) {
                     const option = document.createElement('option');
                     option.value = item.data;
                     option.text = item.data;
+                    if (defaultValue && item.data === defaultValue) {
+                        option.selected = true;
+                    }
                     selectList[i].appendChild(option);
                 });
             }
@@ -48,6 +54,7 @@ function completeSelectOptions(selectList, dataSource) {
             console.error('Error:', error);
     });
 }
+
 
 /** Funcion para generar la lista de eventos 
 * @param {Array} response - Respuesta de la petición fetch
@@ -67,10 +74,12 @@ function generateEventsList(response) {
                     <table class="table table-striped" id="event-list">
                         <thead>
                             <tr>
+                                <th scope="col">ID</th>
                                 <th scope="col">Fecha</th>
                                 <th scope="col">Hora</th>
                                 <th scope="col">Tipo de evento</th>
                                 <th scope="col">Calle</th>
+                                <th scope="col">Nro</th>
                                 <th scope="col">Entre calle</th>
                                 <th scope="col">y calle</th>
                                 <th scope="col">Derivación</th>
@@ -99,10 +108,12 @@ function generateEventsList(response) {
         response.forEach(function (event) {
             const cardTr = document.createElement('tr');
             cardTr.innerHTML = `
+                        <td class="event-list-text" ><button id='edit-event-btn' type='button' >${event.id}</button></td>
                         <td class="event-list-text">${formatDate(event.date)}</td>
                         <td class="event-list-text">${formatTime(event.time)}</td>
                         <td class="event-list-text">${event.type}</td>
                         <td class="event-list-text">${event.street}</td>
+                        <td class="event-list-text">${event.number}</td>
                         <td class="event-list-text">${event.street_1}</td>
                         <td class="event-list-text">${event.street_2}</td>
                         <td class="event-list-text">${event.derivation}</td>
@@ -117,6 +128,18 @@ function generateEventsList(response) {
         container.appendChild(card);
     } else {
         console.error('La respuesta no es un array:', response);
+    }
+
+    const editEventBtn = document.querySelectorAll('#edit-event-btn');
+    for (let i = 0; i < editEventBtn.length; i++) {
+        editEventBtn[i].addEventListener('click', async (e) => {
+            e.preventDefault();
+            const eventId = Number(e.target.textContent);
+            console.log(eventId);
+            const response = await searchByEventId(eventId);
+            console.log(response);  
+            editEvent(response);
+        });
     }
 }
 
@@ -156,7 +179,7 @@ function showMessageModal(msg) {
     $('#messageModal').modal('show');
 }
 
-function verifyAccessToken(pathName) {
+async function verifyAccessToken(pathName) {
     if (window.location.pathname === pathName && !localStorage.getItem('token')) {
         console.log('No token found. Redirecting to index page.');
         showMessageModal('Acceso denegado');
@@ -164,14 +187,15 @@ function verifyAccessToken(pathName) {
             window.location.href = `http://localhost:${APP_PORT}/defensa-civil/index.html`;
         });
     } else {
-        fetch(`http://localhost:${SERVER_PORT}/verifyToken`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'token': `${localStorage.getItem('token')}`,
-            },
-        })
-        .then(response => {
+        try {
+            const response = await fetch(`http://localhost:${SERVER_PORT}/verifyToken`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`, // Using Bearer scheme for tokens
+                },
+            });
+
             if (!response.ok) {
                 console.log('Access denied');
                 showMessageModal('Acceso denegado');
@@ -181,16 +205,53 @@ function verifyAccessToken(pathName) {
             } else {
                 console.log('Access granted');
             }
-        })
-        .catch(error => {
+        } catch (error) {
             console.error('Error:', error);
             showMessageModal('Error en la conexión');
             document.getElementById('msg-modal-close').addEventListener('click', () => {
                 window.location.href = `http://localhost:${APP_PORT}/defensa-civil/index.html`;
             });
-        });
+        }
     }
 }
+
+
+
+// async function verifyAccessToken(pathName) {
+//     if (window.location.pathname === pathName && !localStorage.getItem('token')) {
+//         console.log('No token found. Redirecting to index page.');
+//         showMessageModal('Acceso denegado');
+//         document.getElementById('msg-modal-close').addEventListener('click', () => {
+//             window.location.href = `http://localhost:${APP_PORT}/defensa-civil/index.html`;
+//         });
+//     } else {
+//         await fetch(`http://localhost:${SERVER_PORT}/verifyToken`, {
+//             method: 'GET',
+//             headers: {
+//                 'Content-Type': 'application/json',
+//                 'token': `${localStorage.getItem('token')}`,
+//             },
+//         })
+//         .then(response => {
+//             if (!response.ok) {
+//                 console.log('Access denied');
+//                 showMessageModal('Acceso denegado');
+//                 document.getElementById('msg-modal-close').addEventListener('click', () => {
+//                     window.location.href = `http://localhost:${APP_PORT}/defensa-civil/index.html`;
+//                 });
+//             } else {
+//                 console.log('Access granted');
+//             }
+//         })
+//         .catch(error => {
+//             console.error('Error:', error);
+//             showMessageModal('Error en la conexión');
+//             document.getElementById('msg-modal-close').addEventListener('click', () => {
+//                 window.location.href = `http://localhost:${APP_PORT}/defensa-civil/index.html`;
+//             });
+//         });
+//     }
+// }
 
 function showEventsLogoutBtns() {
     if (document.getElementById('control-panel') && document.getElementById('logout')) {
@@ -232,5 +293,4 @@ function showEventsLogoutBtns() {
 }
 
 
-export { formatDate, formatTime, completeSelectOptions, generateCloseButton, 
-    generateEventsList, showMessageModal, verifyAccessToken , showEventsLogoutBtns };
+export { formatDate, formatTime, completeSelectOptions, generateCloseButton, generateEventsList, showMessageModal, verifyAccessToken , showEventsLogoutBtns };

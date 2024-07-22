@@ -1,4 +1,4 @@
-import { completeSelectOptions, generateEventsList0, verifyAccessToken } from './utils.js';
+import { completeSelectOptions, generateEventsList, verifyAccessToken } from './utils.js';
 
 const SERVER_PORT = 3000;
 const APP_PORT = 5500;
@@ -9,172 +9,192 @@ const __DERIVATION_TYPES__ = `http://localhost:${APP_PORT}/defensa-civil/assets/
 const __PATH_NAME__ = '/defensa-civil/eventos/control_panel.html';
 
 
-document.addEventListener("DOMContentLoaded", () => {  
-    verifyAccessToken(__PATH_NAME__);
-    
-    const searchAllBtn = document.getElementById('search-all-btn');
-    searchAllBtn.addEventListener('click', async (e) => {
-        e.preventDefault();        
-        if (document.getElementById('close-btn'))
-            document.getElementById('close-btn').remove();
-        try {
-            const response = await searchEvents(__SEARCH_URL__);     
-            generateEventsList(response);
-        } catch (error) {
-            console.error('Error al obtener eventos:', error);
-        }
-    });
+document.addEventListener("DOMContentLoaded", async () => {  
+    await verifyAccessToken(__PATH_NAME__);
+    if (document.getElementById('search-all-btn')) {
+        const searchAllBtn = document.getElementById('search-all-btn');
+        searchAllBtn.addEventListener('click', async (e) => {
+            e.preventDefault();        
+            if (document.getElementById('close-btn'))
+                document.getElementById('close-btn').remove();
+            try {
+                const response = await searchEvents(__SEARCH_URL__);     
+                generateEventsList(response);
+            } catch (error) {
+                console.error('Error al obtener eventos:', error);
+            }
+        });
+    }
 
-    const searchByEventType = document.getElementById('search-by-event-type');
-    searchByEventType.addEventListener('click', async (e) => {
-        e.preventDefault();
-        if (document.getElementById('close-btn'))
-            document.getElementById('close-btn').remove();
-        document.getElementById('card-container').innerHTML = '';
-        document.getElementById('card-title').innerHTML = 'Buscar eventos por tipo';
-        document.getElementById('card-text').innerHTML = 'Seleccione un tipo de evento para buscar registros.';
-        const container = document.getElementById('card-container');
-        const card = document.createElement('div');
-        card.className = 'event-form';
-        card.innerHTML = `
-            <form id="search-event-type-form">
-                <div class="form-group">
-                    <label for="event-type">Tipo de evento:</label>
-                    <select class="form-control" id="event-type" required>                        
-                    </select>
-                </div>
-                <button type="button" class="btn btn-primary" id="search-event-type-btn">Buscar</button>
-            </form>
-        `;
-        container.appendChild(card);
-
-        const events_types = document.querySelectorAll('#event-type');
-        completeSelectOptions(events_types, __EVENTS_TYPES__);
-    
-        const searchEventTypeBtn = document.getElementById('search-event-type-btn');
-        searchByFunction(searchEventTypeBtn, 'event-type', 'type');
-    }); 
-
-    const searchByDerivation = document.getElementById('search-by-derivation');
-    searchByDerivation.addEventListener('click', async (e) => {
-        e.preventDefault();
-        if (document.getElementById('close-btn'))
-            document.getElementById('close-btn').remove();
-        document.getElementById('card-container').innerHTML = '';
-        document.getElementById('card-title').innerHTML = 'Buscar eventos por derivacion';
-        document.getElementById('card-text').innerHTML = 'Seleccione a quien se derivo para buscar registros.';
-        const container = document.getElementById('card-container');
-        const card = document.createElement('div');
-        card.className = 'event-form';
-        card.innerHTML = `
-            <form id="search-derivation-form">
-                <div class="form-group">
-                    <label for="event-type">Derivacion:</label>
-                    <select class="form-control" id="derivation" required>                        
-                    </select>
-                </div>
-                <button type="button" class="btn btn-primary" id="search-event-derivation-btn">Buscar</button>
-            </form>
-        `;
-        container.appendChild(card);
-
-        const derivationList = document.querySelectorAll('#derivation');
-        completeSelectOptions(derivationList, __DERIVATION_TYPES__);
-
-        const searchDerivationBtn = document.getElementById('search-event-derivation-btn');
-        searchByFunction(searchDerivationBtn, 'derivation', 'derivation');        
-    });
-
-    const searchByStreet = document.getElementById('search-by-street');
-    searchByStreet.addEventListener('click', async (e) => {
-        e.preventDefault();
-        if (document.getElementById('close-btn'))
-            document.getElementById('close-btn').remove();
-        document.getElementById('card-container').innerHTML = '';
-        document.getElementById('card-title').innerHTML = 'Buscar eventos por calle';
-        document.getElementById('card-text').innerHTML = 'Seleccione la calle para buscar registros.';
-        const container = document.getElementById('card-container');
-        const card = document.createElement('div');
-        card.className = 'event-form';
-        card.innerHTML = `
-            <form id="search-event-street-form">
-                <div class="form-group">
-                    <label for="event-type">Calle del evento:</label>
-                    <select class="form-control" id="street-list" required>                        
-                    </select>
-                </div>
-                <button type="button" class="btn btn-primary" id="search-event-street-btn">Buscar</button>
-            </form>
-        `;
-        container.appendChild(card);
-
-        const streetList = document.querySelectorAll('#street-list');
-        completeSelectOptions(streetList, __STREETS_LIST__);
-
-        const searchStreetBtn = document.getElementById('search-event-street-btn');
-        searchByFunction(searchStreetBtn, 'street-list', 'street') ;
-    });
-
-    const searchByDate = document.getElementById('search-by-date');
-    searchByDate.addEventListener('click', async (e) => {
-        e.preventDefault();
-        if (document.getElementById('close-btn'))
-            document.getElementById('close-btn').remove();
-        document.getElementById('card-container').innerHTML = '';
-        document.getElementById('card-title').innerHTML = 'Buscar eventos por fecha';
-        document.getElementById('card-text').innerHTML = 'Seleccione la fecha para buscar registros.';
-        const container = document.getElementById('card-container');
-        const card = document.createElement('div');
-        card.className = 'event-form';
-        card.innerHTML = `
-            <form id="search-date-form">
-                <div class="form-group">
-                    <label for="event-type">Fecha del evento:</label>
+    if (document.getElementById('search-by-event-type')) {
+        const searchByEventType = document.getElementById('search-by-event-type');
+        searchByEventType.addEventListener('click', async (e) => {
+            e.preventDefault();
+            if (document.getElementById('close-btn'))
+                document.getElementById('close-btn').remove();
+            document.getElementById('card-container').innerHTML = '';
+            document.getElementById('card-title').innerHTML = 'Buscar eventos por tipo';
+            document.getElementById('card-text').innerHTML = 'Seleccione un tipo de evento para buscar registros.';
+            const container = document.getElementById('card-container');
+            const card = document.createElement('div');
+            card.className = 'event-form';
+            card.innerHTML = `
+                <form id="search-event-type-form">
                     <div class="form-group">
-                        <input type="date" id="search-date"></input>
+                        <label for="event-type">Tipo de evento:</label>
+                        <select class="form-control" id="event-type" required>                        
+                        </select>
                     </div>
-                </div>
-                <button type="button" class="btn btn-primary" id="search-event-date-btn">Buscar</button>
-            </form>
-        `;
-        container.appendChild(card);
-    
-        const searchDateBtn = document.getElementById('search-event-date-btn');
-        searchByFunction(searchDateBtn, 'search-date', 'date');
-    });
+                    <button type="button" class="btn btn-primary" id="search-event-type-btn">Buscar</button>
+                </form>
+            `;
+            container.appendChild(card);
 
-    const searchByDateRange = document.getElementById('search-by-date-range');
-    searchByDateRange.addEventListener('click', async (e) => {
-        e.preventDefault();
-        if (document.getElementById('close-btn'))
-            document.getElementById('close-btn').remove();
-        document.getElementById('card-container').innerHTML = '';
-        document.getElementById('card-title').innerHTML = 'Buscar eventos entre fechas';
-        document.getElementById('card-text').innerHTML = 'Seleccione las fechas para buscar registros.';
-        const container = document.getElementById('card-container');
-        const card = document.createElement('div');
-        card.className = 'event-form';
-        card.innerHTML = `
-            <form id="search-date-range-form">
-                <div class="form-group">
-                    <label for="event-type">Fechas posibles del evento:</label>
+            const events_types = document.querySelectorAll('#event-type');
+            completeSelectOptions(events_types, __EVENTS_TYPES__);
+        
+            const searchEventTypeBtn = document.getElementById('search-event-type-btn');
+            searchByFunction(searchEventTypeBtn, 'event-type', 'type');
+        }); 
+    }      
+
+    if (document.getElementById('search-by-derivation')) {
+        const searchByDerivation = document.getElementById('search-by-derivation');
+        searchByDerivation.addEventListener('click', async (e) => {
+            e.preventDefault();
+            if (document.getElementById('close-btn'))
+                document.getElementById('close-btn').remove();
+            document.getElementById('card-container').innerHTML = '';
+            document.getElementById('card-title').innerHTML = 'Buscar eventos por derivacion';
+            document.getElementById('card-text').innerHTML = 'Seleccione a quien se derivo para buscar registros.';
+            const container = document.getElementById('card-container');
+            const card = document.createElement('div');
+            card.className = 'event-form';
+            card.innerHTML = `
+                <form id="search-derivation-form">
                     <div class="form-group">
-                        <label for="event-type">Desde:</label>
-                        <input type="date" id="search-before"></input>
-                        <label for="event-type">Hasta:</label>
-                        <input type="date" id="search-after"></input>
+                        <label for="event-type">Derivacion:</label>
+                        <select class="form-control" id="derivation" required>                        
+                        </select>
                     </div>
-                </div>
-                <button type="button" class="btn btn-primary" id="search-event-date-range-btn">Buscar</button>
-            </form>
-        `;
-        container.appendChild(card);
-    
-        const searchDateBtn = document.getElementById('search-event-date-range-btn');
-        searchByRangeFunction(searchDateBtn, 'search-before', 'search-after');
-    });
+                    <button type="button" class="btn btn-primary" id="search-event-derivation-btn">Buscar</button>
+                </form>
+            `;
+            container.appendChild(card);
+
+            const derivationList = document.querySelectorAll('#derivation');
+            completeSelectOptions(derivationList, __DERIVATION_TYPES__);
+
+            const searchDerivationBtn = document.getElementById('search-event-derivation-btn');
+            searchByFunction(searchDerivationBtn, 'derivation', 'derivation');        
+        });
+    }
+
+    if (document.getElementById('search-by-street')) {
+        const searchByStreet = document.getElementById('search-by-street');
+        searchByStreet.addEventListener('click', async (e) => {
+            e.preventDefault();
+            if (document.getElementById('close-btn'))
+                document.getElementById('close-btn').remove();
+            document.getElementById('card-container').innerHTML = '';
+            document.getElementById('card-title').innerHTML = 'Buscar eventos por calle';
+            document.getElementById('card-text').innerHTML = 'Seleccione la calle para buscar registros.';
+            const container = document.getElementById('card-container');
+            const card = document.createElement('div');
+            card.className = 'event-form';
+            card.innerHTML = `
+                <form id="search-event-street-form">
+                    <div class="form-group">
+                        <label for="event-type">Calle del evento:</label>
+                        <select class="form-control" id="street-list" required>                        
+                        </select>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="search-event-street-btn">Buscar</button>
+                </form>
+            `;
+            container.appendChild(card);
+
+            const streetList = document.querySelectorAll('#street-list');
+            completeSelectOptions(streetList, __STREETS_LIST__);
+
+            const searchStreetBtn = document.getElementById('search-event-street-btn');
+            searchByFunction(searchStreetBtn, 'street-list', 'street') ;
+        });
+    }
+
+    if (document.getElementById('search-by-date')) {
+        const searchByDate = document.getElementById('search-by-date');
+        searchByDate.addEventListener('click', async (e) => {
+            e.preventDefault();
+            if (document.getElementById('close-btn'))
+                document.getElementById('close-btn').remove();
+            document.getElementById('card-container').innerHTML = '';
+            document.getElementById('card-title').innerHTML = 'Buscar eventos por fecha';
+            document.getElementById('card-text').innerHTML = 'Seleccione la fecha para buscar registros.';
+            const container = document.getElementById('card-container');
+            const card = document.createElement('div');
+            card.className = 'event-form';
+            card.innerHTML = `
+                <form id="search-date-form">
+                    <div class="form-group">
+                        <label for="event-type">Fecha del evento:</label>
+                        <div class="form-group">
+                            <input type="date" id="search-date"></input>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="search-event-date-btn">Buscar</button>
+                </form>
+            `;
+            container.appendChild(card);
+        
+            const searchDateBtn = document.getElementById('search-event-date-btn');
+            searchByFunction(searchDateBtn, 'search-date', 'date');
+        });
+    }
+
+    if (document.getElementById('search-by-date-range')) {
+        const searchByDateRange = document.getElementById('search-by-date-range');
+        searchByDateRange.addEventListener('click', async (e) => {
+            e.preventDefault();
+            if (document.getElementById('close-btn'))
+                document.getElementById('close-btn').remove();
+            document.getElementById('card-container').innerHTML = '';
+            document.getElementById('card-title').innerHTML = 'Buscar eventos entre fechas';
+            document.getElementById('card-text').innerHTML = 'Seleccione las fechas para buscar registros.';
+            const container = document.getElementById('card-container');
+            const card = document.createElement('div');
+            card.className = 'event-form';
+            card.innerHTML = `
+                <form id="search-date-range-form">
+                    <div class="form-group">
+                        <label for="event-type">Fechas posibles del evento:</label>
+                        <div class="form-group">
+                            <label for="event-type">Desde:</label>
+                            <input type="date" id="search-before"></input>
+                            <label for="event-type">Hasta:</label>
+                            <input type="date" id="search-after"></input>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="search-event-date-range-btn">Buscar</button>
+                </form>
+            `;
+            container.appendChild(card);
+        
+            const searchDateBtn = document.getElementById('search-event-date-range-btn');
+            searchByRangeFunction(searchDateBtn, 'search-before', 'search-after');
+        });
+    }    
 });
 
+async function searchByEventId(eventId) {
+   try {
+        const dataUrl = `${__SEARCH_URL__}?id=${eventId}`;
+        const response = await searchEvents(dataUrl);
+        return response;
+    } catch (error) {
+        console.error('Error al obtener eventos:', error);
+    }    
+}
 
 
 function searchByRangeFunction(btnId, inputId1, inputId2) {
@@ -212,7 +232,7 @@ async function searchEvents(dataUrl) {
     }
 }
 
-
+export { searchByEventId };
 
 
 

@@ -134,9 +134,9 @@ app.post('/login', async (req, res) => {
  * @throws {string} - Mensaje de token inválido
  * 
  */
-app.get('/verifyToken', (req, res) =>{  
-    const token = req.headers['token']; 
-    console.log('token: ', token);
+app.get('/verifyToken', (req, res) => {
+    const token = req.headers['authorization'].split(' ')[1]; // Extraer el token
+    // Lógica para verificar el token...
     jwt.verify(token, JWT_SECRET, (err, user) => {
         if (err) {
             return res.status(403).send('Token invalido');
@@ -144,6 +144,18 @@ app.get('/verifyToken', (req, res) =>{
         res.status(200).send('Token valido');
     });
 });
+
+
+// app.get('/verifyToken', async (req, res) => {  
+//     const token = req.headers['token']; 
+//     console.log('token: ', token);
+//     jwt.verify(token, JWT_SECRET, (err, user) => {
+//         if (err) {
+//             return res.status(403).send('Token invalido');
+//         }
+//         res.status(200).send('Token valido');
+//     });
+// });
 
 /** 
  * Events routes 
@@ -158,10 +170,15 @@ app.get('/verifyToken', (req, res) =>{
  * 
  * */ 
 app.get('/events', (req, res) => {
-    const { date, date1, date2, street, type, derivation } = req.query;
+    const { id, date, date1, date2, street, type, derivation } = req.query;
     let query = 'SELECT * FROM events_form WHERE 1';
     let values = [];
-    
+
+    if (id) {
+        query += ' AND id = ?';
+        values.push(id);
+    }
+
     if (date) {
         query += ' AND date = ?';
         values.push(date);

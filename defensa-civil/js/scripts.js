@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     function clearUserData() {
         localStorage.removeItem('token');
-        localStorage.removeItem('user_data');
+        localStorage.removeItem('rol');
     }
     
     /**
@@ -134,11 +134,12 @@ document.addEventListener('DOMContentLoaded', () => {
      * Cierra la sesión del usuario si la página no ha sido recargada
      * @returns {void}
      */
-    window.addEventListener('beforeunload', function() {
-        if (!isPageReload()) {
-            clearUserData();
-        }
-    });
+    // window.addEventListener('beforeunload', function() {
+    //     if (!isPageReload()) {
+    //         console.log('Sesión cerrada');
+    //         clearUserData();
+    //     }
+    // });
     
             
 });
