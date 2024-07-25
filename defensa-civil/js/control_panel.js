@@ -1,4 +1,4 @@
-import { completeSelectOptions, generateEventsList, initializeControlPanel, searchByEventId, searchByRangeFunction, searchAllEvents } from './utils.js';
+import { completeSelectOptions, generateEventsList, searchAllEvents, verifyAccessToken, searchEvents } from './utils.js';
 
 const SERVER_PORT = 3000;
 const APP_PORT = 5500;
@@ -6,10 +6,12 @@ const __SEARCH_URL__ = `http://localhost:${SERVER_PORT}/events`;
 const __EVENTS_TYPES__ = `http://localhost:${APP_PORT}/defensa-civil/assets/data/tipo_evento.json`;
 const __STREETS_LIST__ = `http://localhost:${APP_PORT}/defensa-civil/assets/data/calles_tandil.json`;
 const __DERIVATION_TYPES__ = `http://localhost:${APP_PORT}/defensa-civil/assets/data/derivacion.json`;
+const __CONTROL_PANEL_PATH_NAME__ = '/defensa-civil/eventos/control_panel.html';
+
 
 
 document.addEventListener("DOMContentLoaded", async () => {
-    await initializeControlPanel();
+    await verifyAccessToken(__CONTROL_PANEL_PATH_NAME__);
 
     const searchConfig = [
         {
@@ -46,6 +48,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         {
             buttonId: 'search-by-date',
             title: 'Buscar eventos por fecha',
+            selectId: 'event-date',
             text: 'Seleccione la fecha para buscar registros.',
             formHtml: generateDateFormHtml('search-date', 'Fecha del evento:', 'search-event-date-btn'),
             searchFunction: (btn, inputId) => searchByFunction(btn, inputId, 'date')
@@ -53,6 +56,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         {
             buttonId: 'search-by-date-range',
             title: 'Buscar eventos entre fechas',
+            selectId: 'date-range',
             text: 'Seleccione las fechas para buscar registros.',
             formHtml: generateDateRangeFormHtml('search-before', 'Desde:', 'search-after', 'Hasta:', 'search-event-date-range-btn'),
             searchFunction: (btn, beforeId, afterId) => searchByRangeFunction(btn, beforeId, afterId)
@@ -78,14 +82,6 @@ function registerSearchEvent({ buttonId, handler, title, text, formHtml, selectI
     });
 }
 
-async function searchAllEvents() {
-    try {
-        const response = await searchEvents(__SEARCH_URL__);
-        generateEventsList(response);
-    } catch (error) {
-        console.error('Error al obtener eventos:', error);
-    }
-}
 
 function removeCloseButton() {
     const closeBtn = document.getElementById('close-btn');
@@ -113,7 +109,8 @@ function setupSearchForm(title, text, formHtml, selectId, selectUrl, searchFunct
         completeSelectOptions(selectElements, selectUrl);
     }
 
-    const searchBtn = document.getElementById(`${selectId}-btn`);
+    console.log(selectId);
+    const searchBtn = document.getElementById(`search-${selectId}-btn`);
     if (searchFunction) searchFunction(searchBtn, selectId);
 }
 
@@ -155,6 +152,33 @@ function generateDateRangeFormHtml(beforeId, beforeLabel, afterId, afterLabel, b
     `;
 }
 
+
+function searchByFunction(button, inputId, searchParam) {
+    button.addEventListener('click', async (e) => {
+        e.preventDefault();
+        const value = document.getElementById(`${inputId}`).value;
+        try {
+            const response = await searchEvents(`${__SEARCH_URL__}?${searchParam}=${value}`);
+            generateEventsList(response);
+        } catch (error) {
+            console.error(`Error al buscar eventos por ${searchParam}:`, error);
+        }
+    });
+}
+
+function searchByRangeFunction(button, beforeId, afterId) {
+    button.addEventListener('click', async (e) => {
+        e.preventDefault();
+        const beforeDate = document.getElementById(`${beforeId}`).value;
+        const afterDate = document.getElementById(`${afterId}`).value;
+        try {
+            const response = await searchEvents(`${__SEARCH_URL__}?date_from=${beforeDate}&date_to=${afterDate}`);
+            generateEventsList(response);
+        } catch (error) {
+            console.error('Error al buscar eventos por rango de fechas:', error);
+        }
+    });
+}
 
 
 // function searchByRangeFunction(btnId, inputId1, inputId2) {

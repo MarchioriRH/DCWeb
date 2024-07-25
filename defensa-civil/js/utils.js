@@ -7,6 +7,7 @@ const __STREETS_LIST__ = `http://localhost:${APP_PORT}/defensa-civil/assets/data
 const __EVENTS_TYPES__ = `http://localhost:${APP_PORT}/defensa-civil/assets/data/tipo_evento.json`;
 const __DERIVATION_TYPES__ = `http://localhost:${APP_PORT}/defensa-civil/assets/data/derivacion.json`;
 const __EVENT_FORM_PATH_NAME__ = '/defensa-civil/eventos/forms/event_form.html';
+const __SEARCH_URL__ = `http://localhost:${SERVER_PORT}/events`;
 
 const __CONTROL_PANEL_PATH_NAME__ = '/defensa-civil/eventos/control_panel.html';
 
@@ -381,32 +382,6 @@ export async function addNewEvent(date, time, eventType, street_1, street_1_numb
     });
 }
 
-function searchByFunction(button, inputId, searchParam) {
-    button.addEventListener('click', async (e) => {
-        e.preventDefault();
-        const value = document.getElementById(inputId).value;
-        try {
-            const response = await searchEvents(`${__SEARCH_URL__}?${searchParam}=${value}`);
-            generateEventsList(response);
-        } catch (error) {
-            console.error(`Error al buscar eventos por ${searchParam}:`, error);
-        }
-    });
-}
-
-function searchByRangeFunction(button, beforeId, afterId) {
-    button.addEventListener('click', async (e) => {
-        e.preventDefault();
-        const beforeDate = document.getElementById(beforeId).value;
-        const afterDate = document.getElementById(afterId).value;
-        try {
-            const response = await searchEvents(`${__SEARCH_URL__}?date_from=${beforeDate}&date_to=${afterDate}`);
-            generateEventsList(response);
-        } catch (error) {
-            console.error('Error al buscar eventos por rango de fechas:', error);
-        }
-    });
-}
 
 
 async function searchByEventId(eventId) {
@@ -419,7 +394,30 @@ async function searchByEventId(eventId) {
     }    
 }
 
+export async function searchAllEvents() {
+    try {
+        const response = await searchEvents(__SEARCH_URL__);
+        generateEventsList(response);
+    } catch (error) {
+        console.error('Error al obtener eventos:', error);
+    }
+}
+
+async function searchEvents(dataUrl) {
+    try {        
+        const response = await fetch(dataUrl);
+        if (!response.ok) {
+            throw new Error('Network response was not ok' + response.statusText);
+        }
+        const data = await response.json();
+        return data; // Retorna los datos como un array de objetos
+    } catch (error) {
+        console.error('Error al obtener los eventos:', error);
+        return []; // Retorna un array vacío en caso de error
+    }
+}
+
 
 export { formatDate, formatTime, completeSelectOptions, generateCloseButton, 
     generateEventsList, showMessageModal, verifyAccessToken , 
-    showEventsLogoutBtns, editEvent, searchByEventId, searchByFunction, searchByRangeFunction };
+    showEventsLogoutBtns, editEvent, searchByEventId, searchEvents };
