@@ -1,5 +1,3 @@
-//import { searchByEventId } from './control_panel.js';
-//import { editEvent } from './eventForm.js';
 
 const SERVER_PORT = 3000;
 const APP_PORT = 5500;
@@ -186,6 +184,12 @@ function showMessageModal(msg) {
     $('#messageModal').modal('show');
 }
 
+/**
+ * Verifica que exista un token de acceso y que este sea valido
+ * @param {*} pathName 
+ * @returns {void}
+ * 
+ */
 async function verifyAccessToken(pathName) {
     if (window.location.pathname === pathName && !localStorage.getItem('token')) {
         console.log('No token found. Redirecting to index page.');
@@ -222,44 +226,11 @@ async function verifyAccessToken(pathName) {
     }
 }
 
-
-
-// async function verifyAccessToken(pathName) {
-//     if (window.location.pathname === pathName && !localStorage.getItem('token')) {
-//         console.log('No token found. Redirecting to index page.');
-//         showMessageModal('Acceso denegado');
-//         document.getElementById('msg-modal-close').addEventListener('click', () => {
-//             window.location.href = `http://localhost:${APP_PORT}/defensa-civil/index.html`;
-//         });
-//     } else {
-//         await fetch(`http://localhost:${SERVER_PORT}/verifyToken`, {
-//             method: 'GET',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 'token': `${localStorage.getItem('token')}`,
-//             },
-//         })
-//         .then(response => {
-//             if (!response.ok) {
-//                 console.log('Access denied');
-//                 showMessageModal('Acceso denegado');
-//                 document.getElementById('msg-modal-close').addEventListener('click', () => {
-//                     window.location.href = `http://localhost:${APP_PORT}/defensa-civil/index.html`;
-//                 });
-//             } else {
-//                 console.log('Access granted');
-//             }
-//         })
-//         .catch(error => {
-//             console.error('Error:', error);
-//             showMessageModal('Error en la conexión');
-//             document.getElementById('msg-modal-close').addEventListener('click', () => {
-//                 window.location.href = `http://localhost:${APP_PORT}/defensa-civil/index.html`;
-//             });
-//         });
-//     }
-// }
-
+/**
+ * Muestra los botones de eventos y cerrar sesión
+ * @returns {void}
+ * 
+ */
 function showEventsLogoutBtns() {
     if (document.getElementById('control-panel') && document.getElementById('logout')) {
         return
@@ -299,7 +270,10 @@ function showEventsLogoutBtns() {
     });
 }
 
-
+/**
+ * Función para editar un evento
+ * @param {*} eventData 
+ */
 function editEvent(eventData) {
     console.log(eventData);
     // Guardar los datos en localStorage
@@ -307,6 +281,10 @@ function editEvent(eventData) {
     window.location.href = `http://localhost:${APP_PORT}/defensa-civil/eventos/forms/event_form.html`;
 }
 
+/**
+ * Función para llenar el formulario con los datos del evento determinado
+ * @param {*} eventData 
+ */
 async function fillFormWithEventData(eventData) {
     eventData = eventData[0];
     document.getElementById('date').textContent = eventData.date;
@@ -324,8 +302,13 @@ async function fillFormWithEventData(eventData) {
     document.getElementById('informer-email').value = eventData.informer_email;
 }
 
+/**
+ * Función para inicializar el formulario
+ * @returns {void}
+ * 
+ */
 export async function initializeForm() {
-    await verifyAccessToken(__EVENT_FORM_PATH_NAME__);    
+    verifyAccessToken(__EVENT_FORM_PATH_NAME__);    
     // Verificar si hay datos guardados en localStorage
     const storedEventData = localStorage.getItem('editEventData');
     if (storedEventData) {
@@ -358,6 +341,22 @@ export async function initializeForm() {
     }
 }
 
+/**
+ * Funcion para añadir un nuevo evento
+ * @param {*} date 
+ * @param {*} time 
+ * @param {*} eventType 
+ * @param {*} street_1 
+ * @param {*} street_1_number 
+ * @param {*} street_2 
+ * @param {*} street_3 
+ * @param {*} derivation 
+ * @param {*} event_description 
+ * @param {*} informer_name 
+ * @param {*} informer_last_name 
+ * @param {*} informer_phone 
+ * @param {*} informer_email 
+ */
 export async function addNewEvent(date, time, eventType, street_1, street_1_number, street_2, street_3, 
     derivation, event_description, informer_name, informer_last_name, informer_phone, informer_email) {
     await fetch(`http://localhost:${SERVER_PORT}/events`, {
@@ -382,8 +381,11 @@ export async function addNewEvent(date, time, eventType, street_1, street_1_numb
     });
 }
 
-
-
+/**
+ * Funcion para buscar eventos por su ID
+ * @param {*} eventId 
+ * @returns 
+ */
 async function searchByEventId(eventId) {
    try {
         const dataUrl = `${__SEARCH_URL__}?id=${eventId}`;
@@ -394,6 +396,11 @@ async function searchByEventId(eventId) {
     }    
 }
 
+/**
+ * Funcion para buscar todos los eventos
+ * @returns {void}
+ * 
+ */
 export async function searchAllEvents() {
     try {
         const response = await searchEvents(__SEARCH_URL__);
@@ -403,6 +410,10 @@ export async function searchAllEvents() {
     }
 }
 
+/**
+ * Funcion para buscar todos los eventos
+ * @param {*} dataUrl 
+ */
 async function searchEvents(dataUrl) {
     try {        
         const response = await fetch(dataUrl);

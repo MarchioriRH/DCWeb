@@ -19,11 +19,11 @@ document.addEventListener("DOMContentLoaded", async () => {
             handler: searchAllEvents
         },
         {
-            buttonId: 'search-by-event-type',
+            buttonId: 'search-by-type',
             title: 'Buscar eventos por tipo',
             text: 'Seleccione un tipo de evento para buscar registros.',
-            formHtml: generateSelectFormHtml('event-type', 'Tipo de evento:', 'search-event-type-btn'),
-            selectId: 'event-type',
+            formHtml: generateSelectFormHtml('search-type', 'Tipo de evento:', 'search-by-type-btn'),
+            selectId: 'type',
             selectUrl: __EVENTS_TYPES__,
             searchFunction: (btn, inputId) => searchByFunction(btn, inputId, 'type')
         },
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             buttonId: 'search-by-derivation',
             title: 'Buscar eventos por derivacion',
             text: 'Seleccione a quien se derivo para buscar registros.',
-            formHtml: generateSelectFormHtml('derivation', 'Derivacion:', 'search-event-derivation-btn'),
+            formHtml: generateSelectFormHtml('search-derivation', 'Derivacion:', 'search-by-derivation-btn'),
             selectId: 'derivation',
             selectUrl: __DERIVATION_TYPES__,
             searchFunction: (btn, inputId) => searchByFunction(btn, inputId, 'derivation')
@@ -40,17 +40,17 @@ document.addEventListener("DOMContentLoaded", async () => {
             buttonId: 'search-by-street',
             title: 'Buscar eventos por calle',
             text: 'Seleccione la calle para buscar registros.',
-            formHtml: generateSelectFormHtml('street-list', 'Calle del evento:', 'search-event-street-btn'),
-            selectId: 'street-list',
+            formHtml: generateSelectFormHtml('search-street', 'Calle del evento:', 'search-by-street-btn'),
+            selectId: 'street',
             selectUrl: __STREETS_LIST__,
             searchFunction: (btn, inputId) => searchByFunction(btn, inputId, 'street')
         },
         {
             buttonId: 'search-by-date',
             title: 'Buscar eventos por fecha',
-            selectId: 'event-date',
+            selectId: 'date',
             text: 'Seleccione la fecha para buscar registros.',
-            formHtml: generateDateFormHtml('search-date', 'Fecha del evento:', 'search-event-date-btn'),
+            formHtml: generateDateFormHtml('search-date', 'Fecha del evento:', 'search-by-date-btn'),
             searchFunction: (btn, inputId) => searchByFunction(btn, inputId, 'date')
         },
         {
@@ -58,7 +58,10 @@ document.addEventListener("DOMContentLoaded", async () => {
             title: 'Buscar eventos entre fechas',
             selectId: 'date-range',
             text: 'Seleccione las fechas para buscar registros.',
-            formHtml: generateDateRangeFormHtml('search-before', 'Desde:', 'search-after', 'Hasta:', 'search-event-date-range-btn'),
+            btn: 'search-by-date-range-btn',
+            beforeId: 'search-before',
+            afterId: 'search-after',
+            formHtml: generateDateRangeFormHtml('search-before', 'Desde:', 'search-after', 'Hasta:', 'search-by-date-range-btn'),
             searchFunction: (btn, beforeId, afterId) => searchByRangeFunction(btn, beforeId, afterId)
         }
     ];
@@ -66,7 +69,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     searchConfig.forEach(config => registerSearchEvent(config));
 });
 
-function registerSearchEvent({ buttonId, handler, title, text, formHtml, selectId, selectUrl, searchFunction }) {
+function registerSearchEvent({ buttonId, handler, title, text, btn, beforeId, afterId, formHtml, selectId, selectUrl, searchFunction }) {
     const button = document.getElementById(buttonId);
     if (!button) return;
 
@@ -77,11 +80,10 @@ function registerSearchEvent({ buttonId, handler, title, text, formHtml, selectI
         if (handler) {
             await handler();
         } else {
-            setupSearchForm(title, text, formHtml, selectId, selectUrl, searchFunction);
+            setupSearchForm(title, text, btn, beforeId, afterId, formHtml, selectId, selectUrl, searchFunction);
         }
     });
 }
-
 
 function removeCloseButton() {
     const closeBtn = document.getElementById('close-btn');
@@ -94,7 +96,7 @@ function clearCardContainer() {
     document.getElementById('card-text').innerHTML = '';
 }
 
-function setupSearchForm(title, text, formHtml, selectId, selectUrl, searchFunction) {
+function setupSearchForm(title, text, btn, beforeId, afterId, formHtml, selectId, selectUrl, searchFunction) {
     document.getElementById('card-title').innerHTML = title;
     document.getElementById('card-text').innerHTML = text;
 
@@ -105,13 +107,18 @@ function setupSearchForm(title, text, formHtml, selectId, selectUrl, searchFunct
     container.appendChild(card);
 
     if (selectId && selectUrl) {
-        const selectElements = document.querySelectorAll(`#${selectId}`);
-        completeSelectOptions(selectElements, selectUrl);
+        const selectedElements = [document.querySelector(`#search-${selectId}`)];
+        completeSelectOptions(selectedElements, selectUrl);
     }
 
-    console.log(selectId);
-    const searchBtn = document.getElementById(`search-${selectId}-btn`);
-    if (searchFunction) searchFunction(searchBtn, selectId);
+    const searchBtn = document.getElementById(`search-by-${selectId}-btn`);
+    if (searchFunction) {
+        if (btn) {            
+            searchFunction(searchBtn, beforeId, afterId);
+        } else {
+            searchFunction(searchBtn, selectId);
+        }
+    }
 }
 
 function generateSelectFormHtml(selectId, label, btnId) {
@@ -156,7 +163,7 @@ function generateDateRangeFormHtml(beforeId, beforeLabel, afterId, afterLabel, b
 function searchByFunction(button, inputId, searchParam) {
     button.addEventListener('click', async (e) => {
         e.preventDefault();
-        const value = document.getElementById(`${inputId}`).value;
+        const value = document.getElementById(`search-${inputId}`).value;
         try {
             const response = await searchEvents(`${__SEARCH_URL__}?${searchParam}=${value}`);
             generateEventsList(response);
@@ -179,44 +186,5 @@ function searchByRangeFunction(button, beforeId, afterId) {
         }
     });
 }
-
-
-// function searchByRangeFunction(btnId, inputId1, inputId2) {
-//     btnId.addEventListener('click', async (e) => {
-//         e.preventDefault();
-//         const inputValue1 = document.getElementById(`${inputId1}`).value;
-//         const inputValue2 = document.getElementById(`${inputId2}`).value;
-//         const dataUrl = `${__SEARCH_URL__}?date1=${inputValue1}&date2=${inputValue2}`;
-//         const response = await searchEvents(dataUrl);
-//         generateEventsList(response);
-//     });
-// }
-
-// function searchByFunction(btnId, inputId, dbColumn) {
-//     btnId.addEventListener('click', async (e) => {
-//         e.preventDefault();
-//         const inputValue = document.getElementById(`${inputId}`).value;
-//         const dataUrl = `${__SEARCH_URL__}?${dbColumn}=${inputValue}`;
-//         const response = await searchEvents(dataUrl);
-//         generateEventsList(response);
-//     });
-// }
-
-// async function searchEvents(dataUrl) {
-//     try {        
-//         const response = await fetch(dataUrl);
-//         if (!response.ok) {
-//             throw new Error('Network response was not ok' + response.statusText);
-//         }
-//         const data = await response.json();
-//         return data; // Retorna los datos como un array de objetos
-//     } catch (error) {
-//         console.error('Error al obtener los eventos:', error);
-//         return []; // Retorna un array vacío en caso de error
-//     }
-// }
-
-//export { searchByEventId };
-
 
 
