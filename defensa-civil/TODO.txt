@@ -4,4 +4,5 @@ X Verificar token cuando se lo utiliza para validar accesos.
 - Poder editar un evento si se es ADMIN
 - Poder dar de alta y eliminar usuarios.
 - Verificar datos en formularios de registro y login.
-- 
+- Revisar porque no detecta elements en formulario.
+- Revisar porque no guarda token.

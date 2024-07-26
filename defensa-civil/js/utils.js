@@ -172,7 +172,7 @@ function generateCloseButton() {
 
 /**
  * Funcion para mostrar un modal con un mensaje
- * @param {*} msg 
+ * @param {string} msg 
  */
 function showMessageModal(msg) {
     //console.log('msg: ', msg);
@@ -186,7 +186,7 @@ function showMessageModal(msg) {
 
 /**
  * Verifica que exista un token de acceso y que este sea valido
- * @param {*} pathName 
+ * @param {string} pathName 
  * @returns {void}
  * 
  */
@@ -199,6 +199,7 @@ async function verifyAccessToken(pathName) {
         });
     } else {
         try {
+            console.log(localStorage.getItem('token'));
             const response = await fetch(`http://localhost:${SERVER_PORT}/verifyToken`, {
                 method: 'GET',
                 headers: {
@@ -233,7 +234,7 @@ async function verifyAccessToken(pathName) {
  */
 function showEventsLogoutBtns() {
     if (document.getElementById('control-panel') && document.getElementById('logout')) {
-        return
+        return;
     }
     const navbarUlList = document.getElementById('navbar-list-ul');
 
@@ -257,6 +258,7 @@ function showEventsLogoutBtns() {
         // Acción a realizar cuando se hace clic en el botón "Eventos"
         //console.log('Botón Eventos clicado');
         // Aquí puedes redirigir o cargar la página de eventos
+        localStorage.setItem('token', localStorage.getItem('token'));
         window.location.href = `http://localhost:${APP_PORT}/defensa-civil/eventos/control_panel.html`;
     });
 
@@ -272,7 +274,7 @@ function showEventsLogoutBtns() {
 
 /**
  * Función para editar un evento
- * @param {*} eventData 
+ * @param {JSON} eventData 
  */
 function editEvent(eventData) {
     console.log(eventData);
@@ -283,7 +285,7 @@ function editEvent(eventData) {
 
 /**
  * Función para llenar el formulario con los datos del evento determinado
- * @param {*} eventData 
+ * @param {JSON} eventData 
  */
 async function fillFormWithEventData(eventData) {
     eventData = eventData[0];
@@ -313,13 +315,16 @@ export async function initializeForm() {
     const storedEventData = localStorage.getItem('editEventData');
     if (storedEventData) {
         const eventData = JSON.parse(storedEventData);
-        console.log(eventData);
+
         const streets = document.querySelectorAll('.tandil-street-list');
         await completeSelectOptions(streets, __STREETS_LIST__, eventData.street_1);
+
         const events_types = document.querySelectorAll('#event-type');
         await completeSelectOptions(events_types, __EVENTS_TYPES__, eventData.type);
+
         const derivations = document.querySelectorAll('#derivation');
         await completeSelectOptions(derivations, __DERIVATION_TYPES__, eventData.derivation);
+
         fillFormWithEventData(eventData);
         // Limpiar el localStorage
         localStorage.removeItem('editEventData');

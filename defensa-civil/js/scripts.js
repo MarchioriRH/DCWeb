@@ -124,6 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     function isPageReload() {
         const entries = performance.getEntriesByType("navigation");
+        console.log(entries);
         if (entries.length > 0 && entries[0].type === "reload") {
             return true;
         }
@@ -134,12 +135,12 @@ document.addEventListener('DOMContentLoaded', () => {
      * Cierra la sesión del usuario si la página no ha sido recargada
      * @returns {void}
      */
-    // window.addEventListener('beforeunload', function() {
-    //     if (!isPageReload()) {
-    //         console.log('Sesión cerrada');
-    //         clearUserData();
-    //     }
-    // });
+    window.addEventListener('beforeunload', function() {
+        if (!isPageReload()) {
+            console.log('Sesión cerrada');
+            clearUserData();
+        }
+    });
     
             
 });

@@ -22,6 +22,13 @@ body>* {
     box-sizing: inherit;
 }
 
+.error {
+    color: red;
+    font-size: 0.875em;
+    display: none;
+}
+
+
 textarea {
     width: -webkit-fill-available;
 }

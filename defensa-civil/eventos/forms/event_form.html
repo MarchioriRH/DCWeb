@@ -19,85 +19,92 @@
 <body>
 
     <div class="wrapper">
-        <div class="form">
+        <form action="#" class="myform" id="myForm">
             <div class="form-header">
                 <div class="form-header-title">
                     <h1>Registro de eventos</h1>
                 </div>
                 <div class="form-header-close">
-                    <img class="form-logo" src="../../assets/img/dc-logo.png"></img>
+                    <img class="form-logo" src="../../assets/img/dc-logo.png" alt="Logo">
+                </div>
+            </div>           
+            <div class="control-from">
+                <label for="date-time">Fecha *</label>
+                <input type="date" id="date" required>
+                <span class="error" id="date-error"></span>
+            </div>
+            <div class="control-from">
+                <label for="time">Hora *</label>
+                <input type="time" id="time" required>
+                <span class="error" id="time-error"></span>
+            </div>
+            <div class="full-width">Sobre el evento</div>
+            <div class="full-width">
+                <label for="tipo">Tipo *</label>
+                <select class="type-select" name="tipo" id="event-type" required></select>
+                <span class="error" id="event-type-error"></span>
+            </div>
+            <div class="control-from">
+                <label for="street">Calle *</label>
+                <select class="type-select tandil-street-list" id="street-1" required></select>
+                <span class="error" id="street-1-error"></span>
+            </div>
+            <div class="control-from">
+                <label for="street-number">Número *</label>
+                <input type="number" id="street-1-number" required>
+                <span class="error" id="street-1-number-error"></span>
+            </div>
+            <div class="control-from">
+                <label for="street-2">Entre calle</label>
+                <select class="type-select tandil-street-list" id="street-2" required></select>
+                <span class="error" id="street-2-error"></span>
+            </div>
+            <div class="control-from">
+                <label for="street-3">y calle</label>
+                <select class="type-select tandil-street-list" id="street-3" required></select>
+                <span class="error" id="street-3-error"></span>
+            </div>
+            <div class="full-width">
+                <label for="derivation">Derivación *</label>
+                <select class="type-select" name="derivation" id="derivation" required></select>
+                <span class="error" id="derivation-error"></span>
+            </div>
+            <div class="full-width">
+                <label for="description">Descripción del evento *</label>
+                <textarea class="full-width" name="description" id="description" required></textarea>
+                <span class="error" id="description-error"></span>
+            </div>
+            <div class="full-width">Sobre el llamante</div>
+            <div class="control-from">
+                <label for="informer-name">Nombre *</label>
+                <input type="text" id="informer-name" required>
+                <span class="error" id="informer-name-error"></span>
+            </div>
+            <div class="control-from">
+                <label for="informer-last-name">Apellido *</label>
+                <input type="text" id="informer-last-name" required>
+                <span class="error" id="informer-last-name-error"></span>
+            </div>
+            <div class="control-from">
+                <label for="informer-phone-number">Teléfono *</label>
+                <input type="tel" id="informer-phone-number" pattern="^\d{10}$" required>
+                <span class="error" id="informer-phone-number-error"></span>
+            </div>
+            <div class="full-width">
+                <label for="informer-email">Email</label>
+                <input type="email" id="informer-email" required>
+                <span class="error" id="informer-email-error"></span>
+            </div>
+            <div class="full-width buttons-box">
+                <div class="button">
+                    <button type="submit" id="new-event-btn">Registrar</button>
+                </div>
+                <div class="button">
+                    <button type="button" id="cancel-new-event-btn">Cancelar</button>
                 </div>
             </div>
-            
-            <form action="#" class="myform" id="myForm">
-                <div class="control-from">
-                    <label for="date-time">Fecha *</label>
-                    <div class="date" id="date">            
-                    </div>
-                </div>
-                <div class="control-from">
-                    <label for="time">Hora *</label>
-                    <div id="time"></div>
-                </div>
-                <div class="full-width">Sobre el evento</div>
-                <div class="full-width">
-                    <label for="tipo">Tipo *</label>                    
-                    <select class="type-select" name="tipo" id="event-type" required></select>
-                </div>
-                <div class="control-from">
-                    <label for="street">Calle *</label>
-                    <select class="type-select tandil-street-list" id="street-1" required></select>
-                </div>
-                <div class="control-from">
-                    <label for="street-number">Numero *</label>
-                    <input type="number" id="street-1-number" value="" required>
-                </div>
-                <div class="control-from">
-                    <label for="tandil-street-list">Entre calle</label>
-                    <select class="type-select tandil-street-list" id="street-2" required></select>                    
-                </div>
-                <div class="control-from">
-                    <label for="tandil-street-list">y calle</label>
-                    <select class="type-select tandil-street-list" id="street-3" required></select>
-                </div>
-                <div class="full-width">
-                    <label for="derivation">Derivacion *</label>
-                    <select class="type-select" name="derivation" id="derivation" required></select>
-                </div>
-                <div class="full-width">
-                    <label for="description">Descripcion del evento *</label>
-                    <textarea class="full-width" name="description" id="description" required></textarea>
-                </div>
-                <div class="full-width">Sobre el llamante</div>
-                <div class="control-from">
-                    <label for="informer-name">Nombre *</label>
-                    <input type="text" id="informer-name" value="" required>
-                </div>
-   
-                <div class="control-from">
-                    <label for="informer-last-name">Apellido *</label>
-                    <input type="text" id="informer-last-name" value="" required>
-                </div>
-   
-                <div class="control-from">
-                    <label for="informer-phone">Telefono *</label>
-                    <input type="tel" id="informer-phone-number" value="" required>
-                </div>
-   
-                <div class="full-width">
-                    <label for="informer-email">Email</label>
-                    <input type="email" id="informer-email" value="" required>
-                </div>
-                <div class="full-width buttons-box">
-                    <div class="button">
-                        <button type="submit" id="new-event-btn">Registrar</button>
-                    </div>
-                    <div class="button">
-                        <button id="cancel-new-event-btn">Cancelar</button>
-                    </div>
-                </div>
-            </form>
-        </div>
+        </form>    
+        
     </div>
     <!-- Message modal -->
     <div class="modal fade opaque-modal" id="messageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">

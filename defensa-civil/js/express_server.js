@@ -145,18 +145,6 @@ app.get('/verifyToken', (req, res) => {
     });
 });
 
-
-// app.get('/verifyToken', async (req, res) => {  
-//     const token = req.headers['token']; 
-//     console.log('token: ', token);
-//     jwt.verify(token, JWT_SECRET, (err, user) => {
-//         if (err) {
-//             return res.status(403).send('Token invalido');
-//         }
-//         res.status(200).send('Token valido');
-//     });
-// });
-
 /** 
  * Events routes 
  * @param {string} date - Event date
@@ -238,13 +226,15 @@ app.post('/events', (req, res) => {
     const values = [date, time, eventType, street_1, street_1_number, street_2, street_3, derivation, event_description, informer_name, informer_last_name, informer_phone, informer_email];
     
     connection.query(query, values, (err, result) => {
-            if (err) {
-                console.error('Database query error:', err);
-                return result.status(500).send(err);                
-            }
-            console.log('Evento agregado');
-        });
+        if (err) {
+            console.error('Database query error:', err);
+            return res.status(500).send('Error al agregar el evento a la base de datos');
+        }
+        console.log('Evento agregado');
+        res.status(201).send('Evento agregado');
+    });
 });
+
 
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);

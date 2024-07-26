@@ -11,7 +11,7 @@ const __CONTROL_PANEL_PATH_NAME__ = '/defensa-civil/eventos/control_panel.html';
 
 
 document.addEventListener("DOMContentLoaded", async () => {
-    await verifyAccessToken(__CONTROL_PANEL_PATH_NAME__);
+    verifyAccessToken(__CONTROL_PANEL_PATH_NAME__);
 
     const searchConfig = [
         {
@@ -67,6 +67,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     ];
 
     searchConfig.forEach(config => registerSearchEvent(config));
+    document.getElementById('exit-btn').addEventListener('click', () => {
+        localStorage.removeItem('token');
+        //window.location.href = '/defensa-civil/';
+    });
 });
 
 function registerSearchEvent({ buttonId, handler, title, text, btn, beforeId, afterId, formHtml, selectId, selectUrl, searchFunction }) {
