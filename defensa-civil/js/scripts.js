@@ -68,44 +68,48 @@ document.addEventListener('DOMContentLoaded', () => {
         
   
     // Change navbar link color when toggler is clicked
-    const togglerMenuBtn = document.querySelector('.navbar-toggler');
-    togglerMenuBtn.addEventListener('click', event => { 
-        const navLinkStyle = document.body.querySelectorAll('.nav-link');        
-        navLinkStyle.forEach(element => {
-            element.style.color = 'white';            
+    if (document.body.querySelector('.navbar-toggler')) {
+        document.querySelector('.navbar-toggler').addEventListener('click', event => { 
+            const navLinkStyle = document.body.querySelectorAll('.nav-link');        
+            navLinkStyle.forEach(element => {
+                element.style.color = 'white';            
+            });
         });
-    });
-    
-    //  Activate Bootstrap scrollspy on the main nav element
-    const mainNav = document.body.querySelector('#mainNav');
-    if (mainNav) {
-        new bootstrap.ScrollSpy(document.body, {
-            target: '#mainNav',
-            rootMargin: '0px 0px -40%',
-        });
-    };
+        
+        //  Activate Bootstrap scrollspy on the main nav element
+        const mainNav = document.body.querySelector('#mainNav');
+        if (mainNav) {
+            new bootstrap.ScrollSpy(document.body, {
+                target: '#mainNav',
+                rootMargin: '0px 0px -40%',
+            });
+        };
+    }
 
     // Collapse responsive navbar when toggler is visible
-    const navbarToggler = document.body.querySelector('.navbar-toggler');
-    const responsiveNavItems = [].slice.call(
-        document.querySelectorAll('#navbarResponsive .nav-link')
-    );
-    responsiveNavItems.map(function (responsiveNavItem) {
-        responsiveNavItem.addEventListener('click', () => {
-            if (window.getComputedStyle(navbarToggler).display !== 'none') {
-                navbarToggler.click();
-            }
+    if (document.body.querySelector('.navbar-toggler')){
+        const navbarToggler = document.body.querySelector('.navbar-toggler');
+        const responsiveNavItems = [].slice.call(
+            document.querySelectorAll('#navbarResponsive .nav-link')
+        );
+        responsiveNavItems.map(function (responsiveNavItem) {
+            responsiveNavItem.addEventListener('click', () => {
+                if (window.getComputedStyle(navbarToggler).display !== 'none') {
+                    navbarToggler.click();
+                }
+            });
         });
-    });
+    }
 
     
     // Carousel
-    const myCarouselElement = document.querySelector('#adviceCarousel');
-    const carousel = new bootstrap.Carousel(myCarouselElement, {
-        interval: 3000,
-        touch: false
-    });
-
+    if (document.body.querySelector('#adviceCarousel')) {
+        let myCarouselElement = document.querySelector('#adviceCarousel');
+        const carousel = new bootstrap.Carousel(myCarouselElement, {
+            interval: 3000,
+            touch: false
+        });
+    }
     
     
     /**

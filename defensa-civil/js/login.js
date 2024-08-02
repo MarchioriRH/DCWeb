@@ -15,36 +15,39 @@ document.addEventListener('DOMContentLoaded', () => {
      * @param {boolean} keepSession - Mantener la sesión activa
      * @returns {void}
      */
-    document.getElementById('loginForm').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-        const keepSession = document.getElementById('remember_me').checked;
+    if (document.getElementById('loginForm')) {
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            debbuger;
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const keepSession = document.getElementById('remember_me').checked;
+            console.log('loginForm:', username, password, keepSession);
+            try {
+                const response = await fetch(`http://localhost:${SERVER_PORT}/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username, password, keepSession })
+                });
         
-        try {
-            const response = await fetch(`http://localhost:${SERVER_PORT}/login`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ username, password, keepSession })
-            });
-    
-            if (response.ok) {
-                const responseData = await response.json();
-                localStorage.setItem('token', responseData.token);
-                localStorage.setItem('rol', responseData.rol);
-                showMessageModal('Loggin exitoso');
-                showEventsLogoutBtns();
-            } else {
-                const errorMessage = await response.text();
-                showMessageModal(errorMessage);
+                if (response.ok) {
+                    const responseData = await response.json();
+                    localStorage.setItem('token', responseData.token);
+                    localStorage.setItem('rol', responseData.rol);
+                    showMessageModal('Loggin exitoso');
+                    showEventsLogoutBtns();
+                } else {
+                    const errorMessage = await response.text();
+                    showMessageModal(errorMessage);
+                }
+            } catch (error) {
+                console.error('Error:', error);
             }
-        } catch (error) {
-            console.error('Error:', error);
-        }
-        document.getElementById('loginForm').reset();
-    });
+            document.getElementById('loginForm').reset();
+        });
+    }
 
     /**
      * Event listener para el formulario de registro
@@ -54,28 +57,30 @@ document.addEventListener('DOMContentLoaded', () => {
      * @returns {void}
      * 
      */
-    document.getElementById('registerForm').addEventListener('submit', async (e) => {
-        e.preventDefault();
+    if (document.getElementById('registerForm')) {
+        document.getElementById('registerForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
 
-        const username = document.getElementById('registerUsername').value;
-        const password = document.getElementById('registerPassword').value;
-        const rol = 'USER';
+            const username = document.getElementById('registerUsername').value;
+            const password = document.getElementById('registerPassword').value;
+            const rol = 'USER';
 
-        await fetch(`http://localhost:${SERVER_PORT}/register`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ username, password, rol })
-        }).then(async response => {
-            response.text().then(text => showMessageModal(text));
-            document.getElementById('registerForm').reset();
-        }).catch(error => {
-            console.error('Error:', error);
-        });       
-    });
-
+            await fetch(`http://localhost:${SERVER_PORT}/register`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password, rol })
+            }).then(async response => {
+                response.text().then(text => showMessageModal(text));
+                document.getElementById('registerForm').reset();
+            }).catch(error => {
+                console.error('Error:', error);
+            });       
+        });
+    }
 });
+
 
 
 

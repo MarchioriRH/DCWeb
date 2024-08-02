@@ -236,6 +236,7 @@ function showEventsLogoutBtns() {
     if (document.getElementById('control-panel') && document.getElementById('logout')) {
         return;
     }
+    console.log('Showing events and logout buttons');
     const navbarUlList = document.getElementById('navbar-list-ul');
 
     const eventFormLiControlPanel = document.createElement('li');
