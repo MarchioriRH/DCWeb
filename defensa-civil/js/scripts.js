@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    
+   
     /**
      * Cierra la sesión del usuario
      * @returns {void}

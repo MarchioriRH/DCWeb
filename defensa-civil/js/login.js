@@ -37,9 +37,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     localStorage.setItem('token', responseData.token);
                     localStorage.setItem('rol', responseData.rol);
                     showMessageModal('Loggin exitoso');
+                    console.log('logginsuccess:', responseData);
                     showEventsLogoutBtns();
                 } else {
                     const errorMessage = await response.text();
+                    console.log('loginfailed:', errorMessage);
                     showMessageModal(errorMessage);
                 }
             } catch (error) {

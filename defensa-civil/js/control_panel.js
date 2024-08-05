@@ -11,6 +11,10 @@ const __CONTROL_PANEL_PATH_NAME__ = '/defensa-civil/eventos/control_panel.html';
 
 
 document.addEventListener("DOMContentLoaded", async () => {
+    if (!localStorage.getItem('token')) {
+        return;
+    }
+
     verifyAccessToken(__CONTROL_PANEL_PATH_NAME__);
 
     const searchConfig = [
