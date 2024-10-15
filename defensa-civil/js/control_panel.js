@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         return;
     }
 
+    window.history.replaceState(null, '', '/defensa-civil/eventos/control_panel)');
     verifyAccessToken(__CONTROL_PANEL_PATH_NAME__);
 
     const searchConfig = [

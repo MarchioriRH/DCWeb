@@ -260,7 +260,7 @@ function showEventsLogoutBtns() {
         //console.log('Botón Eventos clicado');
         // Aquí puedes redirigir o cargar la página de eventos
         localStorage.setItem('token', localStorage.getItem('token'));
-        //window.location.href = `http://localhost:${APP_PORT}/defensa-civil/eventos`;
+        window.location.href = `http://localhost:${APP_PORT}/defensa-civil/eventos/control_panel.html`;
     });
 
     // Añadir event listener al botón "Cerrar sesión"
@@ -269,7 +269,7 @@ function showEventsLogoutBtns() {
         //console.log('Botón Cerrar sesión clicado');
         localStorage.removeItem('token');
         localStorage.removeItem('rol');
-        //window.location.href = `http://localhost:${APP_PORT}/defensa-civil/`;
+        window.location.href = `http://localhost:${APP_PORT}/defensa-civil/index.html`;
     });
 }
 

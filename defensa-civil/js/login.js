@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('loginForm')) {
         document.getElementById('loginForm').addEventListener('submit', async (e) => {
             e.preventDefault();
-            debbuger;
+            //debbuger;
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
             const keepSession = document.getElementById('remember_me').checked;

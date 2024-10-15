@@ -1,0 +1,68 @@
+{
+    "modals": [
+        {
+            "className": "advice-modal modal fade",
+            "id": "adviceModalTormentasFuertes",
+            "title": "Tormentas fuertes",
+            "subtitle": "Consejos.",
+            "image": "assets/img/advice/1.1.jpg",
+            "description": "Es importante esta preparado."
+        },
+        {
+            "className": "advice-modal modal fade",
+            "id": "adviceModalMonoxido",
+            "title": "Accidentes con monoxido de carbono",
+            "subtitle": "Consejos.",
+            "image": "assets/img/advice/2.1.jpg",
+            "description": "Es importante esta preparado."
+        },
+        {
+            "className": "advice-modal modal fade",
+            "id": "adviceModalOlasCalor",
+            "title": "Olas de calor",
+            "subtitle": "Consejos.",
+            "image": "assets/img/advice/3.1.jpg",
+            "description": "Es importante esta preparado."
+        },
+        {
+            "className": "advice-modal modal fade",
+            "id": "adviceModalPrevIncendios",
+            "title": "Prevencion de incendios",
+            "subtitle": "Consejos.",
+            "image": "assets/img/advice/4.1.jpg",
+            "description": "Es importante esta preparado."
+        },
+        {
+            "className": "advice-modal modal fade",
+            "id": "adviceModalTormentas",
+            "title": "Tormentas electricas",
+            "subtitle": "Consejos.",
+            "image": "assets/img/advice/5.1.jpg",
+            "description": "Es importante esta preparado."
+        },
+        {
+            "className": "advice-modal modal fade",
+            "id": "adviceModalAlerta",
+            "title": "Alertas meteorologicas",
+            "subtitle": "Consejos.",
+            "image": "assets/img/advice/6.1.jpg",
+            "description": "Es importante esta preparado."
+        },
+        {
+            "className": "advice-modal modal fade",
+            "id": "adviceModal7",
+            "title": "Tsunamis",
+            "subtitle": "Consejos.",
+            "image": "assets/img/advice/7.1.jpg",
+            "description": "Es importante esta preparado."
+        },
+        {
+            "className": "advice-modal modal fade",
+            "id": "adviceModal8",
+            "title": "Vientos fuertes",
+            "subtitle": "Consejos.",
+            "image": "assets/img/advice/8.1.jpg",
+            "description": "Es importante esta preparado."
+        }
+    ]
+}
